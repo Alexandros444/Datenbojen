@@ -7,7 +7,7 @@ data = {
     'Sensor1': 200
 }
 
-response = requests.post(url, json=data)
+response = requests.put(url, json=data)
 
 print(f"Status Code: {response.status_code}")
 print(f"Response Text: {response.text}")

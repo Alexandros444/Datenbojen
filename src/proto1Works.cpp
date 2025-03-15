@@ -1,9 +1,12 @@
 #define TINY_GSM_MODEM_SIM800
 #define TINY_GSM_DEBUG Serial
 #include "TinyGsmClient.h"
-#include "ArduinoHttpClient.h"
+// #include "ArduinoHttpClient.h"
 #include "yazdan_code.h"
 #include <FastLED.h>
+
+#include <ArduinoJson.h>
+#include <Http.h>
 
 #define TINY_GSM_MODEM_SIM800
 #define SerialMon Serial
@@ -16,8 +19,8 @@ const char apn[]  = "internet.telekom"; // APN for your GSM network
 const char user[] = "telekom";         // User for APN, if required
 const char pass[] = "tm";         // Password for APN, if required
 
-const char server[] = "http://jserv.ddns.net";
-const uint16_t  port = 8080;
+const char server[] = "http://jserv.ddns.net:8080";
+// const uint16_t  port = 8080;
 const char resource[] = "/";
 
 #define SMS_TARGET "+4915739119874"
@@ -33,7 +36,31 @@ CRGB leds[NUM_LEDS];
 
 TinyGsm modem(SerialAT);
 TinyGsmClient client(modem);
-HttpClient http(client, server, port);
+// HttpClient http(client, server, port);
+
+// unsigned int RST_PIN = 12;
+// HTTP httpClient(SerialAT, 9600, true);
+
+// http.configureBearer();
+// void newModuleCode(){
+    
+//     Result res = httpClient.connect();
+//     Serial.printf("Connect returned %d\n",res);
+//     if (res != SUCCESS){
+//         return;
+//     }
+
+//     char response[256];
+//     char data[100];
+//     snprintf(data, 100, "{\"date\":\"%d\"}",42069);
+//     Result result = httpClient.post(server, data, response);
+//     Serial.printf("Post returned %d\n",result);
+
+//     Serial.println(response);
+
+//     httpClient.disconnect();
+//     Serial.printf("Disconnected returned %d\n",res);
+// }
 
 
 void printStatus(){
@@ -126,10 +153,11 @@ void setup() {
     
     
     Serial.println("Initializing sensors...");
-    sensors_init();
+    sensors_init(); 
     Serial.println("Sensors initialized");
 
-    
+    // Serial.println("Configure Bearer ...");
+    // httpClient.configureBearer("");
 }
 
 
@@ -166,6 +194,52 @@ void handleSerial(){
     }
     updateSerial();
 }
+
+int debugMode = 1;
+
+void sendCmd(const char* cmd)
+{
+    //SerialAT.listen();
+    SerialAT.flush();
+    delay(500);
+    SerialAT.write(cmd);
+    SerialAT.flush();
+}
+
+int waitForResp(const char *resp, unsigned int timeout)
+{
+    int len = strlen(resp);
+    int sum=0;
+    unsigned long timerStart,timerEnd;
+    timerStart = millis();
+
+    while(1) {
+        if(SerialAT.available()) {
+            char c = SerialAT.read();
+            if (debugMode) Serial.print(c);
+            sum = (c == resp[sum] || resp[sum] == 'X') ? sum+1 : 0;
+            if(sum == len)break;
+        }
+        timerEnd = millis();
+        if(timerEnd - timerStart > timeout) {
+            return FALSE;
+        }
+    }
+
+    while(SerialAT.available()) {
+        SerialAT.read();
+    }
+
+    return TRUE;
+}
+
+int sendCmdAndWaitForResp(const char* cmd, const char *resp, unsigned timeout)
+{
+    sendCmd(cmd);
+    return waitForResp(resp,timeout);
+}
+
+
 
 void gsm_http_post(float postData);
 
@@ -204,7 +278,8 @@ void loop() {
         }
     }    
     Serial.println("Sending over Network:");
-    gsm_http_post(tdsValue);
+    gsm_http_post(readTemperature());
+    // newModuleCode();
 }
 
 void gsm_send_serial(String cmd) {
@@ -215,7 +290,8 @@ void gsm_send_serial(String cmd) {
 }
 
 void gsm_http_post(float postdata) {
-    String data = "value=" + String(postdata);
+    char data[100];
+    int len = snprintf(data, 100, "{\"temp\":\"%f\"}",postdata);
     Serial.println(" --- Start GPRS & HTTP --- ");
     gsm_send_serial("AT+CREG?");
     gsm_send_serial("AT+SAPBR=1,1");
@@ -224,8 +300,8 @@ void gsm_http_post(float postdata) {
     gsm_send_serial("AT+HTTPINIT");
     gsm_send_serial("AT+HTTPPARA=CID,1");
     gsm_send_serial("AT+HTTPPARA=URL," + String(server));
-    gsm_send_serial("AT+HTTPPARA=CONTENT,application/x-www-form-urlencoded");
-    gsm_send_serial("AT+HTTPDATA="+String(data.length())+",5000");
+    gsm_send_serial("AT+HTTPPARA=CONTENT,application/json");
+    gsm_send_serial("AT+HTTPDATA="+String(len)+",5000");
     gsm_send_serial(data);
     gsm_send_serial("AT+HTTPACTION=1");
     gsm_send_serial("AT+HTTPREAD");
@@ -234,48 +310,48 @@ void gsm_http_post(float postdata) {
   }
 
 
-void postData(float tdsValue){
-    // TODO: Eigene Post AT Commands
-    // https://www.aeq-web.com/sim800-gprs-http-post-get-request-at-commands/?lang=en
-    // Prepare data to send
-    String postData = "value=" + String(tdsValue);
-    // Make a HTTP POST request
-    SerialMon.println("Making a POST request");
-    http.beginRequest();
-    Serial.printf("Post Returned %d\n",http.post(resource));
-    http.sendHeader("Content-Type", "text/plain");
-    http.sendHeader("Content-Length", postData.length());
-    http.beginBody();
-    Serial.printf("Body Len: %d\n",http.print(postData));
-    http.endRequest();
+// void postData(float tdsValue){
+//     // TODO: Eigene Post AT Commands
+//     // https://www.aeq-web.com/sim800-gprs-http-post-get-request-at-commands/?lang=en
+//     // Prepare data to send
+//     String postData = "value=" + String(tdsValue);
+//     // Make a HTTP POST request
+//     SerialMon.println("Making a POST request");
+//     http.beginRequest();
+//     Serial.printf("Post Returned %d\n",http.post(resource));
+//     http.sendHeader("Content-Type", "text/plain");
+//     http.sendHeader("Content-Length", postData.length());
+//     http.beginBody();
+//     Serial.printf("Body Len: %d\n",http.print(postData));
+//     http.endRequest();
 
-    // Read the response
-    int statusCode = http.responseStatusCode();
-    String response = http.responseBody();
-    SerialMon.print("Status code: ");
-    switch (statusCode)
-    {
-    case HTTP_SUCCESS:
-        Serial.println("HTTP_SUCCESS");
-        break;
-    case HTTP_ERROR_CONNECTION_FAILED:
-        Serial.println("HTTP_ERROR_CONNECTION_FAILED");
-        break;
-    case HTTP_ERROR_API:
-        Serial.println("HTTP_ERROR_API");
-        break;
-    case HTTP_ERROR_TIMED_OUT:
-        Serial.println("HTTP_ERROR_TIMED_OUT");
-        break;
-    case HTTP_ERROR_INVALID_RESPONSE:
-        Serial.println("HTTP_ERROR_INVALID_RESPONSE");
-        break;
-    default:
-        break;
-    }
-    SerialMon.print("Response: ");
-    SerialMon.println(response);
+//     // Read the response
+//     int statusCode = http.responseStatusCode();
+//     String response = http.responseBody();
+//     SerialMon.print("Status code: ");
+//     switch (statusCode)
+//     {
+//     case HTTP_SUCCESS:
+//         Serial.println("HTTP_SUCCESS");
+//         break;
+//     case HTTP_ERROR_CONNECTION_FAILED:
+//         Serial.println("HTTP_ERROR_CONNECTION_FAILED");
+//         break;
+//     case HTTP_ERROR_API:
+//         Serial.println("HTTP_ERROR_API");
+//         break;
+//     case HTTP_ERROR_TIMED_OUT:
+//         Serial.println("HTTP_ERROR_TIMED_OUT");
+//         break;
+//     case HTTP_ERROR_INVALID_RESPONSE:
+//         Serial.println("HTTP_ERROR_INVALID_RESPONSE");
+//         break;
+//     default:
+//         break;
+//     }
+//     SerialMon.print("Response: ");
+//     SerialMon.println(response);
 
-    // Wait for 10 mins before next reading
-    delay(10*1000);
-}
+//     // Wait for 10 mins before next reading
+//     delay(10*1000);
+// }
