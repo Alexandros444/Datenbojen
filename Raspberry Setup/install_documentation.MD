@@ -39,7 +39,10 @@
 - [Tutorial auch Icecast](https://www.hackster.io/Shilleh/stream-audio-from-raspberry-pi-to-local-computer-02c7f0)
 - Current Location:
     - `/etc/darkice.cfg`
+- Automatic Execution rc-local service:
+    - `/etc/rc.local`
 - Send Data to Icecast in config
+
 
 ---
 ---
