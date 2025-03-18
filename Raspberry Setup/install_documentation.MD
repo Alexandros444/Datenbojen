@@ -2,6 +2,7 @@
 ## General
 - Usr: riversync
 - pwd: 55555
+- [Backup] (https://raspberrystreet.com/learn/how-to-backup-raspberrypi-sdcard)
 
 ## Motion - Kamerastream auf Webserver
 - [Tutorial](https://www.instructables.com/How-to-Make-Raspberry-Pi-Webcam-Server-and-Stream-/)
