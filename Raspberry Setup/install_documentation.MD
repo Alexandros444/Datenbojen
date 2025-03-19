@@ -54,3 +54,7 @@
     - `/etc/nginx/sites-available/node`
 - Usr: pi
 - pwd: raspberry
+
+
+## Control.sh
+- Easy managable config
