@@ -2,6 +2,7 @@
 ## General
 - Usr: riversync
 - pwd: 55555spreeart$
+- ssh riversync@9.tcp.eu.ngrok.io -p 25669
 - [Backup] (https://raspberrystreet.com/learn/how-to-backup-raspberrypi-sdcard)
 
 ## Motion - Kamerastream auf Webserver
