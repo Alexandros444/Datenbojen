@@ -1,7 +1,7 @@
 # Raspberry Setup
 ## General
 - Usr: riversync
-- pwd: 55555
+- pwd: 55555spreeart$
 - [Backup] (https://raspberrystreet.com/learn/how-to-backup-raspberrypi-sdcard)
 
 ## Motion - Kamerastream auf Webserver
