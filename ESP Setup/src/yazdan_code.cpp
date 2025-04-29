@@ -7,6 +7,8 @@
 #include "do_grav.h"
 #include "yazdan_code.h"
 
+// Teest kommentar zum zeigen von Git
+
 // DS18B20 Setup
 #define DS18B20_PIN 27
 // const int DS18B20_PIN =2; // DS18B20 Signalpin auf digitalem Pin 2
