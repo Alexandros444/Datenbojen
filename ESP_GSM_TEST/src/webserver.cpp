@@ -15,7 +15,12 @@ String registrationStatus = "Unknown";
 String location = "Unknown";
 String modemInfo = "Unknown";
 String operatorName = "no Operator";
+String networkTime = "Unknown";
 
+String get_status = "-1";
+String post_status = "-1";
+
+String post_url = "http://jserv.ddns.net:8080";
 
 
 // Dummy SMS sending function
@@ -36,17 +41,9 @@ void updateGSMStatus() {
     location = status.loc;
     operatorName = status.operatorName;   
     modemInfo = status.modemInfo;
+    networkTime = status.networkTime;
 
 }
-
-void https_get() {
-    perform_get_https("www.baidu.com");
-}
-
-void https_post() {
-    Serial.println("Not Implemented: POST");
-}
-
 
 // HTML page
 String htmlPage() {
@@ -62,6 +59,7 @@ String htmlPage() {
     page += "<li>Location: " + location + "</li>";
     page += "<li>Operator Name: " + operatorName + "</li>";
     page += "<li>Modem Info: " + modemInfo + "</li>";
+    page += "<li>Network Time: " + networkTime + "</li>";
     page += "</ul>";
 
     // page += "<form action=\"/send_sms\" method=\"POST\">";
@@ -69,12 +67,25 @@ String htmlPage() {
     // page += "</form>";
 
     page += "<form action=\"/https_get\" method=\"POST\">";
+    page += "<input type=\"text\" name=\"url\" placeholder=\"Enter Get URL\" required> ";
     page += "<button type=\"submit\">HTTPS Get</button>";
+    page += " Status: " + get_status;
+    page += "</form>";
+
+    page += "<br>";
+
+    page += "<form action=\"/https_post\" method=\"POST\">";
+    // page += "<input type=\"text\" name=\"url\" placeholder=\"Enter Post URL\" required> ";
+    page += "<input type=\"text\" name=\"data\" placeholder=\"Enter Post Data\" required> ";
+    page += "<button type=\"submit\">HTTPS Post</button>";
+    page += " Status: " + post_status;
     page += "</form>";
 
     // page += "<form action=\"/https_post\" method=\"POST\">";
     // page += "<button type=\"submit\">HTTPS Post</button>";
     // page += "</form>";
+
+    
 
     page += "</body></html>";
     return page;
@@ -92,13 +103,18 @@ void handleSendSMS() {
 }
 
 void handleGetHttps() {
-    https_get();
+    String url = server.hasArg("url") ? server.arg("url") : "www.httpbin.org";
+    int status = perform_get_https(url);
+    get_status = status == 200 ? "Success: " + String(status) : "Failed: " + String(status);
     server.sendHeader("Location", "/");
     server.send(303);
 }
 
 void handlePostHttps() {
-    https_post();
+    // String url = server.hasArg("url") ? server.arg("url") : "www.httpbin.org";
+    String data = server.hasArg("data") ? server.arg("data") : "null";
+    int status = perform_post_https(post_url, data);
+    post_status = status == 200 ? "Success: " + String(status) : "Failed: " + String(status);
     server.sendHeader("Location", "/");
     server.send(303);
 }
@@ -108,7 +124,7 @@ void webserverSetup() {
     WiFi.mode(WIFI_AP);
     // Start WiFi AP
     WiFi.softAP(ssid, password);
-    IPAddress Ip(192, 168, 0, 1);
+    IPAddress Ip(10, 0, 0, 1);
     IPAddress NMask(255, 255, 255, 0);
     WiFi.softAPConfig(Ip, Ip, NMask);
     Serial.print("AP IP address: ");
@@ -119,7 +135,6 @@ void webserverSetup() {
     server.on("/send_sms", HTTP_POST, handleSendSMS);
     server.on("/https_get", HTTP_POST, handleGetHttps);
     server.on("/https_post", HTTP_POST, handlePostHttps);
-
 
     server.begin();
     Serial.println("Web Server setup done\n");

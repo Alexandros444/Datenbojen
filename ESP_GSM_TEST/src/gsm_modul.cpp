@@ -93,53 +93,128 @@ bool Bearing_set()
     return true;
 }
 
-bool Https_get(String url)
+int https_get(String url)
 {
+    int status = -1;
 
     modem.sendAT(GF("+HTTPINIT"));// Initialize the HTTP service
     if (modem.waitResponse(10000L) != 1) {
         DBG(GF("+HTTPINIT"));
-        return false;
+        return status;
     }
+    // Set Bearer profile ID
     modem.sendAT(GF("+HTTPPARA=\"CID\",1"));//Set HTTP session parameters
     if (modem.waitResponse(10000L) != 1) {
         DBG(GF("+HTTPPARA=\"CID\",1"));
-        return false;
+        return status;
     }
     modem.sendAT(GF("+HTTPPARA=\"URL\",\"" + url + "\""));//Set HTTP session parameters
     if (modem.waitResponse(10000L) != 1) {
         DBG(GF("+HTTPPARA=\"URL\",\"" + url + "\""));
-        return false;
+        return status;
     }
 
+    // Accept redirects
     modem.sendAT(GF("+HTTPPARA=\"REDIR\",1"));//Set HTTP session parameters
     if (modem.waitResponse(10000L) != 1) {
         DBG(GF("+HTTPPARA=\"REDIR\",1"));
-        return false;
+        return status;
     }
-    modem.sendAT(GF("+HTTPSSL=1"));//Enabling the HTTPS function
+
+    modem.sendAT(GF("+HTTPSSL=0"));//Disable the HTTPS function
     if (modem.waitResponse(10000L) != 1) {
-        DBG(GF("+HTTPSSL=1"));
-        return false;
+        DBG(GF("+HTTPSSL=0"));
+        return status;
     }
     modem.sendAT(GF("+HTTPACTION=0"));//Get
     if (modem.waitResponse(60000L) != 1) {
         DBG(GF("+HTTPACTION=0"));
-        return false;
+        return status;
     }
     delay(10000);
+
+    String response = modem.stream.readString();
+    Serial.printf("Response: %s\n", response.c_str());
+    if (response.indexOf("+HTTPACTION: 0,") != -1) {
+        int start = response.indexOf(",") + 1;
+        int end = response.indexOf(",", start);
+        String statusCode = response.substring(start, end);
+        status = statusCode.toInt();
+        Serial.printf("Status code: %d\n", status);
+    } else {
+        Serial.println("Failed to parse response");
+    }
 
     modem.sendAT(GF("+HTTPREAD"));//Read data from the HTTP server
     if (modem.waitResponse(60000L) != 1) {
         DBG(GF("+HTTPREAD"));
-        return false;
+        return status;
     }
-    return true;
+
+    return status;
+}
+
+int https_post(String url, String data)
+{
+    int status = -1;
+
+    modem.sendAT(GF("+HTTPINIT"));// Initialize the HTTP service
+    if (modem.waitResponse(10000L) != 1) {
+        DBG(GF("+HTTPINIT"));
+        return status;
+    }
+    // Set Bearer profile ID
+    modem.sendAT(GF("+HTTPPARA=\"CID\",1"));//Set HTTP session parameters
+    if (modem.waitResponse(10000L) != 1) {
+        DBG(GF("+HTTPPARA=\"CID\",1"));
+        return status;
+    }
+
+    modem.sendAT(GF("+HTTPPARA=\"URL\",\"" + url + "\""));//Set HTTP session parameters
+    if (modem.waitResponse(10000L) != 1) {
+        DBG(GF("+HTTPPARA=\"URL\",\"" + url + "\""));
+        return status;
+    }
+
+    modem.sendAT(GF("+HTTPSSL=0"));//Disable the HTTPS function
+    if (modem.waitResponse(10000L) != 1) {
+        DBG(GF("+HTTPSSL=0"));
+        return status;
+    }
+
+    // Set length of the data to be sent
+    modem.sendAT(GF("+HTTPDATA=" + String(data.length()) + ",10000"));
+    delay(10);
+    SerialAT.println(data);
+    if (modem.waitResponse(10000L) != 1) {
+        DBG(GF("+HTTPDATA=" + String(data.length()) + ",10000"));
+        return status;
+    }
+
+    modem.sendAT(GF("+HTTPACTION=1"));//Post
+    if (modem.waitResponse(60000L) != 1) {
+        DBG(GF("+HTTPACTION=1"));
+        return status;
+    }
+
+    delay(10000);
+    String response = modem.stream.readString();
+    Serial.printf("Response: %s\n", response.c_str());
+    if (response.indexOf("+HTTPACTION: 1,") != -1) {
+        int start = response.indexOf(",") + 1;
+        int end = response.indexOf(",", start);
+        String statusCode = response.substring(start, end);
+        status = statusCode.toInt();
+        Serial.printf("Status code: %d\n", status);
+    } else {
+        Serial.println("Failed to parse response");
+    }
+
+    return status;
 }
 
 bool https_close()
 {
-
     modem.sendAT(GF("+HTTPTERM"));//close https
     if (modem.waitResponse(10000L) != 1) {
         DBG(GF("+HTTPTERM"));
@@ -157,13 +232,15 @@ bool https_close()
 
 
 
-void perform_get_https(String url)
+int perform_get_https(String url)
 {
+    int status = -1;
+
     SerialMon.print("Waiting for network...");
     if (!modem.waitForNetwork()) {
         SerialMon.println(" fail");
         delay(10000);
-        return;
+        return status;
     }
     SerialMon.println(" success");
 
@@ -177,7 +254,55 @@ void perform_get_https(String url)
     if (!modem.gprsConnect(apn, gprsUser, gprsPass)) {
         SerialMon.println(" fail");
         delay(10000);
-        return;
+        return status;
+    }
+    SerialMon.println(" success");
+
+    if (modem.isGprsConnected()) {
+        SerialMon.println("GPRS connected");
+    }
+
+    SerialMon.print(F("Performing HTTPS GET request... "));
+
+    if (Bearing_set() == false)
+        SerialMon.println("Bearing set fail");
+
+    status = https_get(url);
+    if (status != 200) {
+        SerialMon.println("https get fail");
+    }
+
+    https_close();
+
+    modem.gprsDisconnect();
+    SerialMon.println(F("GPRS disconnected"));
+
+    return status;
+}
+
+
+int perform_post_https(String url, String data)
+{
+    int status = -1;
+    SerialMon.print("Waiting for network...");
+    if (!modem.waitForNetwork()) {
+        SerialMon.println(" fail");
+        delay(10000);
+        return status;
+    }
+    SerialMon.println(" success");
+
+    if (modem.isNetworkConnected()) {
+        SerialMon.println("Network connected");
+    }
+
+    // GPRS connection parameters are usually set after network registration
+    SerialMon.print(F("Connecting to "));
+    SerialMon.print(apn);
+    if (!modem.gprsConnect(apn, gprsUser, gprsPass)) {
+        SerialMon.println(" fail");
+        delay(10000);
+        return status;
     }
     SerialMon.println(" success");
 
@@ -189,8 +314,9 @@ void perform_get_https(String url)
 
     if (Bearing_set() == false) SerialMon.println("Bearing set fail");
 
-    if (Https_get(url) == false) {
-        SerialMon.println("https get fail");
+    status = https_post(url, data);
+    if (status != 200) {
+        SerialMon.println("https post fail");
     }
 
     https_close();
@@ -198,6 +324,7 @@ void perform_get_https(String url)
     modem.gprsDisconnect();
     SerialMon.println(F("GPRS disconnected"));
 
+    return status;
 }
 
 String regStatusToString(int regStatus) {
@@ -258,8 +385,9 @@ statusInfo getStatusInfo() {
     statusInfo.signalQuality = getSignalQuality((int) modem.getSignalQuality());
     statusInfo.batt   = modem.getBattVoltage();
     statusInfo.regStatus = regStatusToString((int) modem.getRegistrationStatus());
-    statusInfo.loc = modem.getGsmLocationRaw();
+    statusInfo.loc = modem.getGsmLocation();
     statusInfo.operatorName = modem.getOperator();
     statusInfo.modemInfo = modem.getModemInfo();
+    statusInfo.networkTime = modem.getGSMDateTime(TinyGSMDateTimeFormat::DATE_FULL);
     return statusInfo;
 }

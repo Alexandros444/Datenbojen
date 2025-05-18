@@ -46,13 +46,13 @@ struct statusInfo
     String loc;
     String operatorName;
     String modemInfo;
-
+    String networkTime;
 };
 
 void gsm_setup();
-void perform_get_https(String url);
+int perform_get_https(String url);
+int perform_post_https(String url, String data);
 statusInfo getStatusInfo();
-
 
 
 #endif
