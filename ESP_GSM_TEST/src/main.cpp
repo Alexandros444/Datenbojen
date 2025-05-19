@@ -2,6 +2,9 @@
 #include "webserver_util.h"
 #include "gsm_modul_util.h"
 #include "gps_module.h"
+#include "tft_module.h"
+
+
 
 void setup() {
     Serial.begin(115200);
@@ -11,6 +14,8 @@ void setup() {
     gsm_setup();
 
     gps_setup();
+
+    tft_setup();
 }
 
 void loop() {
@@ -22,6 +27,8 @@ void loop() {
     }
 
     gps_loop();
+
+    tft_loop();
 
     webserverLoop();
 }
