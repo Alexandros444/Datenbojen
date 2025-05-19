@@ -1,4 +1,5 @@
 #include "webserver_util.h"
+#include "gps_module.h"
 
 // Replace with your desired AP credentials
 const char* ssid = "ESP32-GSM-AP";
@@ -16,6 +17,8 @@ String location = "Unknown";
 String modemInfo = "Unknown";
 String operatorName = "no Operator";
 String networkTime = "Unknown";
+String locationString = "Unknown";
+String altitudeString = "Unknown";
 
 String get_status = "-1";
 String post_status = "-1";
@@ -45,6 +48,12 @@ void updateGSMStatus() {
 
 }
 
+
+void updateGPSStatus() {
+    locationString = gps_string();
+    altitudeString = getAltitudeString();
+}
+
 // HTML page
 String htmlPage() {
     String page = "<!DOCTYPE html><html><head><title>ESP32 GSM Status</title></head><body>";
@@ -60,6 +69,8 @@ String htmlPage() {
     page += "<li>Operator Name: " + operatorName + "</li>";
     page += "<li>Modem Info: " + modemInfo + "</li>";
     page += "<li>Network Time: " + networkTime + "</li>";
+    page += "<li>GPS Location: " + locationString + "</li>";
+    page += "<li>GPS Altitude: " + altitudeString + "</li>";
     page += "</ul>";
 
     // page += "<form action=\"/send_sms\" method=\"POST\">";
@@ -93,6 +104,7 @@ String htmlPage() {
 
 void handleRoot() {
     updateGSMStatus();
+    updateGPSStatus();
     server.send(200, "text/html", htmlPage());
 }
 
