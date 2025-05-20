@@ -40,7 +40,7 @@ struct statusInfo
 {
     bool isNetworkConnected;
     bool isGprsConnected;
-    int16_t batt;
+    String batt;
     String signalQuality;
     String regStatus;
     String loc;

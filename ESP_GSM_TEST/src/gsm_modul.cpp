@@ -176,6 +176,13 @@ int https_post(String url, String data)
         return status;
     }
 
+    // Content type JSON
+    modem.sendAT(GF("+HTTPPARA=\"CONTENT\",\"text/plain\""));//Set HTTP session parameters
+    if (modem.waitResponse(10000L) != 1) {
+        DBG(GF("+HTTPPARA=\"CONTENT\",\"text/plain\""));
+        return status;
+    }
+
     modem.sendAT(GF("+HTTPSSL=0"));//Disable the HTTPS function
     if (modem.waitResponse(10000L) != 1) {
         DBG(GF("+HTTPSSL=0"));
@@ -262,7 +269,7 @@ int perform_get_https(String url)
         SerialMon.println("GPRS connected");
     }
 
-    SerialMon.print(F("Performing HTTPS GET request... "));
+    SerialMon.println(F("Performing HTTPS GET request... "));
 
     if (Bearing_set() == false)
         SerialMon.println("Bearing set fail");
@@ -382,8 +389,23 @@ statusInfo getStatusInfo() {
     statusInfo statusInfo;
     statusInfo.isNetworkConnected = modem.isNetworkConnected();
     statusInfo.isGprsConnected = modem.isGprsConnected();
-    statusInfo.signalQuality = getSignalQuality((int) modem.getSignalQuality());
-    statusInfo.batt   = modem.getBattVoltage();
+    statusInfo.signalQuality = getSignalQuality((int)modem.getSignalQuality());
+    String battVoltageString = String(modem.getBattVoltage())+" mV";
+    switch (modem.getBattChargeState()) {
+        case 0:
+            battVoltageString += " - not Charging";
+            break;
+        case 1:
+            battVoltageString += " - Charging";
+            break;
+        case 2:
+            battVoltageString += " - Charging finished";
+            break;
+        default:
+            battVoltageString += " - " + String(modem.getBattChargeState());
+            break;
+    }
+    statusInfo.batt = battVoltageString;
     statusInfo.regStatus = regStatusToString((int) modem.getRegistrationStatus());
     statusInfo.loc = modem.getGsmLocation();
     statusInfo.operatorName = modem.getOperator();

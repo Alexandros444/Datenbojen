@@ -7,6 +7,7 @@ const char* password = "12345678";
 
 WebServer server(80);
 
+
 // Dummy GSM status variables
 String networkStatus = "Disconnected";
 String gprsStatus = "Disconnected";
@@ -39,13 +40,31 @@ void updateGSMStatus() {
     networkStatus = status.isNetworkConnected ? "Connected" : "Disconnected";
     gprsStatus = status.isGprsConnected ? "Connected" : "Disconnected";
     signalQuality = status.signalQuality;
-    batteryVoltage = String(status.batt) + " mV";
+    batteryVoltage = status.batt;
     registrationStatus = status.regStatus;
     location = status.loc;
     operatorName = status.operatorName;   
     modemInfo = status.modemInfo;
     networkTime = status.networkTime;
 
+}
+
+String getPostData() {
+    String data = "{";
+    data += "\"networkStatus\":\"" + networkStatus + "\",";
+    data += "\"gprsStatus\":\"" + gprsStatus + "\",";
+    data += "\"signalQuality\":\"" + signalQuality + "\",";
+    data += "\"batteryVoltage\":\"" + batteryVoltage + "\",";
+    data += "\"registrationStatus\":\"" + registrationStatus + "\",";
+    data += "\"location\":\"" + location + "\",";
+    data += "\"operatorName\":\"" + operatorName + "\",";
+    data += "\"modemInfo\":\"" + modemInfo + "\",";
+    data += "\"networkTime\":\"" + networkTime + "\",";
+    data += "\"locationString\":\"" + locationString + "\",";
+    data += "\"altitudeString\":\"" + altitudeString + "\"";
+    data += "}";
+
+    return data;
 }
 
 
@@ -77,23 +96,23 @@ String htmlPage() {
     // page += "<button type=\"submit\">Send SMS</button>";
     // page += "</form>";
 
-    page += "<form action=\"/https_get\" method=\"POST\">";
+    page += "<form action=\"/http_get\" method=\"POST\">";
     page += "<input type=\"text\" name=\"url\" placeholder=\"Enter Get URL\" required> ";
-    page += "<button type=\"submit\">HTTPS Get</button>";
+    page += "<button type=\"submit\">HTTP Get</button>";
     page += " Status: " + get_status;
     page += "</form>";
 
     page += "<br>";
 
-    page += "<form action=\"/https_post\" method=\"POST\">";
-    // page += "<input type=\"text\" name=\"url\" placeholder=\"Enter Post URL\" required> ";
-    page += "<input type=\"text\" name=\"data\" placeholder=\"Enter Post Data\" required> ";
-    page += "<button type=\"submit\">HTTPS Post</button>";
+    page += "<form action=\"/http_post\" method=\"POST\">";
+    page += "<input type=\"text\" name=\"url\" placeholder=\""+post_url+"\"> ";
+    page += "<input type=\"text\" name=\"data\" placeholder=\"Status Data\"> ";
+    page += "<button type=\"submit\">HTTP Post</button>";
     page += " Status: " + post_status;
     page += "</form>";
 
-    // page += "<form action=\"/https_post\" method=\"POST\">";
-    // page += "<button type=\"submit\">HTTPS Post</button>";
+    // page += "<form action=\"/http_post\" method=\"POST\">";
+    // page += "<button type=\"submit\">http Post</button>";
     // page += "</form>";
 
     
@@ -114,7 +133,7 @@ void handleSendSMS() {
     server.send(303);
 }
 
-void handleGetHttps() {
+void handleGethttp() {
     String url = server.hasArg("url") ? server.arg("url") : "www.httpbin.org";
     int status = perform_get_https(url);
     get_status = status == 200 ? "Success: " + String(status) : "Failed: " + String(status);
@@ -122,10 +141,17 @@ void handleGetHttps() {
     server.send(303);
 }
 
-void handlePostHttps() {
-    // String url = server.hasArg("url") ? server.arg("url") : "www.httpbin.org";
-    String data = server.hasArg("data") ? server.arg("data") : "null";
-    int status = perform_post_https(post_url, data);
+// TODO: 
+// Aus irgendeinem grund kann Post nicht mehr als etwa 50 Zeichen senden
+
+
+void handlePosthttp() {
+    String url = server.hasArg("url") ? server.arg("url") : post_url;
+    url = url != "" ? url : post_url;
+    String data = server.hasArg("data") ? server.arg("data") : "{\"None\" : 0}";
+    data = data != "" ? data : getPostData();
+    Serial.println("Post data: " + data);
+    int status = perform_post_https(url, data);
     post_status = status == 200 ? "Success: " + String(status) : "Failed: " + String(status);
     server.sendHeader("Location", "/");
     server.send(303);
@@ -145,8 +171,8 @@ void webserverSetup() {
 
     server.on("/", HTTP_GET, handleRoot);
     server.on("/send_sms", HTTP_POST, handleSendSMS);
-    server.on("/https_get", HTTP_POST, handleGetHttps);
-    server.on("/https_post", HTTP_POST, handlePostHttps);
+    server.on("/http_get", HTTP_POST, handleGethttp);
+    server.on("/http_post", HTTP_POST, handlePosthttp);
 
     server.begin();
     Serial.println("Web Server setup done\n");

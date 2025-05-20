@@ -29,7 +29,7 @@ void tft_loop() {
     static unsigned long dot_pos_x = 0;
     unsigned long currentTime = millis();
     if (currentTime - lastTime > 1000) {
-        Serial.println("TFT loop");
+        // Serial.println("TFT loop");
         lastTime = currentTime;
         tft.setCursor(dot_pos_x, 20);
         tft.println(".");
