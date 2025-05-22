@@ -168,16 +168,16 @@
 
 // For NodeMCU - use pin numbers in the form PIN_Dx where Dx is the NodeMCU pin designation
 // #define TFT_MISO  PIN_D6  // Automatically assigned with ESP8266 if not defined
-#define TFT_MOSI  2  // Automatically assigned with ESP8266 if not defined
+#define TFT_MOSI  2  // aka. SDA Automatically assigned with ESP8266 if not defined
 #define TFT_SCLK  15  // Automatically assigned with ESP8266 if not defined
 
 #define TFT_CS    19  // Chip select control pin D8
-#define TFT_DC    0  // Data Command control pin
+#define TFT_DC    0  // aka. A0 Data Command control pin
 #define TFT_RST   18  // Reset pin (could connect to NodeMCU RST, see next line)
 //#define TFT_RST  -1     // Set TFT_RST to -1 if the display RESET is connected to NodeMCU RST or 3.3V
 
 
-#define TFT_BL 25  // LED back-light (only for ST7789 with backlight control pin)
+// #define TFT_BL 25  // LED back-light (only for ST7789 with backlight control pin)
 
 //#define TOUCH_CS PIN_D2     // Chip select pin (T_CS) of touch screen
 

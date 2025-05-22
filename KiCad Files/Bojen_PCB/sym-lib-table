@@ -1,0 +1,9 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "ESP_Wroom_Dev")(type "KiCad")(uri "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/ESP32-DEVKIT-V1.kicad_sym")(options "")(descr ""))
+  (lib (name "GSM")(type "KiCad")(uri "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/sim800l-core.kicad_sym")(options "")(descr ""))
+  (lib (name "Display")(type "KiCad")(uri "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/Display.kicad_sym")(options "")(descr ""))
+  (lib (name "GPS")(type "KiCad")(uri "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/GPS.kicad_sym")(options "")(descr ""))
+  (lib (name "alexandros444_lib")(type "KiCad")(uri "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/alexandros444_lib.kicad_sym")(options "")(descr ""))
+  (lib (name "expansion-modules")(type "KiCad")(uri "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/expansion-modules.kicad_sym")(options "")(descr ""))
+)
