@@ -85,6 +85,20 @@
 		(layer "F.CrtYd")
 		(uuid "8a20fde1-b24f-4c68-b94e-50554c91201b")
 	)
+	(fp_text user "16CH - IO Expander"
+		(at 3.81 29.464 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "e616a12d-695b-4a0d-b841-e83cf2a68afb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.2)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
 	(fp_text user "${REFERENCE}"
 		(at 11.43 2.54 0)
 		(unlocked yes)
@@ -298,4 +312,15 @@
 		(uuid "cd69a069-b503-4633-bb39-9ffb779e5dff")
 	)
 	(embedded_fonts no)
+	(model "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/PCF8575.step"
+		(offset
+			(xyz 11.5 -31.55 3.5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -90)
+		)
+	)
 )

@@ -184,6 +184,20 @@
 		(layer "F.CrtYd")
 		(uuid "ddfc945d-5e5d-45a5-960f-d12dbea74e12")
 	)
+	(fp_text user "SIM800L-GSM"
+		(at 5.588 -1.778 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "4ecfac7a-4cd6-4923-9134-fc94b435a03a")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
 	(pad "1" thru_hole circle
 		(at 0 0)
 		(size 1.9 1.9)

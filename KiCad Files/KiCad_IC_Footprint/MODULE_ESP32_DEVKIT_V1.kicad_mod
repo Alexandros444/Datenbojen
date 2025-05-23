@@ -402,6 +402,20 @@
 		(layer "F.Fab")
 		(uuid "84c397e8-3c77-486e-8ef9-db562b2e9f00")
 	)
+	(fp_text user "ESP32-Wroom-DevKitV1"
+		(at -14.121011 -18.620652 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "bbd1ce85-93bf-4cda-9436-b93a625b361d")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
 	(pad "" np_thru_hole circle
 		(at -12.28 -23.475)
 		(size 3 3)

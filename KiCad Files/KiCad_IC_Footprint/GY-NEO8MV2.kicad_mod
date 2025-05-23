@@ -134,6 +134,20 @@
 			)
 		)
 	)
+	(fp_text user "GPS-NEO8M"
+		(at -32.512 -21.844 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "82fb2101-4381-465a-8f8e-968693ec23cc")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
 	(fp_text user "PPS"
 		(at -5.2 -6.92 0)
 		(layer "F.SilkS")
@@ -158,16 +172,16 @@
 	)
 	(pad "" np_thru_hole circle
 		(at -2.2 -22.8)
-		(size 4.4 4.4)
-		(drill 4)
-		(layers "*.Cu" "*.Mask" "F.SilkS")
+		(size 3 3)
+		(drill 3)
+		(layers "F&B.Cu" "*.Mask")
 		(uuid "176a9bf8-2de2-40fd-bcc1-f8a1db918d4f")
 	)
 	(pad "" np_thru_hole circle
 		(at -2.2 -2.2)
-		(size 4.4 4.4)
-		(drill 4)
-		(layers "*.Cu" "*.Mask" "F.SilkS")
+		(size 3 3)
+		(drill 3)
+		(layers "F&B.Cu" "*.Mask")
 		(uuid "1e038090-ba0e-4bbd-bfe0-43b2413d1c72")
 	)
 	(pad "1" thru_hole oval
