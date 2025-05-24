@@ -213,7 +213,7 @@
 	(embedded_fonts no)
 	(model "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/GY-NEO6MV2-withAnt v7.step"
 		(offset
-			(xyz 12.7 0.3 0.5)
+			(xyz 12.7 0.3 8)
 		)
 		(scale
 			(xyz 1 1 1)

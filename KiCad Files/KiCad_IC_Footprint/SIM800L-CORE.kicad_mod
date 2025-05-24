@@ -297,7 +297,7 @@
 	(embedded_fonts no)
 	(model "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/SIM800L v10.step"
 		(offset
-			(xyz 11 -6.5 4)
+			(xyz 11 -6.5 12)
 		)
 		(scale
 			(xyz 1 1 1)

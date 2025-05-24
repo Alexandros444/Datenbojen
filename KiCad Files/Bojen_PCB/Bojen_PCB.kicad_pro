@@ -533,10 +533,10 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "Fabrication/",
+      "plot": "Fabrication_V2/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "Fabrication_V2/Bojen_PCB.step",
       "svg": "",
       "vrml": ""
     },

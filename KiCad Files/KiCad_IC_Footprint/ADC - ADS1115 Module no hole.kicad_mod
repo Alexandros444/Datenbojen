@@ -312,7 +312,7 @@
 	(embedded_fonts no)
 	(model "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/16Bit I2C ADC+PGA - ADS1115.stp"
 		(offset
-			(xyz 0 0 2.5)
+			(xyz 0 0 11)
 		)
 		(scale
 			(xyz 1 1 1)

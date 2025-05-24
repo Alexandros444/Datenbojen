@@ -356,7 +356,7 @@
 	(embedded_fonts no)
 	(model "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/TFT LCD 1.8 inch ST7735.step"
 		(offset
-			(xyz 29.25 17.2 4.5)
+			(xyz 29.25 17.2 11)
 		)
 		(scale
 			(xyz 1 1 1)

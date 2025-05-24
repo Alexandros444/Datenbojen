@@ -790,7 +790,7 @@
 	(embedded_fonts no)
 	(model "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/ESP32-DEVKIT-V1.step"
 		(offset
-			(xyz 0 0 0.5)
+			(xyz 0 0 8)
 		)
 		(scale
 			(xyz 1 1 1)

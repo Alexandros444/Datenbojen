@@ -314,7 +314,7 @@
 	(embedded_fonts no)
 	(model "E:/TU/Bachelor/bachelor-waldbojen/KiCad Files/KiCad_IC_Footprint/PCF8575.step"
 		(offset
-			(xyz 11.5 -31.55 3.5)
+			(xyz 11.5 -31.55 13)
 		)
 		(scale
 			(xyz 1 1 1)

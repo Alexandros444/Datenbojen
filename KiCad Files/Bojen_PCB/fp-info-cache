@@ -1,4 +1,4 @@
-24946418607630270
+24949915109741105
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -55251,12 +55251,19 @@ ADC - ADS1115 Module no hole
 10
 10
 Datenbojen
+Battery Footprint
+
+
+0
+0
+0
+Datenbojen
 DO Sensor DFRobot
 
 
 0
-3
-3
+0
+0
 Datenbojen
 GY-NEO6MV2
 
@@ -55297,8 +55304,8 @@ PH Sensor DFRobot
 
 
 0
-3
-3
+0
+0
 Datenbojen
 SIM800L-CORE
 
@@ -55321,12 +55328,19 @@ ST7735 TFT Screen 1.8 Zoll no hole
 12
 12
 Datenbojen
+Solar Power MPPT Module
+
+
+0
+0
+0
+Datenbojen
 TDS Sensor DFRobot
 
 
 0
-3
-3
+0
+0
 Datenbojen
 TPL5110 Board
 
@@ -55353,8 +55367,8 @@ Turbidity Sensor DFRobot
 
 
 0
-3
-3
+0
+0
 Diode_SMD
 D_0201_0603Metric
 Diode SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator
