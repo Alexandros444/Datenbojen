@@ -108,6 +108,19 @@
 		(layer "F.SilkS")
 		(uuid "57c2a3e1-dfef-4e33-84fc-5a7820dce7a1")
 	)
+	(fp_text user "Solar Controller"
+		(at 6.604 -21.082 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "39c42d82-d5f5-4f49-a6ee-b395e2f23b5c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
 	(fp_text user "-"
 		(at 28.448 -0.254 90)
 		(unlocked yes)

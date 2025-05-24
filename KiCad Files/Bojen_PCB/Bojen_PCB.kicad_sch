@@ -1191,36 +1191,30 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "alexandros444_lib:ADC - ADS1115 Module"
-			(exclude_from_sim no)
-			(in_bom yes)
+		(symbol "Mechanical:MountingHole"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
 			(on_board yes)
-			(property "Reference" "U"
-				(at -0.508 0.762 0)
+			(property "Reference" "H"
+				(at 0 5.08 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "ADC - ADS1115 Module"
-				(at 6.858 -27.432 0)
+			(property "Value" "MountingHole"
+				(at 0 3.175 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Footprint" "Datenbojen:ADC - ADS1115 Module"
-				(at 6.35 -29.972 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
+			(property "Footprint" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1229,7 +1223,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" ""
+			(property "Datasheet" "~"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1238,196 +1232,43 @@
 					(hide yes)
 				)
 			)
-			(symbol "ADC - ADS1115 Module_1_1"
-				(rectangle
-					(start 0 0)
-					(end 12.7 -25.4)
+			(property "Description" "Mounting Hole without connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_0_1"
+				(circle
+					(center 0 0)
+					(radius 1.27)
 					(stroke
-						(width 0)
-						(type solid)
+						(width 1.27)
+						(type default)
 					)
 					(fill
-						(type background)
-					)
-				)
-				(pin power_in line
-					(at -2.54 -2.54 0)
-					(length 2.54)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -2.54 -7.62 0)
-					(length 2.54)
-					(name "SCL"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -2.54 -11.43 0)
-					(length 2.54)
-					(name "SDA"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -2.54 -15.24 0)
-					(length 2.54)
-					(name "ADDR"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at -2.54 -19.05 0)
-					(length 2.54)
-					(name "ALRT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -2.54 -24.13 0)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 15.24 -6.35 180)
-					(length 2.54)
-					(name "A0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 15.24 -10.16 180)
-					(length 2.54)
-					(name "A1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 15.24 -13.97 180)
-					(length 2.54)
-					(name "A2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 15.24 -17.78 180)
-					(length 2.54)
-					(name "A3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
+						(type none)
 					)
 				)
 			)
@@ -2396,28 +2237,28 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "alexandros444_lib:Sensor_DFRobot"
+		(symbol "alexandros444_lib:Solar_Controller"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "U"
-				(at -0.508 0.762 0)
+				(at -0.762 0.762 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "Sensor_DFRobot"
-				(at 5.588 -22.098 0)
+			(property "Value" "Solar Controller"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Footprint" "Datenbojen:TDS Sensor DFRobot"
-				(at 4.318 -19.558 0)
+			(property "Footprint" "Datenbojen:Solar Power MPPT Module"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -2443,70 +2284,16 @@
 					(hide yes)
 				)
 			)
-			(symbol "Sensor_DFRobot_1_1"
+			(symbol "Solar_Controller_1_1"
 				(rectangle
 					(start 0 0)
-					(end 13.97 -15.24)
+					(end 12.7 -10.16)
 					(stroke
 						(width 0)
 						(type solid)
 					)
 					(fill
 						(type background)
-					)
-				)
-				(pin power_in line
-					(at -2.54 -2.54 0)
-					(length 2.54)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -2.54 -12.7 0)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 16.51 -5.08 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
 					)
 				)
 			)
@@ -3241,16 +3028,6 @@
 			)
 			(embedded_fonts no)
 		)
-	)
-	(text "Eigentlich D weil Digital"
-		(exclude_from_sim no)
-		(at 104.394 170.942 0)
-		(effects
-			(font
-				(size 0.254 0.254)
-			)
-		)
-		(uuid "c9b420a4-1d52-4c56-a5d8-8d847a3904a9")
 	)
 	(junction
 		(at 267.97 67.31)
@@ -3993,10 +3770,6 @@
 		(uuid "fa25bba3-1980-46b9-ba59-67e5ed4b37e2")
 	)
 	(no_connect
-		(at 93.98 146.05)
-		(uuid "fb1820e8-1a02-44c7-968a-2b73a015d8f2")
-	)
-	(no_connect
 		(at 233.68 127)
 		(uuid "fd0352b0-eed2-404a-84e4-0bde60895250")
 	)
@@ -4162,6 +3935,16 @@
 	)
 	(wire
 		(pts
+			(xy 50.8 151.13) (xy 55.88 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6342ee29-7ffd-4eff-bbbd-6f3c11b9a66c")
+	)
+	(wire
+		(pts
 			(xy 62.23 34.29) (xy 68.58 34.29)
 		)
 		(stroke
@@ -4222,7 +4005,17 @@
 	)
 	(wire
 		(pts
-			(xy 34.29 62.23) (xy 36.83 62.23)
+			(xy 79.502 154.94) (xy 82.55 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7cdfe03f-6637-4ed2-b27c-111e62b94770")
+	)
+	(wire
+		(pts
+			(xy 30.48 73.66) (xy 33.02 73.66)
 		)
 		(stroke
 			(width 0)
@@ -4279,6 +4072,26 @@
 			(type default)
 		)
 		(uuid "9ca611a0-3085-460f-83fc-b2f758123734")
+	)
+	(wire
+		(pts
+			(xy 53.34 162.56) (xy 55.88 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9eb96c32-f3ef-4525-a1bb-2f4c0f2910ec")
+	)
+	(wire
+		(pts
+			(xy 79.502 152.4) (xy 82.55 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aab6f405-d2fa-4dd1-8e8f-a927be995477")
 	)
 	(wire
 		(pts
@@ -4362,7 +4175,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 62.23) (xy 46.99 62.23)
+			(xy 40.64 73.66) (xy 43.18 73.66)
 		)
 		(stroke
 			(width 0)
@@ -4412,6 +4225,16 @@
 	)
 	(wire
 		(pts
+			(xy 79.502 162.56) (xy 82.55 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9b54734-87f0-41e0-bcd7-64c92f1f9061")
+	)
+	(wire
+		(pts
 			(xy 163.83 26.67) (xy 157.48 26.67)
 		)
 		(stroke
@@ -4419,26 +4242,6 @@
 			(type default)
 		)
 		(uuid "fc4f9651-f2fb-4557-aa3c-7a7037aae47a")
-	)
-	(wire
-		(pts
-			(xy 87.63 133.35) (xy 93.98 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fe45578e-4520-46be-b391-478a1e2b5f55")
-	)
-	(label "ADC1"
-		(at 111.76 140.97 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "02814722-f3c2-4527-b198-ae771c10eefb")
 	)
 	(label "TX2"
 		(at 214.63 33.02 0)
@@ -4451,7 +4254,7 @@
 		(uuid "095def5c-0d60-42db-b5e4-514b8769c6ae")
 	)
 	(label "LED_D"
-		(at 46.99 62.23 0)
+		(at 43.18 73.66 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4470,6 +4273,16 @@
 		)
 		(uuid "0bfc9fd8-6be4-435e-944d-dbedc6ff0507")
 	)
+	(label "I2C_SCL"
+		(at 82.55 154.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "150fde6d-0ebe-40f1-846c-af4bf997f41a")
+	)
 	(label "I2C_SDA"
 		(at 128.27 81.28 180)
 		(effects
@@ -4479,16 +4292,6 @@
 			(justify right bottom)
 		)
 		(uuid "17cfdf06-7134-46c0-a334-4cba623c80a8")
-	)
-	(label "ADC0"
-		(at 111.76 137.16 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "28f1deb4-4bfa-4ef5-a6f4-231db146bebd")
 	)
 	(label "TFT_RST"
 		(at 214.63 92.71 180)
@@ -4530,16 +4333,6 @@
 		)
 		(uuid "32d2895e-db8e-4f55-9385-6f85c778ebbe")
 	)
-	(label "TMP_SENS"
-		(at 109.22 172.72 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "377686b7-d2b9-4669-b501-be6f3cbf7ee2")
-	)
 	(label "TFT_DC"
 		(at 214.63 87.63 180)
 		(effects
@@ -4549,16 +4342,6 @@
 			(justify right bottom)
 		)
 		(uuid "37ab3a79-1674-4e97-9d83-afa1d46ffce4")
-	)
-	(label "I2C_SCL"
-		(at 93.98 138.43 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "447e0e06-24a0-4353-9d09-ac4bb20c7966")
 	)
 	(label "SPI_SCK"
 		(at 128.27 76.2 180)
@@ -4610,16 +4393,6 @@
 		)
 		(uuid "5b6b1d64-d954-410b-ad07-ccc003269873")
 	)
-	(label "ADC3"
-		(at 111.76 148.59 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "61516864-ee0d-4a66-8d75-3ec5062cec59")
-	)
 	(label "I2C_SCL"
 		(at 171.45 152.4 0)
 		(effects
@@ -4669,16 +4442,6 @@
 			(justify left bottom)
 		)
 		(uuid "76730b12-cfe1-4047-9210-dca6acafda7d")
-	)
-	(label "ADC1"
-		(at 80.01 172.72 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "796c9ec9-1b92-4d7e-8805-01d26b2ea7ed")
 	)
 	(label "~SIM_EN"
 		(at 181.61 120.65 0)
@@ -4740,16 +4503,6 @@
 		)
 		(uuid "9a73a711-28a9-4acc-9141-993892ac6b35")
 	)
-	(label "ADC_ALRT"
-		(at 93.98 149.86 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "9d89ff88-0be6-473d-b920-ef6db9ba1f99")
-	)
 	(label "SPI_MISO"
 		(at 270.51 90.17 0)
 		(effects
@@ -4769,16 +4522,6 @@
 			(justify left bottom)
 		)
 		(uuid "b6f544eb-c8d1-4d0d-9000-3bf10e07dc6f")
-	)
-	(label "ADC0"
-		(at 80.01 146.05 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "c102d1ab-ef28-4262-b418-5a81c48f4307")
 	)
 	(label "TFT_CS"
 		(at 214.63 97.79 180)
@@ -4801,6 +4544,16 @@
 		(uuid "cc4ca40d-2374-452c-9fc7-2d653555e088")
 	)
 	(label "ADC_ALRT"
+		(at 82.55 162.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cf8e7a84-2a9d-424f-a5f7-fb292b25198b")
+	)
+	(label "ADC_ALRT"
 		(at 156.21 118.11 180)
 		(effects
 			(font
@@ -4809,16 +4562,6 @@
 			(justify right bottom)
 		)
 		(uuid "d2ac7052-86cc-455d-9da0-bd91e138babd")
-	)
-	(label "ADC2"
-		(at 111.76 144.78 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "dd24d128-994a-4271-831e-f916e3f5167e")
 	)
 	(label "I2C_SCL"
 		(at 128.27 83.82 180)
@@ -4830,16 +4573,6 @@
 		)
 		(uuid "de95a0b8-d2eb-40c1-a0c2-16a43523e0c9")
 	)
-	(label "I2C_SDA"
-		(at 93.98 142.24 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "e1a5f661-b5e5-4257-b891-31b18ba7892d")
-	)
 	(label "SD_CS"
 		(at 270.51 99.06 0)
 		(effects
@@ -4850,15 +4583,15 @@
 		)
 		(uuid "e6a7d914-03da-4d05-bf43-922640bbc27e")
 	)
-	(label "ADC3"
-		(at 50.8 172.72 0)
+	(label "TMP_SENS"
+		(at 53.34 162.56 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
-		(uuid "e8f1edf7-fbde-4cbb-8a12-8af3f78dc8db")
+		(uuid "e8974496-2041-4ecf-b8d9-73bc0c1de46b")
 	)
 	(label "PWR_Done"
 		(at 128.27 66.04 180)
@@ -4870,15 +4603,15 @@
 		)
 		(uuid "e9f070ee-219a-470f-ac71-3db7274baa42")
 	)
-	(label "ADC2"
-		(at 52.07 144.78 0)
+	(label "I2C_SDA"
+		(at 82.55 152.4 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "f27c5a1e-bed0-48ec-9780-ffe867aed3c1")
+		(uuid "f0a6fc22-a6a2-4c4b-8f54-a5b632cc561c")
 	)
 	(label "RX2"
 		(at 214.63 38.1 0)
@@ -5153,72 +4886,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 33.02 152.4 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "0cab0dcd-c2fc-4d61-aa46-232181eff99f")
-		(property "Reference" "#PWR019"
-			(at 33.02 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 33.02 157.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 33.02 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 33.02 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "24042a51-e3d1-4b5a-8f5d-21d290ace010")
-		)
-		(instances
-			(project "Bojen_PCB"
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "#PWR019")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector_Generic:Conn_02x08_Odd_Even")
 		(at 254 151.13 0)
 		(unit 1)
@@ -5323,72 +4990,6 @@
 			(project "Bojen_PCB"
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
 					(reference "J11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 31.75 180.34 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "15b5b207-d9d5-461f-b7b8-be019e2e230b")
-		(property "Reference" "#PWR018"
-			(at 31.75 186.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 31.75 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 31.75 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 31.75 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 31.75 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3db27cc8-5cea-44fc-868f-dff0aa96b44e")
-		)
-		(instances
-			(project "Bojen_PCB"
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "#PWR018")
 					(unit 1)
 				)
 			)
@@ -5713,77 +5314,6 @@
 		)
 	)
 	(symbol
-		(lib_id "alexandros444_lib:Sensor_DFRobot")
-		(at 92.71 167.64 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "19b09929-c1fc-403d-bca4-267d53cf87b6")
-		(property "Reference" "U12"
-			(at 99.695 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TMP Sensor"
-			(at 99.695 165.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Datenbojen:Tempterature Sensor DFRobot"
-			(at 97.028 187.198 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 92.71 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 92.71 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "be0d0b74-a207-4abc-9b20-0a5375654ec2")
-		)
-		(pin "1"
-			(uuid "f5874101-b9fb-4cdd-a13a-5f619c9cfae7")
-		)
-		(pin "3"
-			(uuid "409544b0-e396-46e2-8e71-81345c6838ae")
-		)
-		(instances
-			(project "Bojen_PCB"
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "U12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector_Generic:Conn_02x08_Odd_Even")
 		(at 267.97 129.54 0)
 		(unit 1)
@@ -5961,77 +5491,6 @@
 		)
 	)
 	(symbol
-		(lib_id "alexandros444_lib:Sensor_DFRobot")
-		(at 63.5 167.64 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "24387786-352b-4488-ad90-08abf9f11b08")
-		(property "Reference" "U9"
-			(at 70.485 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Turbidity Sensor"
-			(at 70.485 165.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Datenbojen:Turbidity Sensor DFRobot"
-			(at 67.818 187.198 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 63.5 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 63.5 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "c87f5240-034a-4bcb-a298-cd76be448fe5")
-		)
-		(pin "1"
-			(uuid "9af5b14d-f0e6-4dce-a305-1c177c6bfb57")
-		)
-		(pin "3"
-			(uuid "715398c7-5336-472f-8f6b-60995b2dca03")
-		)
-		(instances
-			(project ""
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "U9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+BATT")
 		(at 172.72 26.67 0)
 		(unit 1)
@@ -6092,138 +5551,6 @@
 			(project ""
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
 					(reference "#PWR05")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 90.17 180.34 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "28195837-3aca-4c19-b35e-02115d667ac3")
-		(property "Reference" "#PWR022"
-			(at 90.17 186.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 90.17 185.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 90.17 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 90.17 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 90.17 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8a85fd64-383c-49a8-bc02-1301847ea96a")
-		)
-		(instances
-			(project "Bojen_PCB"
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "#PWR022")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 87.63 133.35 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "294bf8c8-3de0-4f81-893d-dfc92ccd29b8")
-		(property "Reference" "#PWR023"
-			(at 87.63 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 87.63 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 87.63 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 87.63 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 87.63 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c5b962c0-17c0-4492-b50e-a1aa721dde27")
-		)
-		(instances
-			(project "Bojen_PCB"
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -6298,7 +5625,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 40.64 62.23 90)
+		(at 36.83 73.66 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6307,7 +5634,7 @@
 		(fields_autoplaced yes)
 		(uuid "2f955983-0149-4030-9c4f-7eefc7f81a9f")
 		(property "Reference" "R4"
-			(at 40.64 55.88 90)
+			(at 36.83 67.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6315,7 +5642,7 @@
 			)
 		)
 		(property "Value" "330"
-			(at 40.64 58.42 90)
+			(at 36.83 69.85 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6323,7 +5650,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 40.64 64.008 90)
+			(at 36.83 75.438 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6332,7 +5659,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 40.64 62.23 0)
+			(at 36.83 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6341,7 +5668,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 40.64 62.23 0)
+			(at 36.83 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6425,72 +5752,6 @@
 			(project "Bojen_PCB"
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
 					(reference "#PWR03")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 33.02 142.24 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3269f13d-a1c0-42a9-bb61-52210ad4aca5")
-		(property "Reference" "#PWR013"
-			(at 33.02 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 33.02 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 33.02 142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 33.02 142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ef2a5585-9abe-41d5-b2fe-c68b373c6008")
-		)
-		(instances
-			(project ""
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -6634,7 +5895,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x03_Socket")
-		(at 29.21 62.23 180)
+		(at 25.4 73.66 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6643,7 +5904,7 @@
 		(fields_autoplaced yes)
 		(uuid "3fbb5df1-8841-4a6a-a777-9fa6b3622fa2")
 		(property "Reference" "J6"
-			(at 29.845 54.61 0)
+			(at 26.035 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6651,7 +5912,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 29.845 57.15 0)
+			(at 26.035 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6659,7 +5920,7 @@
 			)
 		)
 		(property "Footprint" "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
-			(at 29.21 62.23 0)
+			(at 25.4 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6668,7 +5929,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 29.21 62.23 0)
+			(at 25.4 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6677,7 +5938,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x03, script generated"
-			(at 29.21 62.23 0)
+			(at 25.4 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6705,7 +5966,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 34.29 64.77 0)
+		(at 30.48 76.2 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6714,7 +5975,7 @@
 		(fields_autoplaced yes)
 		(uuid "40c30166-c1d0-4568-b093-df3823939213")
 		(property "Reference" "#PWR031"
-			(at 34.29 71.12 0)
+			(at 30.48 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6723,7 +5984,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 34.29 69.85 0)
+			(at 30.48 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6731,7 +5992,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 34.29 64.77 0)
+			(at 30.48 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6740,7 +6001,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 34.29 64.77 0)
+			(at 30.48 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6749,7 +6010,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 34.29 64.77 0)
+			(at 30.48 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7149,7 +6410,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 34.29 59.69 0)
+		(at 30.48 71.12 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7158,7 +6419,7 @@
 		(fields_autoplaced yes)
 		(uuid "6cc5db3a-8b01-461b-9027-25d88714ab01")
 		(property "Reference" "#PWR032"
-			(at 34.29 63.5 0)
+			(at 30.48 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7167,7 +6428,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 34.29 54.61 0)
+			(at 30.48 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7175,7 +6436,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 34.29 59.69 0)
+			(at 30.48 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7184,7 +6445,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 34.29 59.69 0)
+			(at 30.48 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7193,7 +6454,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 34.29 59.69 0)
+			(at 30.48 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7342,72 +6603,6 @@
 			(project ""
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
 					(reference "J1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 31.75 170.18 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "76c79e72-5a64-4858-b899-085256da2165")
-		(property "Reference" "#PWR015"
-			(at 31.75 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 31.75 165.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 31.75 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 31.75 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 31.75 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6bf16654-00ff-450b-8dec-bb035975c85c")
-		)
-		(instances
-			(project "Bojen_PCB"
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -7584,77 +6779,6 @@
 			(project ""
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
 					(reference "#PWR04")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "alexandros444_lib:Sensor_DFRobot")
-		(at 63.5 140.97 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "915ce892-70b8-4889-923a-ebf5ed8edb36")
-		(property "Reference" "U8"
-			(at 70.485 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TDS Sensor"
-			(at 70.485 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Datenbojen:TDS Sensor DFRobot"
-			(at 67.818 160.528 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 63.5 140.97 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 63.5 140.97 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5e1e1523-7ed1-48f2-b627-9d37e7b462b4")
-		)
-		(pin "2"
-			(uuid "d45732b8-9f46-476a-a27f-cf711c126e52")
-		)
-		(pin "3"
-			(uuid "a65883be-4943-43d8-96f5-cbf1c76386fc")
-		)
-		(instances
-			(project ""
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "U8")
 					(unit 1)
 				)
 			)
@@ -7897,6 +7021,70 @@
 			(project "Bojen_PCB"
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
 					(reference "#PWR035")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 16.51 54.61 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a1d1b26c-f94b-4a74-b159-102a6d995b48")
+		(property "Reference" "H4"
+			(at 19.05 53.3399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 19.05 55.8799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 16.51 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 16.51 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 16.51 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "Bojen_PCB"
+				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
+					(reference "H4")
 					(unit 1)
 				)
 			)
@@ -8227,17 +7415,35 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 60.96 153.67 0)
+		(lib_id "Mechanical:MountingHole")
+		(at 16.51 49.53 0)
 		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
+		(exclude_from_sim yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "af07c353-f4fb-4025-8dff-aa219c392150")
-		(property "Reference" "#PWR020"
-			(at 60.96 160.02 0)
+		(uuid "af6a0732-ba0f-44d4-8670-c425a5fc5953")
+		(property "Reference" "H3"
+			(at 19.05 48.2599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 19.05 50.7999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 16.51 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8245,16 +7451,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 60.96 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 60.96 153.67 0)
+		(property "Datasheet" "~"
+			(at 16.51 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8262,31 +7460,19 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
-			(at 60.96 153.67 0)
+		(property "Description" "Mounting Hole without connection"
+			(at 16.51 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 60.96 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "18144bef-e1a1-468c-877b-fe41494a99c6")
 		)
 		(instances
 			(project "Bojen_PCB"
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "#PWR020")
+					(reference "H3")
 					(unit 1)
 				)
 			)
@@ -8492,17 +7678,35 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+5V")
-		(at 60.96 143.51 0)
+		(lib_id "Mechanical:MountingHole")
+		(at 16.51 39.37 0)
 		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
+		(exclude_from_sim yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "ba0407c4-d3c5-42ef-8c6f-50de545e52fe")
-		(property "Reference" "#PWR014"
-			(at 60.96 147.32 0)
+		(uuid "b73badf2-ef14-4ae8-9de8-5d08a7db3f71")
+		(property "Reference" "H1"
+			(at 19.05 38.0999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 19.05 40.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 16.51 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8510,16 +7714,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+5V"
-			(at 60.96 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 60.96 143.51 0)
+		(property "Datasheet" "~"
+			(at 16.51 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8527,31 +7723,19 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
-			(at 60.96 143.51 0)
+		(property "Description" "Mounting Hole without connection"
+			(at 16.51 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 60.96 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c42cb19d-1491-4a8b-ac4a-f7f9b7ef5677")
 		)
 		(instances
-			(project "Bojen_PCB"
+			(project ""
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "#PWR014")
+					(reference "H1")
 					(unit 1)
 				)
 			)
@@ -8869,98 +8053,6 @@
 		)
 	)
 	(symbol
-		(lib_id "alexandros444_lib:ADC - ADS1115 Module")
-		(at 96.52 130.81 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cd1ad97c-2bff-46ce-824a-5895a7a76679")
-		(property "Reference" "U5"
-			(at 102.87 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ADC - ADS1115 Module"
-			(at 102.87 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Datenbojen:ADC - ADS1115 Module no hole"
-			(at 102.87 160.782 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 96.52 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 96.52 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "10"
-			(uuid "a7394db5-2e88-4312-8b70-054d403072c1")
-		)
-		(pin "2"
-			(uuid "4531b0bf-c0a9-4d20-9ffc-fc1250bf63c6")
-		)
-		(pin "4"
-			(uuid "c4e14974-a7c6-48b8-8994-bddf70b7446c")
-		)
-		(pin "7"
-			(uuid "0dc12a02-059f-4ea8-9ef5-f2c7889a920d")
-		)
-		(pin "8"
-			(uuid "f9716630-7a6d-4335-9fc6-a94f299731b9")
-		)
-		(pin "1"
-			(uuid "a31d77be-82c1-4a09-9615-db01a82b517e")
-		)
-		(pin "5"
-			(uuid "ca5a1305-99ba-4289-b17c-88507e0e2034")
-		)
-		(pin "6"
-			(uuid "00dad710-8bca-4a3a-92b7-906ea8587766")
-		)
-		(pin "9"
-			(uuid "24ec9a5c-25b2-48bc-aec1-ddf681706e2e")
-		)
-		(pin "3"
-			(uuid "79e4ea13-3ff9-4a55-8faf-39ecc1cccd30")
-		)
-		(instances
-			(project ""
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "U5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+5V")
 		(at 166.37 151.13 180)
 		(unit 1)
@@ -9021,77 +8113,6 @@
 			(project "Bojen_PCB"
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
 					(reference "#PWR025")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "alexandros444_lib:Sensor_DFRobot")
-		(at 34.29 167.64 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d35cb427-28c6-454e-a91c-4f71f28aff67")
-		(property "Reference" "U11"
-			(at 41.275 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "DO Sensor"
-			(at 41.275 165.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Datenbojen:DO Sensor DFRobot"
-			(at 38.608 187.198 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 34.29 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 34.29 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "dc129a42-3963-4e5e-bf11-171c6a1b54b5")
-		)
-		(pin "1"
-			(uuid "ece97b8f-b9b2-4fa3-9abe-e8ba0350130c")
-		)
-		(pin "3"
-			(uuid "a117f7f2-0ce3-4024-935f-c7a921cba451")
-		)
-		(instances
-			(project "Bojen_PCB"
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "U11")
 					(unit 1)
 				)
 			)
@@ -9167,17 +8188,35 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 60.96 180.34 0)
+		(lib_id "Mechanical:MountingHole")
+		(at 16.51 44.45 0)
 		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
+		(exclude_from_sim yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "dbc078a7-3a1f-4e0f-84f1-b951815ab72f")
-		(property "Reference" "#PWR017"
-			(at 60.96 186.69 0)
+		(uuid "da165025-0893-4145-928e-d9e5c6ee2365")
+		(property "Reference" "H2"
+			(at 19.05 43.1799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 19.05 45.7199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 16.51 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9185,8 +8224,54 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 60.96 185.42 0)
+		(property "Datasheet" "~"
+			(at 16.51 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 16.51 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "Bojen_PCB"
+				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
+					(reference "H2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 50.8 151.13 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dd293d77-1aba-4af9-a45b-2c6828832dd3")
+		(property "Reference" "#PWR012"
+			(at 50.8 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 50.8 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9194,7 +8279,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 60.96 180.34 0)
+			(at 50.8 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9203,7 +8288,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 180.34 0)
+			(at 50.8 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9211,8 +8296,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 60.96 180.34 0)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 50.8 151.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9221,12 +8306,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "9a3232a8-e4cb-44f5-9eba-d41d290d1a03")
+			(uuid "eee84770-4e3b-4deb-9fbf-cace46dbabd5")
 		)
 		(instances
 			(project ""
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "#PWR017")
+					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -9299,138 +8384,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+5V")
-		(at 60.96 170.18 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e1173201-6443-4334-96c7-deb0c8dcce22")
-		(property "Reference" "#PWR016"
-			(at 60.96 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 60.96 165.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 60.96 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 60.96 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 60.96 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "24761f7d-393f-42c6-9f14-76422a9e6865")
-		)
-		(instances
-			(project "Bojen_PCB"
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "#PWR016")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 90.17 170.18 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e626bcb8-5bef-4545-b02f-f2cc9a9ce32e")
-		(property "Reference" "#PWR021"
-			(at 90.17 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 90.17 165.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 90.17 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 90.17 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 90.17 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "da662257-e82a-4ee1-ad7b-551adfdc7336")
-		)
-		(instances
-			(project "Bojen_PCB"
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "#PWR021")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 156.21 140.97 0)
 		(unit 1)
@@ -9490,6 +8443,69 @@
 			(project "Bojen_PCB"
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
 					(reference "#PWR034")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "alexandros444_lib:Solar_Controller")
+		(at 27.94 17.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ed034236-7f11-473e-b78a-a2dd97b1b069")
+		(property "Reference" "U13"
+			(at 28.194 16.256 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Solar Controller"
+			(at 28.956 19.05 0)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Datenbojen:Solar Power MPPT Module"
+			(at 27.94 17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 27.94 17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 27.94 17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project ""
+				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
+					(reference "U13")
 					(unit 1)
 				)
 			)
@@ -9633,72 +8649,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 93.98 154.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f17c8457-7c5b-4f4e-99c0-66ebabaa66bb")
-		(property "Reference" "#PWR024"
-			(at 93.98 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 93.98 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 93.98 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 93.98 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 93.98 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3f409cc0-1a5e-4c39-8e3b-9ce29f9df1c5")
-		)
-		(instances
-			(project ""
-				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "#PWR024")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "alexandros444_lib:TLP5110 Adafruit Modul")
 		(at 74.93 35.56 0)
 		(unit 1)
@@ -9775,73 +8725,102 @@
 			)
 		)
 	)
-	(symbol
-		(lib_id "alexandros444_lib:Sensor_DFRobot")
-		(at 35.56 139.7 0)
-		(unit 1)
+	(sheet
+		(at 55.88 148.336)
+		(size 23.622 20.574)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "fcc870bf-8372-482e-9823-68c3c46e5220")
-		(property "Reference" "U10"
-			(at 42.545 134.62 0)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "18258186-5d10-4a41-839d-bac5b0a5fb0d")
+		(property "Sheetname" "sensors"
+			(at 55.88 147.6244 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sensors.kicad_sch"
+			(at 55.88 169.4946 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Field2" ""
+			(at 55.88 148.336 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "PH Sensor"
-			(at 42.545 137.16 0)
+		(pin "ADC_ALRT" output
+			(at 79.502 162.56 0)
+			(uuid "3dee8a4b-db71-4e28-a205-83256360d000")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify right)
 			)
 		)
-		(property "Footprint" "Datenbojen:PH Sensor DFRobot"
-			(at 39.878 159.258 0)
+		(pin "I2C_SCL" bidirectional
+			(at 79.502 154.94 0)
+			(uuid "c3d03022-c74c-40a4-97f9-52be830855aa")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
+				(justify right)
 			)
 		)
-		(property "Datasheet" ""
-			(at 35.56 139.7 0)
+		(pin "I2C_SDA" bidirectional
+			(at 79.502 152.4 0)
+			(uuid "ddaee8f6-8075-4ab1-84bb-bd546b965b4b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
+				(justify right)
 			)
 		)
-		(property "Description" ""
-			(at 35.56 139.7 0)
+		(pin "TMP_Sens" output
+			(at 55.88 162.56 180)
+			(uuid "8f0fcaa8-5adf-4f1a-86db-8215394e6de9")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
+				(justify left)
 			)
 		)
-		(pin "2"
-			(uuid "a43df3d6-c234-47e2-8869-faed83883fe2")
-		)
-		(pin "1"
-			(uuid "a8a7e92b-c139-440a-aad8-ed451fb4889c")
-		)
-		(pin "3"
-			(uuid "a531f3c9-c19d-4398-8b03-b111fa4559f3")
+		(pin "Vin" input
+			(at 55.88 151.13 180)
+			(uuid "473e997a-417d-423b-93d0-9cdb8ba39982")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
 		)
 		(instances
 			(project "Bojen_PCB"
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
-					(reference "U10")
-					(unit 1)
+					(page "4")
 				)
 			)
 		)
