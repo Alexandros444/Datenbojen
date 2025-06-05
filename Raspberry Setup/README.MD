@@ -71,6 +71,20 @@
 - Linkt von http (80) auf 8888 bzw 8888?actioon=stream für später wenn man die config nicht mehr von außen erreichen soll
 
 
+## Zrok - Network Tunnel
+
+- Autostart in:
+    - `/etc/rc.local`
+- Service einrichten: `zrok enable <AuthToken>
+- Webserver Weiterleiten: `zrok share public 8000` (icecast2)
+    - Share Reservieren: `zrok reserve public 80 --unique-name "riversync"`
+    - Reservierte Share Starten: `zrok share reserved "riversync"`
+- SSH Weiterleiten: `zrok share private --backend-mode tcpTunnel 127.0.0.1:22`
+    - Client: `zrok access private <Private Token new generated>` (Lokaler Server verbindet sich mit Tunnel, hosted on 9191)
+    - Cleint: `ssh riversync@127.0.0.1 -p 9191` (SSH into Lokalen Server - Tunnel - Riversync)
+
+
+
 ## Control.sh
 - Easy managable config
 - has to be updated for the mjpg-server
