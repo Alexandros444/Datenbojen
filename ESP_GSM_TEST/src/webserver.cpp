@@ -162,7 +162,7 @@ void webserverSetup() {
     WiFi.mode(WIFI_AP);
     // Start WiFi AP
     WiFi.softAP(ssid, password);
-    IPAddress Ip(10, 0, 0, 1);
+    IPAddress Ip(192, 168, 0, 1);
     IPAddress NMask(255, 255, 255, 0);
     WiFi.softAPConfig(Ip, Ip, NMask);
     Serial.print("AP IP address: ");

@@ -9,6 +9,9 @@ TinyGsm        modem(debugger);
 TinyGsm        modem(SerialAT);
 #endif
 
+#define MODEM_RX 16
+#define MODEM_TX 17
+
 void setupModem() {
 #ifdef MODEM_RST
     // Keep reset high
@@ -16,22 +19,22 @@ void setupModem() {
     digitalWrite(MODEM_RST, HIGH);
 #endif
 
-    pinMode(MODEM_PWRKEY, OUTPUT);
-    pinMode(MODEM_POWER_ON, OUTPUT);
+    // pinMode(MODEM_PWRKEY, OUTPUT);
+    // pinMode(MODEM_POWER_ON, OUTPUT);
 
     // Turn on the Modem power first
-    digitalWrite(MODEM_POWER_ON, HIGH);
+    // digitalWrite(MODEM_POWER_ON, HIGH);
 
     // Pull down PWRKEY for more than 1 second according to manual requirements
-    digitalWrite(MODEM_PWRKEY, HIGH);
-    delay(100);
-    digitalWrite(MODEM_PWRKEY, LOW);
-    delay(1000);
-    digitalWrite(MODEM_PWRKEY, HIGH);
+    // digitalWrite(MODEM_PWRKEY, HIGH);
+    // delay(100);
+    // digitalWrite(MODEM_PWRKEY, LOW);
+    // delay(1000);
+    // digitalWrite(MODEM_PWRKEY, HIGH);
 
     // Initialize the indicator as an output
-    pinMode(LED_GPIO, OUTPUT);
-    digitalWrite(LED_GPIO, LED_OFF);
+    // pinMode(LED_GPIO, OUTPUT);
+    // digitalWrite(LED_GPIO, LED_OFF);
 }
 
 void gsm_setup(){

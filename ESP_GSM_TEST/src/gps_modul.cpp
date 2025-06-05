@@ -5,8 +5,8 @@ TinyGPSPlus gps;
 #define GPSSerial Serial2
 
 #define GPS_BAUD 9600
-#define GPS_RX_PIN 14
-#define GPS_TX_PIN 12
+#define GPS_RX_PIN 13
+#define GPS_TX_PIN 14
 
 void gps_setup() {
     GPSSerial.begin(GPS_BAUD, SERIAL_8N1, GPS_RX_PIN, GPS_TX_PIN);

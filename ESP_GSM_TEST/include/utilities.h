@@ -8,8 +8,8 @@
 #define MODEM_RST             5
 #define MODEM_PWRKEY          4
 #define MODEM_POWER_ON       23
-#define MODEM_TX             27
-#define MODEM_RX             26
+#define MODEM_TX             17
+#define MODEM_RX             16
 
 #define MODEM_DTR            32
 #define MODEM_RI             33

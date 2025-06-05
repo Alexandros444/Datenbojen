@@ -4,7 +4,7 @@
 #include <Arduino.h>
 
 // #define SIM800L_IP5306_VERSION_20200811
-#include "utilities.h"
+// #include "utilities.h"
 
 #define TINY_GSM_MODEM_SIM800
 #include <TinyGsmClient.h>
