@@ -3,11 +3,18 @@
 #include "gsm_modul_util.h"
 #include "gps_module.h"
 #include "tft_module.h"
+#include "adc_module.h"
 
-
+adc_module adc;
 
 void setup() {
     Serial.begin(115200);
+
+    delay(1000); // Wait for Serial Monitor to open
+    
+    Serial.println("Starting...");
+    
+    delay(1000); // Wait for Serial Monitor to open
 
     webserverSetup();
 
@@ -16,14 +23,16 @@ void setup() {
     gps_setup();
 
     tft_setup();
+
+    adc.begin();
 }
 
 void loop() {
     while (SerialAT.available()) {
-        SerialMon.write(SerialAT.read());
+        Serial.write(SerialAT.read());
     }
-    while (SerialMon.available()) {
-        SerialAT.write(SerialMon.read());
+    while (Serial.available()) {
+        SerialAT.write(Serial.read());
     }
 
     gps_loop();
@@ -31,4 +40,8 @@ void loop() {
     tft_loop();
 
     webserverLoop();
+
+    if (millis() % 10000 == 0) {
+        adc.print_data();
+    }
 }

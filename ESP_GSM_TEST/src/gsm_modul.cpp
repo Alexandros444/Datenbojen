@@ -3,7 +3,7 @@
 
 #ifdef DUMP_AT_COMMANDS
 #include <StreamDebugger.h>
-StreamDebugger debugger(SerialAT, SerialMon);
+StreamDebugger debugger(SerialAT, Serial);
 TinyGsm        modem(debugger);
 #else
 TinyGsm        modem(SerialAT);
@@ -38,7 +38,7 @@ void setupModem() {
 }
 
 void gsm_setup(){
-    SerialMon.println("Setting up modem");
+    Serial.println("Setting up modem");
 
     // Set GSM module baud rate
     // Set GSM module baud rate and UART pins
@@ -47,12 +47,12 @@ void gsm_setup(){
     setupModem();
     delay(6000);
 
-    SerialMon.println("Initializing modem...");
+    Serial.println("Initializing modem...");
     modem.init();
 
     String modemInfo = modem.getModemInfo();
-    SerialMon.print("Modem Info: ");
-    SerialMon.println(modemInfo);
+    Serial.print("Modem Info: ");
+    Serial.println(modemInfo);
 
 }
 
@@ -246,46 +246,46 @@ int perform_get_https(String url)
 {
     int status = -1;
 
-    SerialMon.print("Waiting for network...");
+    Serial.print("Waiting for network...");
     if (!modem.waitForNetwork()) {
-        SerialMon.println(" fail");
+        Serial.println(" fail");
         delay(10000);
         return status;
     }
-    SerialMon.println(" success");
+    Serial.println(" success");
 
     if (modem.isNetworkConnected()) {
-        SerialMon.println("Network connected");
+        Serial.println("Network connected");
     }
 
     // GPRS connection parameters are usually set after network registration
-    SerialMon.print(F("Connecting to "));
-    SerialMon.print(apn);
+    Serial.print(F("Connecting to "));
+    Serial.print(apn);
     if (!modem.gprsConnect(apn, gprsUser, gprsPass)) {
-        SerialMon.println(" fail");
+        Serial.println(" fail");
         delay(10000);
         return status;
     }
-    SerialMon.println(" success");
+    Serial.println(" success");
 
     if (modem.isGprsConnected()) {
-        SerialMon.println("GPRS connected");
+        Serial.println("GPRS connected");
     }
 
-    SerialMon.println(F("Performing HTTPS GET request... "));
+    Serial.println(F("Performing HTTPS GET request... "));
 
     if (Bearing_set() == false)
-        SerialMon.println("Bearing set fail");
+        Serial.println("Bearing set fail");
 
     status = https_get(url);
     if (status != 200) {
-        SerialMon.println("https get fail");
+        Serial.println("https get fail");
     }
 
     https_close();
 
     modem.gprsDisconnect();
-    SerialMon.println(F("GPRS disconnected"));
+    Serial.println(F("GPRS disconnected"));
 
     return status;
 }
@@ -294,45 +294,45 @@ int perform_get_https(String url)
 int perform_post_https(String url, String data)
 {
     int status = -1;
-    SerialMon.print("Waiting for network...");
+    Serial.print("Waiting for network...");
     if (!modem.waitForNetwork()) {
-        SerialMon.println(" fail");
+        Serial.println(" fail");
         delay(10000);
         return status;
     }
-    SerialMon.println(" success");
+    Serial.println(" success");
 
     if (modem.isNetworkConnected()) {
-        SerialMon.println("Network connected");
+        Serial.println("Network connected");
     }
 
     // GPRS connection parameters are usually set after network registration
-    SerialMon.print(F("Connecting to "));
-    SerialMon.print(apn);
+    Serial.print(F("Connecting to "));
+    Serial.print(apn);
     if (!modem.gprsConnect(apn, gprsUser, gprsPass)) {
-        SerialMon.println(" fail");
+        Serial.println(" fail");
         delay(10000);
         return status;
     }
-    SerialMon.println(" success");
+    Serial.println(" success");
 
     if (modem.isGprsConnected()) {
-        SerialMon.println("GPRS connected");
+        Serial.println("GPRS connected");
     }
 
-    SerialMon.print(F("Performing HTTPS GET request... "));
+    Serial.print(F("Performing HTTPS GET request... "));
 
-    if (Bearing_set() == false) SerialMon.println("Bearing set fail");
+    if (Bearing_set() == false) Serial.println("Bearing set fail");
 
     status = https_post(url, data);
     if (status != 200) {
-        SerialMon.println("https post fail");
+        Serial.println("https post fail");
     }
 
     https_close();
 
     modem.gprsDisconnect();
-    SerialMon.println(F("GPRS disconnected"));
+    Serial.println(F("GPRS disconnected"));
 
     return status;
 }

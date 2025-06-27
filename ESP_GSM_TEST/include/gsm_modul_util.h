@@ -10,14 +10,14 @@
 #include <TinyGsmClient.h>
 
 // Set serial for debug console (to the Serial Monitor, default speed 115200)
-#define SerialMon Serial
+// #define SerialMon Serial
 // Set serial for AT commands (to the module)
 #define SerialAT  Serial1
 // See all AT commands, if wanted
 #define DUMP_AT_COMMANDS
 
 // Define the serial console for debug prints, if needed
-#define TINY_GSM_DEBUG SerialMon
+#define TINY_GSM_DEBUG Serial
 // #define LOGGING  // <- Logging is for the HTTP library
 
 // Baud rate for the GSM module
