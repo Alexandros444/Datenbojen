@@ -27,7 +27,12 @@
 
 # ESP
 - GPIO Label
+- USB-C kann man nicht einstecken wenn Sensoren verbaut. ggf. Sensoren Tiefer legen oder esp mehr nach unten
 
+
+# Mount Holes
+- Mehr Clearence
+- Besonders bei den ESP-GPIO Pins zu dem mount vom Waveshare solar board
 
 
 # Solar Modul
