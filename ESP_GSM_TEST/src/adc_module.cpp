@@ -1,8 +1,5 @@
 #include "adc_module.h"
 
-adc_module::adc_module() {}
-adc_module::~adc_module() {}
-
 int adc_module::begin() {
     Serial.println("Initializing ADS1115 ADC module...");
     Serial.println("Single-ended readings from AIN0 with >3.0V comparator");
@@ -35,8 +32,10 @@ int adc_module::begin() {
 
 
 void adc_module::print_data(){
-    if (!initialized)
+    if (!initialized) {
+        Serial.println("ADC module not initialized. Cannot print data.");
         return;
+    }
 
     adc_data data = read();
     String adc_data_str = "ADC Data: ";
@@ -61,4 +60,43 @@ adc_data adc_module::read() {
     data.adc3 = ads.readADC_SingleEnded(3);
     data.adc3_volts = ads.computeVolts(data.adc3);
     return data;
+}
+
+
+bool adc_module::isInitialized() {
+    return initialized;
+}
+
+float adc_module::readVoltage(uint8_t pin) {
+    adc_data data = read();
+    switch (pin) {
+    case 0:
+        return data.adc0_volts;
+    case 1:
+        return data.adc1_volts;
+    case 2:
+        return data.adc2_volts;
+    case 3:
+        return data.adc3_volts;
+    default:
+        Serial.println("Invalid ADC pin. Must be 0-3.");
+        return 0.0f;
+    }
+}
+
+int16_t adc_module::readInt(uint8_t pin) {
+    adc_data data = read();
+    switch (pin) {
+    case 0:
+        return data.adc0;
+    case 1:
+        return data.adc1;
+    case 2:
+        return data.adc2;
+    case 3:
+        return data.adc3;
+    default:
+        Serial.println("Invalid ADC pin. Must be 0-3.");
+        return 0.0f;
+    }
 }

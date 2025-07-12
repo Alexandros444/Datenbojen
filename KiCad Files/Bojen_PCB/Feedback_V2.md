@@ -9,6 +9,9 @@
 - Silkscreen missing
 
 
+## TMP Sensor
+- Beschriftung Falsch "- + D" -> "- D +"
+
 
 ## GSM Module
 - Mehr Pufferkondensatoren

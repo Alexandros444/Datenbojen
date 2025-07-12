@@ -20,12 +20,16 @@ class adc_module {
 private:
     Adafruit_ADS1115 ads;
     bool initialized = false;
+
 public:
-    adc_module();
-    ~adc_module();
+    adc_module() {};
+    ~adc_module() {};
     int begin();
     void print_data();
     adc_data read();
+    bool isInitialized();
+    float readVoltage(uint8_t pin);
+    int16_t readInt(uint8_t pin);
 };
 
 
