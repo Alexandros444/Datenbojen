@@ -7,50 +7,40 @@
 #include "tft_sd_module.h"
 #include "adc_module.h"
 #include "sensors_module.h"
-// #include "sd_module.h"
 
-// adc_module adc;
-// sensors_module sensors;
+adc_module adc;
+sensors_module sensors;
 tft_module tft;
 sd_module sd;
-// gsm_module gsm; // Create a GSM module instance
+gsm_module gsm; // Create a GSM module instance
 
-// enum disp_page {
-//     SENSORS,
-//     CONNECTION_STATUS
-// };
-// disp_page current_page = SENSORS; // Default page to display
-// int disp_pages = 2;
+int disp_pages = 3;
+enum disp_page {
+    SENSORS,
+    CONNECTION_STATUS,
+    QR
+};
+disp_page current_page = SENSORS; // Default page to display
 
 
 void setup() {
 
     Serial.begin(115200);
-    Serial.println("Starting...");
+    Serial.println("Serial Initialzied.");
 
-    tft.begin(); // Initialize TFT display
-    
     delay(1000); // Wait for Serial Monitor to open
     
-    // webserverSetup();
+    tft.begin(); // Initialize TFT display
+    sd.begin(tft);
     
-    // gsm_setup();
+    // webserverSetup();
 
     // gps_setup();
-    // gsm.begin(); // Initialize GSM module
+    gsm.begin();
     
-    // adc.begin();
+    adc.begin();
     
-    // sensors.begin(&adc); // Initialize sensors with the ADC module
-
-    sd.begin(tft);
-    sd.listFiles();
-    Serial.println("Width:" + tft.width());
-    Serial.println("Widht Var:" + TFT_WIDTH);
-    Serial.println("Height:" + tft.height());
-    Serial.println("Height Var:" + TFT_HEIGHT);
-    File bmpFile = sd.openFile("/qr.bmp");
-    tft.bmpDraw(bmpFile, 10, 10);
+    sensors.begin(&adc); // Initialize sensors with the ADC module
 
 }
 
@@ -74,23 +64,25 @@ void loop() {
     // if (idx >= 7) idx = 0;
     // File bmpFile = sd.openFile(filenames[idx++]);
     // if (tft.bmpDraw(bmpFile, 0, 0) >= 0) {
-    delay(10000);
     // }
     
     // webserverLoop();
     
-    // if (millis() % 20000 == 0) {
-    //     adc.print_data();
-    //     sensors.print();
-
-    //     if (current_page == SENSORS) {
-    //         tft.print_sensors(&adc, &sensors); // Print sensor values on the TFT display
-    //     } else if (current_page == CONNECTION_STATUS) {
-    //         tft.print_connection_status(&gsm); // Print connection status on the TFT display
-    //     }
-
-    //     current_page = static_cast<disp_page>((current_page + 1) % disp_pages); // Toggle between pages
-
-    // }
+    if (millis() % 10000 == 0) {
+        adc.print_data();
+        sensors.print();
+        Serial.printf("Disp Page %d of %d\n", current_page, disp_pages);
+        if (current_page == SENSORS) {
+            tft.print_sensors(&adc, &sensors); // Print sensor values on the TFT display
+        }
+        else if (current_page == CONNECTION_STATUS) {
+            tft.print_connection_status(&gsm); // Print connection status on the TFT display
+        }
+        else if (current_page == QR) {
+            File bmpFile = sd.openFile("/qr.bmp");
+            tft.bmpDraw(bmpFile, 0, 0);
+        }
+        current_page = (disp_page)(((int)current_page + 1) % disp_pages);
+    }
 
 }

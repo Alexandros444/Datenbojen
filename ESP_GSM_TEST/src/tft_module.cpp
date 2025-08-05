@@ -52,11 +52,13 @@ int tft_module::bmpDraw(File bmpFile, uint8_t x, uint16_t y) {
     uint8_t  r, g, b;
     uint32_t pos = 0, startTime = millis();
 
-
     if (bmpFile.size() <= 0) {
         Serial.print(F("File not found"));
         return -1;
     }
+
+    clear();
+
     Serial.printf("Reading BMP file: %s\n", bmpFile.name());
 
     if (read16(bmpFile) == 0x4D42) {
@@ -203,6 +205,7 @@ void tft_module::print_connection_status(gsm_module* gsm) {
     print("Network: " + String(status.isNetworkConnected ? "Connected" : "Disconnected"));
     print("GPRS: " + String(status.isGprsConnected ? "Connected" : "Disconnected"));
     print("Battery: " + status.batt);
+    row_counter++;
     print("Signal: " + status.signalQuality);
     print("Reg Status: " + status.regStatus);
     print("Location: " + status.loc);

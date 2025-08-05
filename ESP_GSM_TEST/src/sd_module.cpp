@@ -10,6 +10,8 @@ void sd_module::begin(tft_module tft) {
     }
     Serial.println("SD card initialized successfully.");
     is_init = true;
+    
+    listFiles();
 }
 
 void sd_module::listFiles() {
