@@ -1,51 +1,16 @@
-#include "gsm_modul_util.h"
+#include "gsm_module.h"
 
 
-#ifdef DUMP_AT_COMMANDS
-#include <StreamDebugger.h>
-StreamDebugger debugger(SerialAT, Serial);
-TinyGsm        modem(debugger);
-#else
-TinyGsm        modem(SerialAT);
-#endif
-
-#define MODEM_RX 16
-#define MODEM_TX 17
-
-void setupModem() {
-#ifdef MODEM_RST
-    // Keep reset high
-    pinMode(MODEM_RST, OUTPUT);
-    digitalWrite(MODEM_RST, HIGH);
-#endif
-
-    // pinMode(MODEM_PWRKEY, OUTPUT);
-    // pinMode(MODEM_POWER_ON, OUTPUT);
-
-    // Turn on the Modem power first
-    // digitalWrite(MODEM_POWER_ON, HIGH);
-
-    // Pull down PWRKEY for more than 1 second according to manual requirements
-    // digitalWrite(MODEM_PWRKEY, HIGH);
-    // delay(100);
-    // digitalWrite(MODEM_PWRKEY, LOW);
-    // delay(1000);
-    // digitalWrite(MODEM_PWRKEY, HIGH);
-
-    // Initialize the indicator as an output
-    // pinMode(LED_GPIO, OUTPUT);
-    // digitalWrite(LED_GPIO, LED_OFF);
-}
-
-void gsm_setup(){
+void gsm_module::begin(){
     Serial.println("Setting up modem");
 
     // Set GSM module baud rate
     // Set GSM module baud rate and UART pins
     SerialAT.begin(GSM_BAUD, SERIAL_8N1, MODEM_RX, MODEM_TX);
 
-    setupModem();
-    delay(6000);
+    // Reset Modem
+    // resetModem();
+    // delay(6000);
 
     Serial.println("Initializing modem...");
     modem.init();
@@ -53,12 +18,38 @@ void gsm_setup(){
     String modemInfo = modem.getModemInfo();
     Serial.print("Modem Info: ");
     Serial.println(modemInfo);
-
 }
 
 
+// TODO: WIRE RST PIN TO GPIO
+// void resetModem() {
+// #ifdef MODEM_RST
+//     // Keep reset high
+//     pinMode(MODEM_RST, OUTPUT);
+//     digitalWrite(MODEM_RST, HIGH);
+// #endif
+
+//     // pinMode(MODEM_PWRKEY, OUTPUT);
+//     // pinMode(MODEM_POWER_ON, OUTPUT);
+
+//     // Turn on the Modem power first
+//     // digitalWrite(MODEM_POWER_ON, HIGH);
+
+//     // Pull down PWRKEY for more than 1 second according to manual requirements
+//     // digitalWrite(MODEM_PWRKEY, HIGH);
+//     // delay(100);
+//     // digitalWrite(MODEM_PWRKEY, LOW);
+//     // delay(1000);
+//     // digitalWrite(MODEM_PWRKEY, HIGH);
+
+//     // Initialize the indicator as an output
+//     // pinMode(LED_GPIO, OUTPUT);
+//     // digitalWrite(LED_GPIO, LED_OFF);
+// }
+
+
 //Bearing set
-bool Bearing_set()
+bool gsm_module::set_gprs_bearer()
 {
 
     modem.sendAT(GF("+HTTPTERM"));//Configuring Bearer Scenarios
@@ -96,8 +87,7 @@ bool Bearing_set()
     return true;
 }
 
-int https_get(String url)
-{
+int gsm_module::http_get_raw(String url){
     int status = -1;
 
     modem.sendAT(GF("+HTTPINIT"));// Initialize the HTTP service
@@ -157,8 +147,7 @@ int https_get(String url)
     return status;
 }
 
-int https_post(String url, String data)
-{
+int gsm_module::http_post_raw(String url, String data){
     int status = -1;
 
     modem.sendAT(GF("+HTTPINIT"));// Initialize the HTTP service
@@ -223,7 +212,7 @@ int https_post(String url, String data)
     return status;
 }
 
-bool https_close()
+bool gsm_module::http_close()
 {
     modem.sendAT(GF("+HTTPTERM"));//close https
     if (modem.waitResponse(10000L) != 1) {
@@ -241,9 +230,7 @@ bool https_close()
 }
 
 
-
-int perform_get_https(String url)
-{
+int gsm_module::get_req_http(String url){
     int status = -1;
 
     Serial.print("Waiting for network...");
@@ -274,15 +261,15 @@ int perform_get_https(String url)
 
     Serial.println(F("Performing HTTPS GET request... "));
 
-    if (Bearing_set() == false)
+    if (set_gprs_bearer() == false)
         Serial.println("Bearing set fail");
 
-    status = https_get(url);
+    status = http_get_raw(url);
     if (status != 200) {
         Serial.println("https get fail");
     }
 
-    https_close();
+    http_close();
 
     modem.gprsDisconnect();
     Serial.println(F("GPRS disconnected"));
@@ -291,8 +278,7 @@ int perform_get_https(String url)
 }
 
 
-int perform_post_https(String url, String data)
-{
+int gsm_module::post_req_http(String url, String data){
     int status = -1;
     Serial.print("Waiting for network...");
     if (!modem.waitForNetwork()) {
@@ -322,14 +308,14 @@ int perform_post_https(String url, String data)
 
     Serial.print(F("Performing HTTPS GET request... "));
 
-    if (Bearing_set() == false) Serial.println("Bearing set fail");
+    if (set_gprs_bearer() == false) Serial.println("Bearing set fail");
 
-    status = https_post(url, data);
+    status = http_post_raw(url, data);
     if (status != 200) {
         Serial.println("https post fail");
     }
 
-    https_close();
+    http_close();
 
     modem.gprsDisconnect();
     Serial.println(F("GPRS disconnected"));
@@ -337,7 +323,7 @@ int perform_post_https(String url, String data)
     return status;
 }
 
-String regStatusToString(int regStatus) {
+String gsm_module::getRegStatus(int regStatus) {
     switch (regStatus) {
         case REG_NO_RESULT:
             return "No result";
@@ -359,7 +345,7 @@ String regStatusToString(int regStatus) {
 }
 
 
-String getSignalQuality(int SignalQuality) {
+String gsm_module::getSignalQuality(int SignalQuality) {
     // Parameters
     // <rssi>
     // 0 -115 dBm or less
@@ -388,7 +374,7 @@ String getSignalQuality(int SignalQuality) {
     return "Unknown";
 }
 
-statusInfo getStatusInfo() {
+statusInfo gsm_module::getStatusInfo() {
     statusInfo statusInfo;
     statusInfo.isNetworkConnected = modem.isNetworkConnected();
     statusInfo.isGprsConnected = modem.isGprsConnected();
@@ -409,7 +395,7 @@ statusInfo getStatusInfo() {
             break;
     }
     statusInfo.batt = battVoltageString;
-    statusInfo.regStatus = regStatusToString((int) modem.getRegistrationStatus());
+    statusInfo.regStatus = getRegStatus((int) modem.getRegistrationStatus());
     statusInfo.loc = modem.getGsmLocation();
     statusInfo.operatorName = modem.getOperator();
     statusInfo.modemInfo = modem.getModemInfo();
