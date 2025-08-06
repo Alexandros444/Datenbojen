@@ -2,7 +2,7 @@
 
 
 void gsm_module::begin(){
-    Serial.println("Setting up modem");
+    Serial.println("Setting up GSM module...");
 
     // Set GSM module baud rate
     // Set GSM module baud rate and UART pins
@@ -13,10 +13,14 @@ void gsm_module::begin(){
     // delay(6000);
 
     Serial.println("Initializing modem...");
-    modem.init();
-
+    init = modem.init();
+    if (!init) {
+        Serial.println("GSM module failed to initialize");
+        return;
+    }
+    Serial.println("GSM initialized.");    
     String modemInfo = modem.getModemInfo();
-    Serial.print("Modem Info: ");
+    Serial.print("GSM Info: ");
     Serial.println(modemInfo);
 }
 
@@ -375,6 +379,8 @@ String gsm_module::getSignalQuality(int SignalQuality) {
 }
 
 statusInfo gsm_module::getStatusInfo() {
+    if (!init)
+        return statusInfo();    
     statusInfo statusInfo;
     statusInfo.isNetworkConnected = modem.isNetworkConnected();
     statusInfo.isGprsConnected = modem.isGprsConnected();

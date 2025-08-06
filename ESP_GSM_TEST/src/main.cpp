@@ -7,12 +7,14 @@
 #include "tft_sd_module.h"
 #include "adc_module.h"
 #include "sensors_module.h"
+#include "led_module.h"
 
 adc_module adc;
 sensors_module sensors;
 tft_module tft;
 sd_module sd;
 gsm_module gsm; // Create a GSM module instance
+led_module led;
 
 int disp_pages = 3;
 enum disp_page {
@@ -32,7 +34,9 @@ void setup() {
     
     tft.begin(); // Initialize TFT display
     sd.begin(tft);
-    
+
+    led.begin();
+    led.clear();
     // webserverSetup();
 
     // gps_setup();
@@ -63,12 +67,13 @@ void loop() {
     // static int idx = 0;
     // if (idx >= 7) idx = 0;
     // File bmpFile = sd.openFile(filenames[idx++]);
-    // if (tft.bmpDraw(bmpFile, 0, 0) >= 0) {
+    // if (tft.draw_bmp_img(bmpFile, 0, 0) >= 0) {
     // }
     
     // webserverLoop();
-    
-    if (millis() % 10000 == 0) {
+    static unsigned long last_disp_time = 0;
+    if (millis() - last_disp_time > 10000) {
+        last_disp_time = millis();
         adc.print_data();
         sensors.print();
         Serial.printf("Disp Page %d of %d\n", current_page, disp_pages);
@@ -80,9 +85,19 @@ void loop() {
         }
         else if (current_page == QR) {
             File bmpFile = sd.openFile("/qr.bmp");
-            tft.bmpDraw(bmpFile, 0, 0);
+            tft.draw_bmp_img(bmpFile, 1, 1);
         }
         current_page = (disp_page)(((int)current_page + 1) % disp_pages);
+
+        //print esp FREE RAM
+        Serial.printf("Free RAM: %d\n", ESP.getFreeHeap());
+        //pritn esp FREE Flash
+        Serial.printf("Free Flash: %d\n", ESP.getFreeSketchSpace());
+        //print esp SKETCH SIZE
+        Serial.printf("Sketch Size: %d\n", ESP.getSketchSize());
+
     }
+
+    led.loop();
 
 }

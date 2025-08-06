@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <FastLED.h>
 #include <bits/stdc++.h>
-using namespace std;
 
 #define NUM_LEDS 144
 #define DATA_PIN 4 
@@ -24,8 +23,8 @@ std::vector<int> bm(NUM_LEDS);
 std::vector<int> lh(NUM_LEDS);
 
 // put function declarations here:
-void rotateArr(vector<int>& arr, int d);
-void circularAnimation(int animation);
+void rotateArr(std::vector<int>& arr, int d);
+void circularAnimation(circularType animation);
 void breatheAnimation();
 void pulseAnimation();
 void staticBrightness();
@@ -59,7 +58,7 @@ void loop() {
 
 // put function definitions here:
 
-void rotateArr(vector<int>& arr) {
+void rotateArr(std::vector<int>& arr) {
     int n = arr.size();
       
     // Right rotate the array by one position
@@ -93,6 +92,15 @@ void my_iota(ForwardIt first, ForwardIt last, T value)
     }
 }
 
+/**
+ * @brief Generates a brightness mask for the bar animation.
+ *
+ * The brightness mask is a vector of brightness values that will be used to
+ * control the brightness of the LEDs during the bar animation. The mask is
+ * divided into three sections. The first section is a ramp from MIN_BRIGHTNESS
+ * to MAX_BRIGHTNESS. The second section is a ramp from MAX_BRIGHTNESS back down
+ * to MIN_BRIGHTNESS. The third section is a constant value of 0.
+ */
 void gen_bm(){
     int section1, section2;
     section1 = NUM_LEDS/6;
@@ -102,22 +110,24 @@ void gen_bm(){
     std::fill(bm.begin()+section2, bm.end(), 0);
 }
 
-void gen_lh(){
-    int section1, section2;
-    int cmp = NUM_LEDS%4;
-    if (cmp == 0 || cmp == 1){
-        section1 = section2 = NUM_LEDS/4;
-    }else if (cmp == 2){
-        section1 = NUM_LEDS/4;
-        section2 = (NUM_LEDS/4) + 1;
-    }else if (cmp == 3){
-        section1 = NUM_LEDS/4;
-        section2 = (NUM_LEDS/4) + 1;
-    }
-    std::fill(lh.begin(), lh.begin()+section1, MAX_BRIGHTNESS);
-    std::fill(lh.begin()+section1, lh.begin()+section1+section2, 0);
-    std::fill(lh.begin()+section1+section2, lh.begin()+section1*2+section2, MAX_BRIGHTNESS);
-    std::fill(lh.begin()+section1*2+section2, lh.end(), 0);
+/**
+ * @brief Generates a brightness mask for the lighthouse animation.
+ *
+ * The lighthouse mask is a vector of brightness values that will be used to
+ * control the brightness of the LEDs during the lighthouse animation. The mask
+ * is divided into four sections. The first and third sections have a brightness
+ * of MAX_BRIGHTNESS, while the second and fourth sections have a brightness of 0.
+ */
+void gen_lh() {
+    int section_size = NUM_LEDS / 4;
+    int cmp = NUM_LEDS % 4;
+    int section1 = section_size;
+    int section2 = (cmp == 2 || cmp == 3) ? section_size + 1 : section_size;
+
+    std::fill(lh.begin(), lh.begin() + section1, MAX_BRIGHTNESS);
+    std::fill(lh.begin() + section1, lh.begin() + section1 + section2, 0);
+    std::fill(lh.begin() + section1 + section2, lh.begin() + section1 * 2 + section2, MAX_BRIGHTNESS);
+    std::fill(lh.begin() + section1 * 2 + section2, lh.end(), 0);
 }
 
 void colourFadeTest(){
@@ -154,23 +164,19 @@ void wipeStrip(){
     delay(500);
 }
 
-void circularAnimation(int animation){
-    vector<int> tempbar;
-    if (animation == bar){
-        tempbar = bm;
-    }else if (animation == light){
-        tempbar = lh;
-    }
-    int frame = 0;
-    while (frame <= 288) {
+void circularAnimation(circularType animation){
+    std::vector<int> tempbar;
+    tempbar = animation == bar ? bm : lh;
+
+    for (int frame = 0;frame <= 288; frame++) {
         // getColour here
         for (int i=0;i<NUM_LEDS;i++) {
             leds[i] = CHSV( COLOUR, SATURATION, tempbar[i]);
         }
+
         FastLED.show();
         rotateArr(tempbar);
         delay(20);
-        frame++;
     }   
 }
 

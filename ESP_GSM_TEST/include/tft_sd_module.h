@@ -30,7 +30,7 @@ public:
     void print_sensors(adc_module* adc, sensors_module* sensors); // Function to print sensor values on the TFT display
     void print_connection_status(gsm_module* gsm); // Function to print connection status
     // void draw_image(const char* filename, sd_module* sd); // Function to draw an image on the TFT display
-    int bmpDraw(File bmpFile, uint8_t x, uint16_t y);
+    int draw_bmp_img(File bmpFile, uint8_t x, uint16_t y);
 
     SPIClass& getSPIinstance(void);
 

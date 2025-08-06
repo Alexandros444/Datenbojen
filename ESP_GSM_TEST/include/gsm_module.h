@@ -55,6 +55,7 @@ private:
     const char* apn; // Most Sims work without configuration, search for "apn configuration <Your Provide Name>" if you need to set it manually
     const char* gprsUser; // https://www.lte-anbieter.info/ratgeber/apn/uebersicht.php
     const char* gprsPass;
+    bool init = false;
 public:
     gsm_module()
         : debugger(SerialAT, Serial), // Initialize StreamDebugger
@@ -64,6 +65,8 @@ public:
         gprsPass("")
     {
     };
+
+    bool is_init() { return init; }
 
     ~gsm_module() {};
 

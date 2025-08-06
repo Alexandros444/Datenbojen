@@ -37,9 +37,9 @@ void tft_module::print(String text) {
 
 }
 
-#define BUFFPIXEL 10
+#define BUFFPIXEL 32
 
-int tft_module::bmpDraw(File bmpFile, uint8_t x, uint16_t y) {
+int tft_module::draw_bmp_img(File bmpFile, uint8_t x, uint16_t y) {
     int      bmpWidth, bmpHeight;
     uint8_t  bmpDepth;
     uint32_t bmpImageoffset;
@@ -195,7 +195,7 @@ void tft_module::print_sensors(adc_module* adc, sensors_module* sensors) {
 }
 
 void tft_module::print_connection_status(gsm_module* gsm) {
-    if (gsm == nullptr) {
+    if (gsm == nullptr && gsm->is_init()) {
         Serial.println("Error: Null pointer detected for gsm");
         return;
     }
