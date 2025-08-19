@@ -30,7 +30,7 @@ void setup() {
 
     // gps_setup();
 
-    
+
     adc.begin();
     
     sensors.begin(&adc); // Initialize sensors with the ADC module
@@ -56,7 +56,7 @@ void loop() {
     
     // webserverLoop();
     
-    if (millis() % 10000 == 0) {
+    if (millis() % 1000 == 0) {
         adc.print_data();
         sensors.print();
         

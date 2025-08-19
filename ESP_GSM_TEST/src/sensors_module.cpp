@@ -13,6 +13,9 @@ void sensors_module::begin(adc_module* adc) {
   if (DO.begin(DO_ADC_PIN, adc, DO_EEPROM_ADDRESS))
     Serial.println("EEPROM für den DO-Sensor geladen");
 
+  // DO.cal();
+
+
   // DO.cal_clear();
   
   Serial.println("Sensors initialized");

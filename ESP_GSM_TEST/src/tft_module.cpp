@@ -65,3 +65,8 @@ void tft_module::dot_test() {
         dot_pos_x = 0;
     }
 }
+
+
+// void tft_module::disp_qr(){
+//     tft.drawBitmap(0, 0, qr_code, 100, 100, TFT_WHITE);
+// }
