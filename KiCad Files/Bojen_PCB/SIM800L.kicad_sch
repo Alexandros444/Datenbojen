@@ -809,6 +809,16 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "RST Pin auf GPIO TODO"
+		(exclude_from_sim no)
+		(at 81.534 99.822 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "0a26dc6a-394c-4832-8316-812af11ca3ab")
+	)
 	(text "Gate Resistor limits max inrush current \non gpio from Gate Capacitance."
 		(exclude_from_sim no)
 		(at 56.134 81.788 0)

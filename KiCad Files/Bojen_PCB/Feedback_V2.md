@@ -16,6 +16,7 @@
 ## GSM Module
 - Mehr Pufferkondensatoren
 - PWR Mosfet Skip
+- RST Pin auf GPIO für Hard Reset
 
 
 ## Power
