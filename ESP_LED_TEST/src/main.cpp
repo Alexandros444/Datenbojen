@@ -8,7 +8,7 @@
 #define SATURATION 255
 #define MAX_BRIGHTNESS 128
 #define MIN_BRIGHTNESS 32
-#define TIMEFACTOR 2
+#define TIMEFACTOR 8
 
 
 enum circularType {
@@ -22,6 +22,11 @@ CRGB leds[NUM_LEDS];
 std::vector<int> bm(NUM_LEDS);
 std::vector<int> lh(NUM_LEDS);
 
+struct ColorState {
+    uint8_t hue = 96;
+    uint8_t sat = SATURATION;
+} currentColor;
+
 // put function declarations here:
 void rotateArr(std::vector<int>& arr, int d);
 void circularAnimation(circularType animation);
@@ -32,6 +37,8 @@ void wipeStrip();
 void colourFadeTest();
 void gen_lh();
 void gen_bm();
+void setColor(uint8_t hue, uint8_t sat);
+void updateColor();
 
 void setup() {
   // put your setup code here, to run once:
@@ -43,20 +50,64 @@ void setup() {
 
 void loop() {
     circularAnimation(bar);
-    wipeStrip();
+    // wipeStrip();
     circularAnimation(light);
-    wipeStrip();
+    // wipeStrip();
     breatheAnimation();
-    wipeStrip();
+    // wipeStrip();
     pulseAnimation();
-    wipeStrip();
+    // wipeStrip();
     staticBrightness();
-    wipeStrip();
-    colourFadeTest();
+    // wipeStrip();
 }
 
 
 // put function definitions here:
+
+void setColor(uint8_t hue, uint8_t sat) {
+    currentColor.hue = hue;
+    currentColor.sat = sat;
+}
+
+void updateColor() {
+    // Smoothly blend between two colors over time, with possible direction reversal
+    static CHSV startColor = CHSV(currentColor.hue, currentColor.sat, 255);
+    static CHSV targetColor = CHSV(random8(), currentColor.sat, 255);
+    static uint8_t blendAmount = 0;
+    static bool forward = true; // true: start->target, false: target->start
+    static unsigned long lastUpdate = 0;
+    const unsigned long fadeInterval = 20 * TIMEFACTOR; // ms between blend steps
+    const uint8_t blendStep = 1; // how much to increment/decrement blendAmount per step
+
+    if (millis() - lastUpdate > fadeInterval) {
+        lastUpdate = millis();
+
+        // Blend from startColor to targetColor or reverse
+        CHSV blended = blend(startColor, targetColor, blendAmount);
+        currentColor.hue = blended.hue;
+        currentColor.sat = blended.sat;
+
+        if (forward) {
+            if (blendAmount < 255 - blendStep) {
+                blendAmount += blendStep;
+            } else {
+                // At target, randomly decide to reverse
+                if (random8() < 128) {
+                    forward = false; // reverse direction
+                }
+            }
+        } else {
+            if (blendAmount > blendStep) {
+                blendAmount -= blendStep;
+            } else {
+                // At start, randomly decide to go forward again
+                if (random8() < 128) {
+                    forward = true; // go forward again
+                }
+            }
+        }
+    }
+}
 
 void rotateArr(std::vector<int>& arr) {
     int n = arr.size();
@@ -145,87 +196,86 @@ void colourFadeTest(){
 }
 
 void staticBrightness(){
+    updateColor();
     for (int i=0;i<2;i++){
-        // getColour here
         for(int dot = 0; dot < NUM_LEDS; dot++){
-            leds[dot] = CHSV( COLOUR, SATURATION, MAX_BRIGHTNESS);
+            leds[dot] = CHSV(currentColor.hue, currentColor.sat, MAX_BRIGHTNESS);
         }
         FastLED.show();
-        delay(1500);
+        delay(1500*TIMEFACTOR);
     }
 }
 
 void wipeStrip(){
     fadeToBlackBy(leds,NUM_LEDS,128);
     FastLED.show();
-    delay(10);
+    delay(10*TIMEFACTOR);
     fadeToBlackBy(leds,NUM_LEDS,255);
     FastLED.show();
-    delay(500);
+    delay(500*TIMEFACTOR);
 }
 
 void circularAnimation(circularType animation){
     std::vector<int> tempbar;
     tempbar = animation == bar ? bm : lh;
 
-    for (int frame = 0;frame <= 288; frame++) {
-        // getColour here
-        for (int i=0;i<NUM_LEDS;i++) {
-            leds[i] = CHSV( COLOUR, SATURATION, tempbar[i]);
+    for (int frame = 0; frame <= 288; frame++) {
+        updateColor(); // Optionally update color each frame
+        for (int i = 0; i < NUM_LEDS; i++) {
+            leds[i] = CHSV(currentColor.hue, currentColor.sat, tempbar[i]);
         }
-
         FastLED.show();
         rotateArr(tempbar);
-        delay(20);
-    }   
+        delay(20*TIMEFACTOR);
+    }
 }
 
 void breatheAnimation(){
-    for (int i=0;i<2;i++){
-        for(int a=MIN_BRIGHTNESS;a<MAX_BRIGHTNESS;a++){
-            // getColour here
-            for(int dot = 0; dot < NUM_LEDS; dot++){
-                leds[dot] = CHSV( COLOUR, SATURATION, a);
+    for (int i = 0; i < 2; i++) {
+        for (int a = MIN_BRIGHTNESS; a < MAX_BRIGHTNESS; a++) {
+            updateColor(); // Optionally update color each frame
+            for (int dot = 0; dot < NUM_LEDS; dot++) {
+                leds[dot] = CHSV(currentColor.hue, currentColor.sat, a);
             }
             FastLED.show();
-            delay(20);
+            delay(20*TIMEFACTOR);
         }
-        for(int b=MAX_BRIGHTNESS;b>MIN_BRIGHTNESS;b--){
-            // getColour here
-            for(int dot = 0; dot < NUM_LEDS; dot++){
-                leds[dot] = CHSV( COLOUR, SATURATION, b);
+        for (int b = MAX_BRIGHTNESS; b > MIN_BRIGHTNESS; b--) {
+            updateColor(); // Optionally update color each frame
+            for (int dot = 0; dot < NUM_LEDS; dot++) {
+                leds[dot] = CHSV(currentColor.hue, currentColor.sat, b);
             }
             FastLED.show();
-            delay(20);
+            delay(20*TIMEFACTOR);
         }
     }
 }
 
 void pulseAnimation(){
     int midbright = 65;
-    for (int j=0;j<2;j++){
-        // getColour here
-        for(int dot = 0; dot < NUM_LEDS; dot++){
-            leds[dot] = CHSV( COLOUR, SATURATION, midbright);
+    for (int j = 0; j < 2; j++) {
+        updateColor(); // Optionally update color each frame
+        for (int dot = 0; dot < NUM_LEDS; dot++) {
+            leds[dot] = CHSV(currentColor.hue, currentColor.sat, midbright);
         }
         FastLED.show();
-        delay(1000);
-        for (int i=0;i<2;i++){
-            for(int a=midbright;a<MAX_BRIGHTNESS;a= a+2){
-                // getColour here
-                for(int dot = 0; dot < NUM_LEDS; dot++){
-                    leds[dot] = CHSV( COLOUR, SATURATION, a);
+        delay(1000 * TIMEFACTOR);
+        for (int i = 0; i < 2; i++) {
+            for (int a = midbright; a < MAX_BRIGHTNESS; a += 2) {
+                updateColor(); // Optionally update color each frame
+                for (int dot = 0; dot < NUM_LEDS; dot++) {
+                    leds[dot] = CHSV(currentColor.hue, currentColor.sat, a);
                 }
                 FastLED.show();
-                delay(5);
+                delay(5*TIMEFACTOR);
             }
-            for(int b=MAX_BRIGHTNESS;b>midbright;b= b-2){
-                // getColour here
-                for(int dot = 0; dot < NUM_LEDS; dot++){
-                    leds[dot] = CHSV( COLOUR, SATURATION, b);
+            for (int b = MAX_BRIGHTNESS; b > midbright; b -= 2) {
+                updateColor(); // Optionally update color each frame
+                for (int dot = 0; dot < NUM_LEDS; dot++) {
+                    leds[dot] = CHSV(currentColor.hue, currentColor.sat, b);
                 }
                 FastLED.show();
-                delay(5);
+                delay(5*TIMEFACTOR);
             }
         }
     }
