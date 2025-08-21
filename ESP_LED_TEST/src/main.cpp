@@ -28,7 +28,7 @@ struct ColorState {
 } currentColor;
 
 // put function declarations here:
-void rotateArr(std::vector<int>& arr, int d);
+void rotateArr(std::vector<int>& arr);
 void circularAnimation(circularType animation);
 void breatheAnimation();
 void pulseAnimation();
@@ -109,6 +109,8 @@ void updateColor() {
     }
 }
 
+
+// Rotates the given array to the right by one position.
 void rotateArr(std::vector<int>& arr) {
     int n = arr.size();
       
@@ -196,8 +198,8 @@ void colourFadeTest(){
 }
 
 void staticBrightness(){
-    updateColor();
     for (int i=0;i<2;i++){
+        updateColor();
         for(int dot = 0; dot < NUM_LEDS; dot++){
             leds[dot] = CHSV(currentColor.hue, currentColor.sat, MAX_BRIGHTNESS);
         }
@@ -215,10 +217,22 @@ void wipeStrip(){
     delay(500*TIMEFACTOR);
 }
 
+/**
+ * @brief Runs a circular animation on an LED strip.
+ *
+ * This function animates the LEDs in a circular pattern by rotating the brightness or color values
+ * in the specified array (either 'bm' or 'lh', depending on the animation type). For each frame,
+ * it updates the color, sets the LED values, displays them, rotates the array, and waits for a short delay.
+ *
+ * @param animation The type of circular animation to perform (e.g., 'bar' or another type).
+ *
+ * Dependencies:
+ * - Uses global variables: NUM_LEDS, leds, currentColor, bm, lh, TIMEFACTOR.
+ * - Uses external functions: updateColor(), rotateArr().
+ * - Uses FastLED library for LED control.
+ */
 void circularAnimation(circularType animation){
-    std::vector<int> tempbar;
-    tempbar = animation == bar ? bm : lh;
-
+    std::vector<int>& tempbar = (animation == bar ? bm : lh);
     for (int frame = 0; frame <= 288; frame++) {
         updateColor(); // Optionally update color each frame
         for (int i = 0; i < NUM_LEDS; i++) {
@@ -230,6 +244,25 @@ void circularAnimation(circularType animation){
     }
 }
 
+/**
+ * @brief Runs a "breathe" animation on the LED strip.
+ *
+ * Gradually increases and decreases the brightness of all LEDs to create a smooth breathing effect.
+ * The animation cycles twice, fading in from MIN_BRIGHTNESS to MAX_BRIGHTNESS and then fading out.
+ * Optionally updates the color on each frame using updateColor().
+ *
+ * Uses the global variables:
+ * - leds[]: Array of LED objects.
+ * - NUM_LEDS: Number of LEDs in the strip.
+ * - MIN_BRIGHTNESS: Minimum brightness value.
+ * - MAX_BRIGHTNESS: Maximum brightness value.
+ * - currentColor: Struct containing current hue and saturation.
+ * - TIMEFACTOR: Multiplier for controlling animation speed.
+ *
+ * Dependencies:
+ * - FastLED library for controlling LEDs.
+ * - CHSV color model for setting LED colors.
+ */
 void breatheAnimation(){
     for (int i = 0; i < 2; i++) {
         for (int a = MIN_BRIGHTNESS; a < MAX_BRIGHTNESS; a++) {
@@ -251,6 +284,21 @@ void breatheAnimation(){
     }
 }
 
+/**
+ * @brief Runs a pulse animation on the LED strip.
+ *
+ * The animation smoothly increases and decreases the brightness of all LEDs
+ * between a mid-level brightness and the maximum brightness, creating a pulsing effect.
+ * The color can be updated on each frame via the updateColor() function.
+ * The animation repeats for a fixed number of cycles.
+ *
+ * Timing and brightness levels are controlled by the constants:
+ * - NUM_LEDS: Number of LEDs in the strip.
+ * - MAX_BRIGHTNESS: Maximum brightness value for the LEDs.
+ * - TIMEFACTOR: Multiplier to adjust animation speed.
+ *
+ * The function uses the FastLED library to update the LED colors and display changes.
+ */
 void pulseAnimation(){
     int midbright = 65;
     for (int j = 0; j < 2; j++) {
