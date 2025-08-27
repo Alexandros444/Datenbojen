@@ -167,7 +167,8 @@ bool led_module::breatheAnimation() {
     if (wait_ms(20)) return false;
 
     updateColor();
-    fill_leds_show(CHSV(currentColor.hue, currentColor.sat, a));
+    fill_solid(leds, NUM_LEDS, CHSV(currentColor.hue, currentColor.sat, a));
+    FastLED.show();
 
     if (up) {
         a++;
@@ -201,13 +202,15 @@ bool led_module::pulseAnimation() {
     if (phase == 0) {
         if (wait_ms(1000)) return false;
         updateColor();
-        fill_leds_show(CHSV(currentColor.hue, currentColor.sat, a));
+        fill_solid(leds, NUM_LEDS, CHSV(currentColor.hue, currentColor.sat, a));
+        FastLED.show();
         phase = 1;
         i = a;
     } else if (phase == 1) {
         if (wait_ms(5)) return false;
         updateColor();
-        fill_leds_show(CHSV(currentColor.hue, currentColor.sat, i));
+        fill_solid(leds, NUM_LEDS, CHSV(currentColor.hue, currentColor.sat, i));
+        FastLED.show();
         
         i += 2;
         if (i >= MAX_BRIGHTNESS) {
@@ -217,7 +220,8 @@ bool led_module::pulseAnimation() {
     } else if (phase == 2) {
         if (wait_ms(5)) return false;
         updateColor();
-        fill_leds_show(CHSV(currentColor.hue, currentColor.sat, i));
+        fill_solid(leds, NUM_LEDS, CHSV(currentColor.hue, currentColor.sat, i));
+        FastLED.show();
         i -= 2;
         if (i <= a) {
             phase = 0;
@@ -256,11 +260,4 @@ void led_module::reset_anim_progress(){
 // last_time_ms auf 0 gesetzt, damit immer die nächste Anim immidiately startet.
     last_time_ms = 0;
     progress = 0;
-}
-
-void led_module::fill_leds_show(CHSV color){
-    for (int i = 0; i < NUM_LEDS; i++){
-        leds[i] = color;
-    }
-    FastLED.show();
 }

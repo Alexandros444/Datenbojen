@@ -44,7 +44,6 @@ public:
     void updateColor();
     bool wait_ms(unsigned long ms);
     void reset_anim_progress();
-    void fill_leds_show(CHSV color);
 };
 
 
