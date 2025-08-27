@@ -30,16 +30,21 @@ private:
     unsigned long last_time_ms = 0;
     int progress = 0;
     void inc_progress() {progress = (progress + 1) % NUM_LEDS;};
+    int anim_func = 0;
+    bool anim_done = false;
 public:
     void begin();
     void loop();
-    void staticBrightness();
-    void circularAnimation(circularType animation);
-    void breatheAnimation();
-    void pulseAnimation();
+    bool staticBrightness();
+    bool circularAnimation(circularType animation);
+    bool breatheAnimation();
+    bool pulseAnimation();
     void wipeStrip();
     void setColor(uint8_t hue, uint8_t sat);
     void updateColor();
+    bool wait_ms(unsigned long ms);
+    void reset_anim_progress();
+    void fill_leds_show(CHSV color);
 };
 
 

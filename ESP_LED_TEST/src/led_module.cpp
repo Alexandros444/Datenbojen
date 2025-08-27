@@ -19,12 +19,38 @@ void led_module::begin() {
     FastLED.addLeds<WS2812B, DATA_PIN>(leds, NUM_LEDS);
 }
 
+
+
 void led_module::loop() {
-    circularAnimation(bar);
-    circularAnimation(light);
-    breatheAnimation();
-    pulseAnimation();
-    staticBrightness();
+
+    switch (anim_func){
+    case 0:
+    /* code */
+        anim_done = circularAnimation(bar);
+        break;
+    case 1:
+        anim_done = circularAnimation(light);
+        break;
+    case 2:
+        anim_done = breatheAnimation();
+        break;
+    case 3:
+        anim_done = pulseAnimation();
+        break;
+    case 4:
+        anim_done = staticBrightness();
+        break;
+    default:
+        anim_func %= 5;
+        break;
+    }
+
+    if (anim_done){
+        anim_func++;
+        anim_done = false;
+        reset_anim_progress();
+    }
+    
 }
 
 void led_module::setColor(uint8_t hue, uint8_t sat) {
@@ -115,20 +141,12 @@ void led_module::gen_lh() {
     std::fill(lh.begin() + section1 * 2 + section2, lh.end(), 0);
 }
 
-void led_module::circularAnimation(circularType animation) {
-    static int frame = 0;
-    static circularType last_anim = bar;
+bool led_module::circularAnimation(circularType animation) {
     std::vector<int>& tempbar = (animation == bar ? bm : lh);
 
-    if (animation != last_anim) {
-        frame = 0;
-        last_anim = animation;
-    }
+    if (progress > 288) return true;
 
-    if (frame > 288) return;
-
-    if (millis() - last_time_ms < 20 * TIMEFACTOR) return;
-    last_time_ms = millis();
+    if (wait_ms(20)) return false;
 
     updateColor();
     for (int i = 0; i < NUM_LEDS; i++) {
@@ -136,97 +154,113 @@ void led_module::circularAnimation(circularType animation) {
     }
     FastLED.show();
     rotateArr(tempbar);
-    frame++;
+    progress++;
+    return false;
 }
 
-void led_module::breatheAnimation() {
+bool led_module::breatheAnimation() {
     static int a = MIN_BRIGHTNESS;
     static bool up = true;
-    static int cycle = 0;
 
-    if (cycle >= 4) return;
+    if (progress >= 4) return true;
 
-    if (millis() - last_time_ms < 20 * TIMEFACTOR) return;
-    last_time_ms = millis();
+    if (wait_ms(20)) return false;
 
     updateColor();
-    for (int dot = 0; dot < NUM_LEDS; dot++) {
-        leds[dot] = CHSV(currentColor.hue, currentColor.sat, a);
-    }
-    FastLED.show();
+    fill_leds_show(CHSV(currentColor.hue, currentColor.sat, a));
 
     if (up) {
         a++;
         if (a >= MAX_BRIGHTNESS) {
             up = false;
-            cycle++;
+            progress++;
         }
     } else {
         a--;
         if (a <= MIN_BRIGHTNESS) {
             up = true;
-            cycle++;
+            progress++;
         }
     }
+    return false;
 }
 
-void led_module::pulseAnimation() {
+
+bool led_module::pulseAnimation() {
     static int phase = 0;
     static int a = 65;
     static int i = 0;
-    static int j = 0;
 
-    if (j >= 2) return;
+    if (progress >= 2) {
+        phase = 0;
+        a = 65;
+        i = 0;
+        return true;
+    }
 
     if (phase == 0) {
-        if (millis() - last_time_ms < 1000 * TIMEFACTOR) return;
-        last_time_ms = millis();
+        if (wait_ms(1000)) return false;
         updateColor();
-        for (int dot = 0; dot < NUM_LEDS; dot++) {
-            leds[dot] = CHSV(currentColor.hue, currentColor.sat, a);
-        }
-        FastLED.show();
+        fill_leds_show(CHSV(currentColor.hue, currentColor.sat, a));
         phase = 1;
         i = a;
     } else if (phase == 1) {
-        if (millis() - last_time_ms < 5 * TIMEFACTOR) return;
-        last_time_ms = millis();
+        if (wait_ms(5)) return false;
         updateColor();
-        for (int dot = 0; dot < NUM_LEDS; dot++) {
-            leds[dot] = CHSV(currentColor.hue, currentColor.sat, i);
-        }
-        FastLED.show();
+        fill_leds_show(CHSV(currentColor.hue, currentColor.sat, i));
+        
         i += 2;
         if (i >= MAX_BRIGHTNESS) {
             phase = 2;
             i = MAX_BRIGHTNESS;
         }
     } else if (phase == 2) {
-        if (millis() - last_time_ms < 5 * TIMEFACTOR) return;
-        last_time_ms = millis();
+        if (wait_ms(5)) return false;
         updateColor();
-        for (int dot = 0; dot < NUM_LEDS; dot++) {
-            leds[dot] = CHSV(currentColor.hue, currentColor.sat, i);
-        }
-        FastLED.show();
+        fill_leds_show(CHSV(currentColor.hue, currentColor.sat, i));
         i -= 2;
         if (i <= a) {
             phase = 0;
-            j++;
+            progress++;
         }
     }
+    return false;
 }
 
-void led_module::staticBrightness() {
-
-    if (millis() - last_time_ms < 1500 * TIMEFACTOR) return;
-        last_time_ms = millis();
-
+bool led_module::staticBrightness() {    
     
+    if (wait_ms(1500)) return false;
+    
+    if (progress) return true;
+
     for (int dot = 0; dot < NUM_LEDS; dot++) {
         updateColor();
         leds[dot] = CHSV(currentColor.hue, currentColor.sat, MAX_BRIGHTNESS);
-        
+    }
+    FastLED.show();
+
+    progress++;
+
+    return false;
+}
+
+
+bool led_module::wait_ms(unsigned long ms){
+    if (millis() - last_time_ms < ms * TIMEFACTOR) 
+        return true;
+    last_time_ms = millis();
+    return false;
+}
+
+void led_module::reset_anim_progress(){
+// last_time_ms auf 0 gesetzt, damit immer die nächste Anim immidiately startet.
+    last_time_ms = 0;
+    progress = 0;
+}
+
+void led_module::fill_leds_show(CHSV color){
+    for (int i = 0; i < NUM_LEDS; i++){
+        leds[i] = color;
     }
     FastLED.show();
 }

@@ -15,7 +15,7 @@ void setup() {
 
 
 void loop() {
-  led.breatheAnimation();
+  led.loop();
 }
 
 
