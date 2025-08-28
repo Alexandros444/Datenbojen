@@ -1,17 +1,17 @@
 # Fdb version 4
-["bibtex main"] 1756323784.95703 "main.aux" "main.bbl" "main" 1756323792.25541 0
+["bibtex main"] 1756323784.95703 "main.aux" "main.bbl" "main" 1756324352.46496 0
   "./sample.bib" 1756323765 243 5de7b98512855c31b0297a44bcc61b1c ""
   "c:/texlive/2025/texmf-dist/bibtex/bst/base/alpha.bst" 1755197471 23907 a5f93555796fb564b924339521f10a7c ""
-  "main.aux" 1756323789 7732 ce913ce9ac7e0f47536a75007cfe5faa "pdflatex"
+  "main.aux" 1756324349 7732 ce913ce9ac7e0f47536a75007cfe5faa "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1756323786.04648 "c:/Users/Alex/Nextcloud/Documents/Bachelor/latex/main.tex" "main.pdf" "main" 1756323792.25706 0
+["pdflatex"] 1756324346.41724 "c:/Users/Alex/Desktop/git/Datenbojen/Bachelor_Latex/main.tex" "main.pdf" "main" 1756324352.4668 0
   "TU-Berlin-Logo.svg.png" 1756323765 39317 29439f89b5858b2fd834341179bd3625 ""
   "abstract.tex" 1756323765 1659 8246c30f61b7a53569e6bd122e9bd2db ""
   "acronyme.tex" 1756323762 555 b45e0ab831c5092341bec35ee8a79904 ""
-  "c:/Users/Alex/Nextcloud/Documents/Bachelor/latex/main.tex" 1756323765 762 9395378f037dfcbe79480cd4884be878 ""
+  "c:/Users/Alex/Desktop/git/Datenbojen/Bachelor_Latex/main.tex" 1756323828 762 9395378f037dfcbe79480cd4884be878 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1755198260 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1755198260 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1755200282 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -184,12 +184,12 @@
   "img/power_test/tx.jpg" 1756323762 525033 60a87b5b7cb83e71e98ef247902f8ba5 ""
   "img/solar_test/Solar_leistung.png" 1756323762 16554 806b79a27145a58d48f840fc24bb1d46 ""
   "img/solar_test/cap_bat.jpg" 1756323762 933580 42907a57dbb61473e9dbb7804ea6094e ""
-  "main.aux" 1756323789 7732 ce913ce9ac7e0f47536a75007cfe5faa "pdflatex"
+  "main.aux" 1756324349 7732 ce913ce9ac7e0f47536a75007cfe5faa "pdflatex"
   "main.bbl" 1756323786 49 0eba253fc001332e731e8aba3f23127b "bibtex main"
-  "main.lof" 1756323789 444 f7898e212fcbd210583a4960fc56248e "pdflatex"
-  "main.out" 1756323789 3592 d68e06d551d449116b6123ed1f76c77c "pdflatex"
-  "main.tex" 1756323765 762 9395378f037dfcbe79480cd4884be878 ""
-  "main.toc" 1756323789 2393 015008309094019cb7f86f53e31d8239 "pdflatex"
+  "main.lof" 1756324349 444 f7898e212fcbd210583a4960fc56248e "pdflatex"
+  "main.out" 1756324349 3592 d68e06d551d449116b6123ed1f76c77c "pdflatex"
+  "main.tex" 1756323828 762 9395378f037dfcbe79480cd4884be878 ""
+  "main.toc" 1756324349 2393 015008309094019cb7f86f53e31d8239 "pdflatex"
   "schluss.tex" 1756323765 484 56a6db4af0954ec32525ed54b18c102b ""
   "title.tex" 1756323765 852 e76f141c4b6277cb790b72163b9d746f ""
   (generated)
