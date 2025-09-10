@@ -15,7 +15,7 @@ void tft_module::begin() {
 
     tft.setRotation(1);
     tft.fillScreen(TFT_BLACK);
-    tft.setTextColor(TFT_ORANGE, TFT_BLACK);
+    tft.setTextColor(TFT_BLUE, TFT_BLACK);
     tft.setTextSize(1);
     tft.setCursor(0, 0);
     tft.println("TFT setup done");
@@ -37,7 +37,16 @@ void tft_module::print(String text) {
 
 }
 
-#define BUFFPIXEL 32
+void tft_module::print_offset(String text, int offset){
+    if (row_counter >= max_rows) {
+        Serial.println("Maximum rows reached, clearing display");
+        clear(); // Clear the display if maximum rows are reached
+    }
+    print_offset(text, row_counter, offset);
+    row_counter++;
+}
+
+#define BUFFPIXEL 8
 
 int tft_module::draw_bmp_img(File bmpFile, uint8_t x, uint16_t y) {
     int      bmpWidth, bmpHeight;
@@ -161,6 +170,12 @@ uint32_t tft_module::read32(File& f) {
 //     tft.drawBitmap(0, 0, buffer, TFT_WIDTH, TFT_HEIGHT, TFT_ORANGE, TFT_BLACK);
 // }
 
+void tft_module::print_offset(String text, int row, int offset) {
+    int y_pos = row * row_height + offset; // Assuming each row is 15 pixels high
+    tft.fillRect(0, y_pos, tft.width(), row_height, TFT_BLACK);
+    tft.setCursor(0, y_pos);
+    tft.println(text.c_str());
+}
 
 void tft_module::print(String text, int row) {
     int y_pos = row * row_height; // Assuming each row is 15 pixels high
@@ -193,6 +208,59 @@ void tft_module::print_sensors(adc_module* adc, sensors_module* sensors) {
     //                   "3: " + String((float)adc->readVoltage(3), 3) + " V";
     // print(adc_data);
 }
+
+void tft_module::print_sensors_example() {
+    int offset = 6;
+    clear(); // Clear the display before printing sensor values
+    print("==========Sensors=========");
+    print_offset("Temperature  - 18.5 C", offset);
+    row_counter++;
+    print_offset("Oxygen       - 8.2 mg/L", offset);
+    row_counter++;
+    print_offset("pH-Value     - 7,5", offset);
+    row_counter++;
+    print_offset("Conductivity - 420 uS/cm", offset);
+    row_counter++;
+    print_offset("Turbidity    - 10 NTU", offset);
+    
+}
+
+void tft_module::print_connection_status_example() {
+    int offset = 6;
+    clear(); // Clear the display before printing connection status
+    print("==========Status==========");
+    print_offset("Network  - Connected", offset);
+    row_counter++;
+    print_offset("GPRS     - Connected", offset);
+    row_counter++;
+    print_offset("Battery  - 42%", offset);
+    row_counter++;
+    print_offset("Signal   - Good", offset);
+    row_counter++;
+    print_offset("Location - HU Forum Berlin", offset);
+}
+
+void tft_module::print_url() {
+    // tft.setTextColor(TFT_WHITE, TFT_BLACK);
+    print("      Spreeberlin.de", 10);
+    // tft.setTextColor(TFT_BLUE, TFT_BLACK);
+}
+
+void tft_module::print_quotes(){
+    clear(); // Clear the display before printing connection status
+    print("\"I am the river, the river is me\"\n - Erena Rhoese"); 
+    row_counter++;
+    row_counter++;
+
+    print("\"We are all Bodies of Water.\"\n - Astrida Neimanis"); 
+    row_counter++;
+    row_counter++;
+    
+    print("\"In me everything is already flowing.\"\n - Luce Irigaray"); 
+    row_counter++;
+    row_counter++;
+}
+
 
 void tft_module::print_connection_status(gsm_module* gsm) {
     if (gsm == nullptr && gsm->is_init()) {
