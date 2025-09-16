@@ -7,8 +7,6 @@
 // #define TFT_RST 18
 // #define TFT_CS 19
 
-
-
 void tft_module::begin() {
     Serial.println("TFT setup");
     tft.begin();

@@ -56,7 +56,7 @@ public:
     sd_module() {};
     ~sd_module() {};
 
-    void begin(tft_module tft);
+    void begin(tft_module* tft);
     void listFiles();
     // int loadBitmap(const char* filename, uint8_t* buffer);
     File openFile(char* filename);

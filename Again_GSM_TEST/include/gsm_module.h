@@ -17,11 +17,11 @@
 // #define LOGGING  // <- Logging is for the HTTP library
 
 // Baud rate for the GSM module
-#define GSM_BAUD 115200
+#define GSM_BAUD 9600
 
 
-#define MODEM_RX 16
-#define MODEM_TX 17
+#define MODEM_RX 17
+#define MODEM_TX 16
 
 struct statusInfo
 {
@@ -34,13 +34,6 @@ struct statusInfo
     String operatorName;
     String modemInfo;
     String networkTime;
-};
-
-enum sim_status{
-    GSM_STATUS_OK,
-    GSM_MODULE_ERROR,
-    GSM_NETWORK_ERROR,
-    GSM_AUTH_ERROR
 };
 
 void gsm_setup();
@@ -60,19 +53,16 @@ private:
     String getRegStatus(int regStatus);
     String getSignalQuality(int SignalQuality);
     const char* apn; // Most Sims work without configuration, search for "apn configuration <Your Provide Name>" if you need to set it manually
-    const char* usr; // https://www.lte-anbieter.info/ratgeber/apn/uebersicht.php
-    const char* pwd;
+    const char* gprsUser; // https://www.lte-anbieter.info/ratgeber/apn/uebersicht.php
+    const char* gprsPass;
     bool init = false;
-    sim_status last_status;
-    bool debug_mode = false;
-    void ask_debug_mode();
 public:
     gsm_module()
         : debugger(SerialAT, Serial), // Initialize StreamDebugger
         modem(debugger),              // Initialize TinyGsm with StreamDebugger
-        apn("internet.telekom"),                   // Initialize APN
-        usr("telekom"),
-        pwd("tm")
+        apn(""),                   // Initialize APN
+        gprsUser(""),
+        gprsPass("")
     {
     };
 
@@ -80,12 +70,11 @@ public:
 
     ~gsm_module() {};
 
-    sim_status begin();
+    void begin();
     int get_req_http(String url);
     int post_req_http(String url, String data);
     statusInfo getStatusInfo();
-    void relay_serial();
-    void loop();
+
 };
 
 #endif

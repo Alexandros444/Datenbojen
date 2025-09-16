@@ -40,8 +40,8 @@ public:
     GravityTDS gravityTds;
     DFRobot_PH ph;
     Gravity_DO DO;
-    sensors_module() {}
-    ~sensors_module() {}
+    sensors_module() {};
+    ~sensors_module() {};
     void begin(adc_module* adc);
     void print();
     float readTemperature();

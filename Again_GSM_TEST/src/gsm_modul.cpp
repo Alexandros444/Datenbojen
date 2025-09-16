@@ -1,77 +1,29 @@
 #include "gsm_module.h"
 
-sim_status gsm_module::begin(){
+
+void gsm_module::begin(){
     Serial.println("Setting up GSM module...");
 
     // Set GSM module baud rate
     // Set GSM module baud rate and UART pins
     SerialAT.begin(GSM_BAUD, SERIAL_8N1, MODEM_RX, MODEM_TX);
 
-    if (!modem.testAT(1000)){
-        Serial.println("GSM Module: Not Responding!");
-        last_status = GSM_MODULE_ERROR;
-        return GSM_MODULE_ERROR;
-    }
     // Reset Modem
     // resetModem();
     // delay(6000);
-    Serial.println("GSM Module AT => OK");
+
+    Serial.println("Initializing modem...");
+    init = modem.init();
+    if (!init) {
+        Serial.println("GSM module failed to initialize");
+        return;
+    }
+    Serial.println("GSM initialized.");    
     String modemInfo = modem.getModemInfo();
     Serial.print("GSM Info: ");
     Serial.println(modemInfo);
-    Serial.printf("Battery: %d\n",modem.getBattPercent());
-    Serial.printf("Signal Quality %d\n",modem.getSignalQuality());
-    Serial.println("waiting for network...");
-    
-    // modem.gprsConnect(apn,usr,pwd);
-    if(!modem.waitForNetwork(10000)){
-        Serial.println("GSM Module: No Network!");
-        ask_debug_mode();
-        last_status = GSM_NETWORK_ERROR;
-        return GSM_NETWORK_ERROR;
-    }
-
-    Serial.println("GSM Module: OK, Network: Connected");    
-    last_status = GSM_STATUS_OK;
-    return GSM_STATUS_OK;
 }
 
-
-void gsm_module::relay_serial(){
-    if (Serial.available()) {
-        String s = Serial.readStringUntil('\n');
-        Serial.println(s);
-        SerialAT.println(s);
-    }
-    // forward from SIM -> USB
-    if (SerialAT.available()) {
-        while (SerialAT.available()) {
-            Serial.write(SerialAT.read());
-        }
-    }
-    // delay(1);
-}
-void gsm_module::loop(){
-    
-    if (debug_mode){
-        relay_serial();
-    }
-}
-
-void gsm_module::ask_debug_mode(){
-    Serial.println("\nActivate GSM Debug Mode?: Y/N");
-    unsigned long start = millis();
-    while (millis() - start < 10000 && !Serial.available()){
-        delay(10);            
-    }
-    if (Serial.available()){
-        char a = Serial.read();
-        if (a == 'y' || a == 'Y'){
-            debug_mode = true;
-            Serial.println("GSM Debug Mode enabled");
-        }
-    }
-}
 
 // TODO: WIRE RST PIN TO GPIO
 // void resetModem() {
@@ -300,7 +252,7 @@ int gsm_module::get_req_http(String url){
     // GPRS connection parameters are usually set after network registration
     Serial.print(F("Connecting to "));
     Serial.print(apn);
-    if (!modem.gprsConnect(apn, usr, pwd)) {
+    if (!modem.gprsConnect(apn, gprsUser, gprsPass)) {
         Serial.println(" fail");
         delay(10000);
         return status;
@@ -347,7 +299,7 @@ int gsm_module::post_req_http(String url, String data){
     // GPRS connection parameters are usually set after network registration
     Serial.print(F("Connecting to "));
     Serial.print(apn);
-    if (!modem.gprsConnect(apn, usr, pwd)) {
+    if (!modem.gprsConnect(apn, gprsUser, gprsPass)) {
         Serial.println(" fail");
         delay(10000);
         return status;
