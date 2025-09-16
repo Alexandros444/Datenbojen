@@ -22,22 +22,22 @@ void led_module::loop() {
     switch (anim_func){
     case 0:
     /* code */
-        anim_done = circularAnimation(bar);
-        break;
-    case 1:
-        anim_done = circularAnimation(light);
-        break;
-    case 2:
         anim_done = breatheAnimation();
         break;
-    case 3:
-        anim_done = pulseAnimation();
-        break;
-    case 4:
-        anim_done = staticBrightness();
-        break;
+    // case 1:
+    //     anim_done = circularAnimation(light);
+    //     break;
+    // case 2:
+    //     anim_done = breatheAnimation();
+    //     break;
+    // case 3:
+    //     //anim_done = pulseAnimation();
+    //     break;
+    // case 4:
+    //     anim_done = staticBrightness();
+    //     break;
     default:
-        anim_func %= 5;
+        anim_func %= 1;
         break;
     }
 
@@ -83,6 +83,31 @@ void led_module::rand_color_change(){
 void led_module::setColor(uint8_t hue, uint8_t sat) {
     currentColor.hue = hue;
     currentColor.sat = sat;
+}
+
+void led_module::exhibitionColor(){
+    static CHSV green = CHSV(96, currentColor.sat, 255);
+    static CHSV red = CHSV(0, currentColor.sat, 255);
+    static CHSV yellow = CHSV(55, currentColor.sat, 255);
+    static CHSV orange = CHSV(35, currentColor.sat, 255);
+    static CHSV blue = CHSV(160, currentColor.sat, 255);
+    int blendercounter; 
+    int stepcounter = 0; 
+    int lastUpdate = 0;
+    const unsigned long fadeInterval = 1000;
+
+
+    if (millis() - lastUpdate > fadeInterval) {
+        lastUpdate = millis(); 
+
+        if (blendercounter == 0) { 
+
+        // switch case: 
+        // 0: green to yellow
+        // 1: yellow to orange
+        // 2: orange to red
+        // (3: blue directly)
+    }
 }
 
 void led_module::updateColor() {
@@ -191,7 +216,7 @@ bool led_module::breatheAnimation() {
 
     if (progress >= 4) return true;
 
-    if (wait_ms(20)) return false;
+    if (wait_ms(200)) return false;
 
     updateColor();
     fill_solid(leds, NUM_LEDS, CHSV(currentColor.hue, currentColor.sat, a));
