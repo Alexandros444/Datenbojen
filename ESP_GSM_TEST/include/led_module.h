@@ -9,7 +9,7 @@
 #define SATURATION 220
 #define MAX_BRIGHTNESS 100
 #define MIN_BRIGHTNESS 32
-#define TIMEFACTOR 8
+#define TIMEFACTOR 1
 
 #include <bits/stdc++.h>
 
@@ -51,6 +51,7 @@ public:
     bool wait_ms(unsigned long ms);
     void reset_anim_progress();
     void rand_color_change();
+    void exhibitionColor();
 };
 
 
