@@ -6,7 +6,6 @@
 
 #define NUM_LEDS 144
 #define DATA_PIN 4
-#define COLOUR 96
 #define SATURATION 255
 #define MAX_BRIGHTNESS 100
 #define MIN_BRIGHTNESS 32
@@ -17,6 +16,11 @@
 enum circularType {
     bar,
     light
+};
+
+struct ColorState {
+    uint8_t hue;
+    uint8_t sat;
 };
 
 class led_module {
@@ -32,6 +36,7 @@ private:
     void inc_progress() {progress = (progress + 1) % NUM_LEDS;};
     int anim_func = 0;
     bool anim_done = false;
+    ColorState currentColor = {160, SATURATION};
 public:
     void begin();
     void loop();
@@ -44,6 +49,8 @@ public:
     void updateColor();
     bool wait_ms(unsigned long ms);
     void reset_anim_progress();
+    void rand_color_change();
+    void exhibitionColor();
 };
 
 

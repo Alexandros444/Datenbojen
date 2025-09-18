@@ -86,27 +86,71 @@ void led_module::setColor(uint8_t hue, uint8_t sat) {
 }
 
 void led_module::exhibitionColor(){
-    static CHSV green = CHSV(96, currentColor.sat, 255);
-    static CHSV red = CHSV(0, currentColor.sat, 255);
-    static CHSV yellow = CHSV(55, currentColor.sat, 255);
-    static CHSV orange = CHSV(35, currentColor.sat, 255);
+    static CHSV green = CHSV(0, currentColor.sat, 255);
+    static CHSV red = CHSV(96, currentColor.sat, 255);
+    static CHSV yellow = CHSV(60, currentColor.sat, 255);
+    static CHSV orange = CHSV(80, currentColor.sat, 255);
     static CHSV blue = CHSV(160, currentColor.sat, 255);
-    int blendercounter; 
-    int stepcounter = 0; 
-    int lastUpdate = 0;
-    const unsigned long fadeInterval = 1000;
+    static int blendercounter = 0; 
+    static uint8_t stepcounter = 0; 
+    static unsigned long lastUpdate = 0;
+    const unsigned long fadeInterval = 100;
 
 
     if (millis() - lastUpdate > fadeInterval) {
-        lastUpdate = millis(); 
+        lastUpdate = millis();
 
         if (blendercounter == 0) { 
-
-        // switch case: 
-        // 0: green to yellow
-        // 1: yellow to orange
-        // 2: orange to red
-        // (3: blue directly)
+            switch (stepcounter%4)
+            {
+            case 0:
+                currentColor.hue = green.hue;
+                currentColor.sat = green.sat;
+                break;
+            case 1:
+                currentColor.hue = yellow.hue;
+                currentColor.sat = yellow.sat;
+                break;
+            case 2:
+                currentColor.hue = orange.hue;
+                currentColor.sat = orange.sat;
+                break;
+            case 3:
+                currentColor.hue = red.hue;
+                currentColor.sat = red.sat;
+            default:
+                break;
+            }
+        }else{
+            CHSV blended;
+            switch (stepcounter%4)
+            {
+            case 0:
+                blended = blend(green, yellow, ((256/30.0)*blendercounter));
+                // blended = green;
+                break;
+            case 1:
+                blended = blend(yellow, orange, ((256/30.0)*blendercounter));
+                // blended = yellow;
+                break;
+            case 2:
+                blended = blend(orange, red, ((256/30.0)*blendercounter));
+                // blended = orange;
+                break;
+            case 3:
+                blended = blend(red, green, ((256/30.0)*blendercounter));
+                break;
+            default:
+                break;
+            }
+            currentColor.hue = blended.hue;
+            currentColor.sat = blended.sat;
+        }
+        blendercounter++;
+        if (blendercounter > 29){
+            stepcounter++;
+            blendercounter = 0;
+        }
     }
 }
 

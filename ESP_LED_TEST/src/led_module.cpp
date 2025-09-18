@@ -7,16 +7,13 @@
 std::vector<int> bm(NUM_LEDS);
 std::vector<int> lh(NUM_LEDS);
 
-struct ColorState {
-    uint8_t hue = 96;
-    uint8_t sat = SATURATION;
-} currentColor;
-
 
 void led_module::begin() {
     gen_bm();
     gen_lh();
     FastLED.addLeds<WS2812B, DATA_PIN>(leds, NUM_LEDS);
+    FastLED.clear();
+    FastLED.show();
 }
 
 
@@ -26,22 +23,22 @@ void led_module::loop() {
     switch (anim_func){
     case 0:
     /* code */
-        anim_done = circularAnimation(bar);
-        break;
-    case 1:
-        anim_done = circularAnimation(light);
-        break;
-    case 2:
         anim_done = breatheAnimation();
         break;
-    case 3:
-        anim_done = pulseAnimation();
-        break;
-    case 4:
-        anim_done = staticBrightness();
-        break;
+    // case 1:
+    //     anim_done = circularAnimation(light);
+    //     break;
+    // case 2:
+    //     anim_done = breatheAnimation();
+    //     break;
+    // case 3:
+    //     anim_done = pulseAnimation();
+    //     break;
+    // case 4:
+    //     anim_done = staticBrightness();
+    //     break;
     default:
-        anim_func %= 5;
+        anim_func %= 1;
         break;
     }
 
@@ -53,9 +50,109 @@ void led_module::loop() {
     
 }
 
+void led_module::rand_color_change(){
+    static unsigned long last_change = 0;
+    static int hue_dir = 1;
+    static int sat_dir = 1;
+
+    if (wait_ms(500)) return;
+
+    if (random8() < 128){
+        if (hue_dir && currentColor.hue < 255){
+            currentColor.hue++;
+        } else if (currentColor.hue > 0){
+            currentColor.hue--;
+        }        
+    }
+
+    if (random8() < 128){
+        if (sat_dir && currentColor.sat < 255){
+            currentColor.sat++;
+        } else if (currentColor.sat > 0){
+            currentColor.sat--;
+        }        
+    }
+
+    if (random8() == 0)
+        hue_dir = !hue_dir;
+
+    if (random8() == 0)
+        sat_dir = !sat_dir;
+
+}
+
 void led_module::setColor(uint8_t hue, uint8_t sat) {
     currentColor.hue = hue;
     currentColor.sat = sat;
+}
+
+void led_module::exhibitionColor(){
+    static CHSV green = CHSV(0, currentColor.sat, 255);
+    static CHSV red = CHSV(96, currentColor.sat, 255);
+    static CHSV yellow = CHSV(60, currentColor.sat, 255);
+    static CHSV orange = CHSV(80, currentColor.sat, 255);
+    static CHSV blue = CHSV(160, currentColor.sat, 255);
+    static int blendercounter = 0; 
+    static uint8_t stepcounter = 0; 
+    static unsigned long lastUpdate = 0;
+    const unsigned long fadeInterval = 100;
+
+
+    if (millis() - lastUpdate > fadeInterval) {
+        lastUpdate = millis();
+
+        if (blendercounter == 0) { 
+            switch (stepcounter%4)
+            {
+            case 0:
+                currentColor.hue = green.hue;
+                currentColor.sat = green.sat;
+                break;
+            case 1:
+                currentColor.hue = yellow.hue;
+                currentColor.sat = yellow.sat;
+                break;
+            case 2:
+                currentColor.hue = orange.hue;
+                currentColor.sat = orange.sat;
+                break;
+            case 3:
+                currentColor.hue = red.hue;
+                currentColor.sat = red.sat;
+            default:
+                break;
+            }
+        }else{
+            CHSV blended;
+            switch (stepcounter%4)
+            {
+            case 0:
+                blended = blend(green, yellow, ((256/30.0)*blendercounter));
+                // blended = green;
+                break;
+            case 1:
+                blended = blend(yellow, orange, ((256/30.0)*blendercounter));
+                // blended = yellow;
+                break;
+            case 2:
+                blended = blend(orange, red, ((256/30.0)*blendercounter));
+                // blended = orange;
+                break;
+            case 3:
+                blended = blend(red, green, ((256/30.0)*blendercounter));
+                break;
+            default:
+                break;
+            }
+            currentColor.hue = blended.hue;
+            currentColor.sat = blended.sat;
+        }
+        blendercounter++;
+        if (blendercounter > 29){
+            stepcounter++;
+            blendercounter = 0;
+        }
+    }
 }
 
 void led_module::updateColor() {
@@ -166,7 +263,8 @@ bool led_module::breatheAnimation() {
 
     if (wait_ms(20)) return false;
 
-    updateColor();
+    // updateColor();
+    exhibitionColor();
     fill_solid(leds, NUM_LEDS, CHSV(currentColor.hue, currentColor.sat, a));
     FastLED.show();
 
