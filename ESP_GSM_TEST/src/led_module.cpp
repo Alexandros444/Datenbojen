@@ -21,12 +21,15 @@ void led_module::begin() {
 void led_module::loop() {
     switch (anim_func){
     case 0:
+    case 1:
+    case 2:
+    case 3:
     /* code */
         anim_done = breatheAnimation();
         break;
-    // case 1:
-    //     anim_done = circularAnimation(light);
-    //     break;
+    case 4:
+        anim_done = circularAnimation(light);
+        break;
     // case 2:
     //     anim_done = breatheAnimation();
     //     break;
@@ -37,7 +40,7 @@ void led_module::loop() {
     //     anim_done = staticBrightness();
     //     break;
     default:
-        anim_func %= 1;
+        anim_func %= 5;
         break;
     }
 
@@ -94,7 +97,9 @@ void led_module::exhibitionColor(){
     static int blendercounter = 0; 
     static uint8_t stepcounter = 0; 
     static unsigned long lastUpdate = 0;
-    const unsigned long fadeInterval = 100;
+
+    // Dauer Farbwechsel
+    const unsigned long fadeInterval = 2000;
 
 
     if (millis() - lastUpdate > fadeInterval) {
@@ -244,9 +249,9 @@ bool led_module::circularAnimation(circularType animation) {
 
     if (wait_ms(20)) return false;
 
-    updateColor();
+    //updateColor();
     for (int i = 0; i < NUM_LEDS; i++) {
-        leds[i] = CHSV(currentColor.hue, currentColor.sat, tempbar[i]);
+        leds[i] = CHSV(160, 255, tempbar[i]);
     }
     FastLED.show();
     rotateArr(tempbar);
@@ -260,9 +265,11 @@ bool led_module::breatheAnimation() {
 
     if (progress >= 4) return true;
 
-    if (wait_ms(200)) return false;
+    // Dauer Breathing
+    if (wait_ms(20)) return false;
 
-    updateColor();
+    exhibitionColor();
+    //updateColor();
     fill_solid(leds, NUM_LEDS, CHSV(currentColor.hue, currentColor.sat, a));
     FastLED.show();
 
