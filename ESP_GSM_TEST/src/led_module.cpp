@@ -21,13 +21,9 @@ void led_module::begin() {
 void led_module::loop() {
     switch (anim_func){
     case 0:
-    case 1:
-    case 2:
-    case 3:
-    /* code */
         anim_done = breatheAnimation();
         break;
-    case 4:
+    case 1:
         anim_done = circularAnimation(light);
         break;
     // case 2:
@@ -40,7 +36,7 @@ void led_module::loop() {
     //     anim_done = staticBrightness();
     //     break;
     default:
-        anim_func %= 5;
+        anim_func %= 2;
         break;
     }
 
@@ -351,7 +347,9 @@ bool led_module::staticBrightness() {
     return false;
 }
 
-
+/***
+ * Returns true until ms is over (since first call)
+ */
 bool led_module::wait_ms(unsigned long ms){
     if (millis() - last_time_ms < ms * TIMEFACTOR) 
         return true;

@@ -37,29 +37,31 @@ class SolarSystemSimulator:
         """Create separate windows for each plot"""
         # Battery Energy Plot (shows over- and underproduction)
         self.fig1, self.ax1 = plt.subplots(figsize=(12, 6))
-        self.fig1.canvas.manager.set_window_title('Battery Energy Level')
+        self.fig1.canvas.manager.set_window_title('Batterie-Ladezustand')
         plt.subplots_adjust(left=0.1, bottom=0.15, right=0.95, top=0.9)
 
         # Solar Power Plot (solar only, no overproduction shading here)
         self.fig2, self.ax2 = plt.subplots(figsize=(12, 6))
-        self.fig2.canvas.manager.set_window_title('Solar Power Generation')
+        self.fig2.canvas.manager.set_window_title('Solarertrag / Energieverbrauch')
         plt.subplots_adjust(left=0.1, bottom=0.15, right=0.95, top=0.9)
 
         # Power Consumption Plot (separate window)
         self.fig3, self.ax3 = plt.subplots(figsize=(12, 6))
-        self.fig3.canvas.manager.set_window_title('Power Consumption (Draw)')
+        self.fig3.canvas.manager.set_window_title('Energieverbrauch')
         plt.subplots_adjust(left=0.1, bottom=0.15, right=0.95, top=0.9)
+
+        self.ax3 = self.ax2.twinx()
 
         # System State and Energy Balance Plot (kept as a separate window)
         self.fig4, self.ax4 = plt.subplots(figsize=(12, 6))
-        self.fig4.canvas.manager.set_window_title('System State and Energy Balance')
+        self.fig4.canvas.manager.set_window_title('Systemzustand und Leistungsbilanz')
         plt.subplots_adjust(left=0.1, bottom=0.15, right=0.95, top=0.9)
     
     def setup_control_window(self):
         """Create a separate Tkinter window for parameter controls"""
         self.control_window = tk.Tk()
-        self.control_window.title("Solar System Parameters")
-        self.control_window.geometry("800x900")
+        self.control_window.title("Solarsimulation: Parameter")
+        self.control_window.geometry("800x750")
         
         # Create scrollable frame
         canvas = tk.Canvas(self.control_window)
@@ -100,12 +102,28 @@ class SolarSystemSimulator:
             ('start_day', 0, 99, 1, True)
         ]
         
+        # Deutsche Bezeichnungen für Parameter
+        param_display_names = {
+            'cycles_per_day': 'Zyklen pro Tag',
+            'battery_capacity_Wh': 'Batteriekapazität (Wh)',
+            'num_batteries': 'Anzahl Batterien',
+            'sleep_power_W': 'Ruheleistung (W)',
+            'measuring_power_W': 'Messleistung (W)',
+            'measuring_time_s': 'Messdauer (s)',
+            'sending_power_W': 'Sendeleistung (W)',
+            'sending_time_s': 'Sendedauer (s)',
+            'num_solar_cells': 'Anzahl Solarzellen',
+            'simulation_days': 'Simulations-Tage',
+            'start_day': 'Start-Tag'
+        }
+        
         self.sliders = {}
         row = 0
         
         for param, min_val, max_val, step, is_integer in param_configs:
             # Label
-            label = ttk.Label(scrollable_frame, text=param.replace('_', ' ').title())
+            display = param_display_names.get(param, param.replace('_', ' ').title())
+            label = ttk.Label(scrollable_frame, text=display)
             label.grid(row=row, column=0, sticky='w', padx=10, pady=8)
 
             # Current value label
@@ -137,8 +155,8 @@ class SolarSystemSimulator:
                     # refresh plots immediately
                     self.simulate_and_plot()
 
-                prev_btn = ttk.Button(scrollable_frame, text="<< -5 days", command=lambda d=-5: change_start(d))
-                next_btn = ttk.Button(scrollable_frame, text="+5 days >>", command=lambda d=5: change_start(d))
+                prev_btn = ttk.Button(scrollable_frame, text="<< -5 Tage", command=lambda d=-5: change_start(d))
+                next_btn = ttk.Button(scrollable_frame, text="+5 Tage >>", command=lambda d=5: change_start(d))
                 prev_btn.grid(row=row, column=2, padx=6, pady=8, sticky='w')
                 next_btn.grid(row=row, column=3, padx=6, pady=8, sticky='w')
 
@@ -183,7 +201,7 @@ class SolarSystemSimulator:
         self.sun_days_Wh : list[float] = [1]  # Start with one day
 
         # --- start: separate horizontal scrollable box for day entries ---
-        sun_frame = ttk.LabelFrame(scrollable_frame, text="Per-day solar Wh")
+        sun_frame = ttk.LabelFrame(scrollable_frame, text="Solarverlauf - Wh pro Tag")
         sun_frame.grid(row=row, column=0, columnspan=8, sticky="ew", padx=5, pady=4)
 
         # allow the sun_canvas to expand horizontally (do not force small fixed width)
@@ -223,7 +241,7 @@ class SolarSystemSimulator:
                 cell.grid_propagate(False)
                 cell.grid(row=0, column=i, padx=8, pady=6)
 
-                lbl = ttk.Label(cell, text=f"Day {i}", anchor="center")
+                lbl = ttk.Label(cell, text=f"Tag {i}", anchor="center")
                 lbl.pack(side="top", fill="x", padx=2)
                 entry = ttk.Entry(cell, width=5, justify="center")
                 entry.insert(0, str(val))
@@ -249,8 +267,8 @@ class SolarSystemSimulator:
         btn_frame = ttk.Frame(scrollable_frame)
         btn_frame.grid(row=row + 1, column=0, columnspan=3, sticky="w", pady=(4, 10))
 
-        add_btn = ttk.Button(btn_frame, text="Add Day", command=add_day)
-        remove_btn = ttk.Button(btn_frame, text="Remove Day", command=remove_day)
+        add_btn = ttk.Button(btn_frame, text="+ Tag", command=add_day)
+        remove_btn = ttk.Button(btn_frame, text="- Tag", command=remove_day)
         add_btn.pack(side="left", padx=(0, 6))
         remove_btn.pack(side="left")
 
@@ -273,9 +291,9 @@ class SolarSystemSimulator:
             read_sun_day_values()
             self.simulate_and_plot()
 
-        update_btn = ttk.Button(scrollable_frame, text="Update Simulation",
+        update_btn = ttk.Button(scrollable_frame, text="Simulation aktualisieren",
                                 command=update_simulation)
-        update_btn.grid(row=row + 20, column=0, columnspan=3, pady=30, ipady=10)
+        update_btn.grid(row=row, column=3, columnspan=3, pady=20, ipady=20)
         
         # Add style to button
         style = ttk.Style()
@@ -436,57 +454,64 @@ class SolarSystemSimulator:
         time_plot = time_hours[mask]
 
         # Plot 1: Battery Energy Level (show over- and underproduction here)
-        self.ax1.plot(time_plot, data['battery_energy'][mask], 'b-', linewidth=2, label='Battery Energy')
+        self.ax1.plot(time_plot, data['battery_energy'][mask], 'b-', linewidth=2, label='Batterieenergie')
         self.ax1.axhline(y=data['total_battery_capacity'], color='r', linestyle='--',
-                         alpha=0.7, label=f'Battery Capacity ({data["total_battery_capacity"]:.1f} Wh)')
+                         alpha=0.7, label=f'Batteriekapazität ({data["total_battery_capacity"]:.1f} Wh)')
         self.ax1.axhline(y=0, color='k', linestyle='--', alpha=0.5)
 
         # Underproduction: battery at (near) 0
         underproduction_mask = data['battery_energy'][mask] <= 0.01
         if np.any(underproduction_mask):
             self.ax1.fill_between(time_plot, 0, data['total_battery_capacity'],
-                                  where=underproduction_mask, alpha=0.25, color='red',
-                                  label='Underproduction (Battery empty)')
+                                    where=underproduction_mask, alpha=0.25, color='red',
+                                    label='Unterproduktion (Batterie leer)')
 
         # Overproduction: solar > consumption while battery is (nearly) full -> wasted energy
         overproduction_mask = (data['solar_power'][mask] > data['power_consumption'][mask]) & \
                               (data['battery_energy'][mask] >= data['total_battery_capacity'] * 0.99)
 
-        
-
         if np.any(overproduction_mask):
             # highlight the unused capacity region above current battery up to capacity
             self.ax1.fill_between(time_plot, 0, data['total_battery_capacity'],
                                   where=overproduction_mask, alpha=0.25, color='green',
-                                  label='Overproduction (Wasted)')
+                                  label='Überproduktion (Betterie voll)')
 
-        self.ax1.set_ylabel('Energy (Wh)', fontsize=12)
-        self.ax1.set_xlabel('Time (hours)', fontsize=12)
-        self.ax1.set_title('Battery Energy Level Over Time', fontsize=14, fontweight='bold')
+        self.ax1.set_ylabel('Energie (Wh)', fontsize=12)
+        self.ax1.set_xlabel('Zeit (Stunden)', fontsize=12)
+        self.ax1.set_title('Batterie-Ladezustand', fontsize=14, fontweight='bold')
         self.ax1.legend(loc='upper right')
         self.ax1.grid(True, alpha=0.3)
 
         # Plot 2: Solar Power (no overproduction shading here)
-        self.ax2.plot(time_plot, data['solar_power'][mask], color='orange', linewidth=1, label='Solar Power (W)')
-        self.ax2.fill_between(time_plot, 0, data["solar_power"][mask], color="orange")
-        self.ax2.set_ylabel('Solar Power (W)', fontsize=12)
-        self.ax2.set_title('Solar Power Generation', fontsize=14, fontweight='bold')
-        self.ax2.set_xlabel('Time (hours)', fontsize=12)
-        self.ax2.legend(loc='upper right')
+        self.ax2.plot(time_plot, data['solar_power'][mask], color='orange', linewidth=1, label='Solarleistung (W)')
+        self.ax2.fill_between(time_plot, 0, data["solar_power"][mask], color="orange", alpha=0.25)
+        self.ax2.set_ylabel('Solarleistung (W)', fontsize=12)
+        self.ax2.set_title('Solarertrag / Energieverbrauch', fontsize=14, fontweight='bold')
+        self.ax2.set_xlabel('Zeit (Stunden)', fontsize=12)
+        # self.ax2.legend(loc='upper right')
         self.ax2.grid(True, alpha=0.3)
 
+
         # Plot 3: Power Consumption (separate window)
-        self.ax3.plot(time_plot, data['power_consumption'][mask], color='red', linewidth=1.5, linestyle='--',
-                      label='Power Consumption (W)')
-        self.ax3.set_ylabel('Power Consumption (W)', fontsize=12)
-        self.ax3.set_xlabel('Time (hours)', fontsize=12)
-        self.ax3.set_title('Power Consumption (Draw)', fontsize=14, fontweight='bold')
-        self.ax3.legend(loc='upper right')
-        self.ax3.grid(True, alpha=0.3)
+        self.ax3.set_ylabel('Energieverbrauch (W)', fontsize=12)
+        self.ax3.plot(time_plot, data['power_consumption'][mask], color='red', linewidth=.5, linestyle='--',
+                      label='Energieverbrauch (W)')
+        self.ax3.yaxis.set_label_position("right")
+        self.ax3.fill_between(time_plot, 0, data["power_consumption"][mask], color="red", alpha=0.25)
+        # self.ax3.set_xlabel('Zeit (Stunden)', fontsize=12)
+        # self.ax3.set_title('Energieverbrauch', fontsize=14, fontweight='bold')
+        # self.ax3.legend(loc='upper left')
+        # self.ax3.grid(True, alpha=0.3)
+
+        lines2, labels2 = self.ax2.get_legend_handles_labels()
+        lines3, labels3 = self.ax3.get_legend_handles_labels()
+        self.ax3.legend(lines2 + lines3, labels2 + labels3, loc="upper right")
+
+        self.fig2.tight_layout()
 
         # Plot 4: System State and Energy Balance (kept similar to before)
         state_colors = ['lightblue', 'lightgreen', 'lightcoral']
-        state_labels = ['Sleep', 'Measuring', 'Sending']
+        state_labels = ['Ruhezustand', 'Messen', 'Senden']
         for state in range(3):
             state_mask = (data['system_state'][mask] == state)
             if np.any(state_mask):
@@ -495,13 +520,13 @@ class SolarSystemSimulator:
                     max_val = 1
                 self.ax4.fill_between(time_plot, -max_val, max_val, where=state_mask,
                                       alpha=0.3, color=state_colors[state],
-                                      label=f'{state_labels[state]} State')
+                                      label=f'{state_labels[state]}')
         self.ax4.plot(time_plot, data['energy_balance'][mask] * 60, 'purple', linewidth=2,
-                      label='Net Power Balance (W)')
+                      label='Leistungsbilanz (W)')
         self.ax4.axhline(y=0, color='k', linestyle='--', alpha=0.7, linewidth=1)
-        self.ax4.set_ylabel('Net Power (W)', fontsize=12)
-        self.ax4.set_xlabel('Time (hours)', fontsize=12)
-        self.ax4.set_title('System State and Net Power Balance', fontsize=14, fontweight='bold')
+        self.ax4.set_ylabel('Leistung (W)', fontsize=12)
+        self.ax4.set_xlabel('Zeit (Stunden)', fontsize=12)
+        self.ax4.set_title('Systemzustand und Leistungsbilanz', fontsize=14, fontweight='bold')
         self.ax4.legend(loc='upper right')
         self.ax4.grid(True, alpha=0.3)
 
@@ -518,9 +543,9 @@ class SolarSystemSimulator:
                     if day * 24 + start_hour + hour <= end_hour:
                         ticks.append(day * 24 + start_hour + hour)
                         if hour == 0:
-                            labels.append(f'Day {day + start_day}\n00:00')
+                            labels.append(f'Tag {day + start_day}\n')
                         else:
-                            labels.append('12:00')
+                            labels.append('12h')
             ax.set_xticks(ticks)
             ax.set_xticklabels(labels, rotation=0, ha='center')
 
