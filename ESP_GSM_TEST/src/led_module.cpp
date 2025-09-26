@@ -8,7 +8,6 @@ std::vector<int> bm(NUM_LEDS);
 std::vector<int> lh(NUM_LEDS);
 
 
-
 void led_module::begin() {
     gen_bm();
     gen_lh();
@@ -29,6 +28,7 @@ void led_module::loop() {
     case 6:
     case 7:
     case 8:
+    /* code */
         anim_done = breatheAnimation();
         break;
     case 9:
