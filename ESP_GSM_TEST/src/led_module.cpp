@@ -21,9 +21,17 @@ void led_module::begin() {
 void led_module::loop() {
     switch (anim_func){
     case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
         anim_done = breatheAnimation();
         break;
-    case 1:
+    case 9:
         anim_done = circularAnimation(light);
         break;
     // case 2:
@@ -36,7 +44,7 @@ void led_module::loop() {
     //     anim_done = staticBrightness();
     //     break;
     default:
-        anim_func %= 2;
+        anim_func %= 10;
         break;
     }
 
