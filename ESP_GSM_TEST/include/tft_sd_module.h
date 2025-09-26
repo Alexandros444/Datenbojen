@@ -1,6 +1,8 @@
 #ifndef TFT_MODULE_H
 #define TFT_MODULE_H
 
+// TFT SETUP
+#include "User_Setup.h"
 #include <TFT_eSPI.h>
 #include <SD.h>
 #include <SPI.h>
