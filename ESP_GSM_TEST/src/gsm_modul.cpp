@@ -3,15 +3,21 @@
 sim_status gsm_module::begin(){
     Serial.println("Setting up GSM module...");
 
+    pinModePCF(GSM_POWER_PIN, OUTPUT);
+    digitalWritePCF(GSM_POWER_PIN, HIGH);
+
     // Set GSM module baud rate
     // Set GSM module baud rate and UART pins
     SerialAT.begin(GSM_BAUD, SERIAL_8N1, MODEM_RX, MODEM_TX);
 
-    if (!modem.testAT(1000)){
+    delay(5000);
+
+    if (!modem.testAT()){
         Serial.println("GSM Module: Not Responding!");
         last_status = GSM_MODULE_ERROR;
         return GSM_MODULE_ERROR;
     }
+    init = true;
     // Reset Modem
     // resetModem();
     // delay(6000);
@@ -36,6 +42,15 @@ sim_status gsm_module::begin(){
     return GSM_STATUS_OK;
 }
 
+void gsm_module::turn_off(){
+    Serial.println("Turning off GSM module...");
+    modem.poweroff();
+    delay(1000);
+    digitalWritePCF(GSM_POWER_PIN, LOW);
+    init = false;
+    Serial.println("GSM module powered off.");
+}
+
 
 void gsm_module::relay_serial(){
     if (Serial.available()) {
@@ -52,10 +67,11 @@ void gsm_module::relay_serial(){
     // delay(1);
 }
 void gsm_module::loop(){
-    
-    if (debug_mode){
+    if (!init)
+        return;
+
+    if (debug_mode)
         relay_serial();
-    }
 }
 
 void gsm_module::ask_debug_mode(){

@@ -14,6 +14,7 @@
 #define DS18B20_PIN 33
 #define TDS_ADC_PIN 0
 #define PH_ADC_PIN 1
+#define ACS712_ADC_PIN 1 // ACS712 Stromsensor, optional
 #define DO_ADC_PIN 2
 #define TRB_ADC_PIN 3
 
@@ -46,6 +47,7 @@ public:
     void print();
     float readTemperature();
     float readTurbidity(float temperature);
+    float read_Current_mA();
 
     float tdsValue = 0;  // hier feste Werte von TDS-Messwerte definiert (Variable für den TDS-Wert)
     float phValue = 0;
