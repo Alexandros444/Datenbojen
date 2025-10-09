@@ -9,6 +9,7 @@
         "initializer_list": "cpp",
         "bitset": "cpp",
         "format": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "cstddef": "cpp"
     }
 }

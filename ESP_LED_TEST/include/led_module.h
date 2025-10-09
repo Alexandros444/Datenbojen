@@ -4,7 +4,7 @@
 #include <FastLED.h>
 
 
-#define NUM_LEDS 144
+#define NUM_LEDS 4
 #define DATA_PIN 4
 #define SATURATION 255
 #define MAX_BRIGHTNESS 100

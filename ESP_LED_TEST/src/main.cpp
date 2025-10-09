@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#include <FastLED.h>
 #include <bits/stdc++.h>
 #include "led_module.h"
 
@@ -11,11 +10,12 @@ led_module led;
 void setup() {
   // put your setup code here, to run once:
   led.begin();
+  
 }
 
 
 void loop() {
-  led.loop();
+  // led.loop();
 }
 
 

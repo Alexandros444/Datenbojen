@@ -13,6 +13,7 @@ void led_module::begin() {
     gen_lh();
     FastLED.addLeds<WS2812B, DATA_PIN>(leds, NUM_LEDS);
     FastLED.clear();
+    fill_rainbow(leds, NUM_LEDS, 160, 20);
     FastLED.show();
 }
 
