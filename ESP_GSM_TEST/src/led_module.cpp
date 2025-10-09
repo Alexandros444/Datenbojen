@@ -8,7 +8,6 @@ std::vector<int> bm(NUM_LEDS);
 std::vector<int> lh(NUM_LEDS);
 
 
-
 void led_module::begin() {
     gen_bm();
     gen_lh();
@@ -19,27 +18,15 @@ void led_module::begin() {
 
 
 void led_module::loop() {
-    switch (anim_func){
-    case 0:
-        anim_done = breatheAnimation();
-        break;
-    case 1:
-        anim_done = circularAnimation(light);
-        break;
-    // case 2:
-    //     anim_done = breatheAnimation();
-    //     break;
-    // case 3:
-    //     //anim_done = pulseAnimation();
-    //     break;
-    // case 4:
-    //     anim_done = staticBrightness();
-    //     break;
-    default:
-        anim_func %= 2;
-        break;
-    }
 
+    if (anim_func < 9)
+        anim_done = breatheAnimation();
+
+    if (anim_func == 9)
+        anim_done = circularAnimation(light);
+
+    anim_func %= 10;
+    
     if (anim_done){
         anim_func++;
         anim_done = false;
@@ -92,6 +79,7 @@ void led_module::exhibitionColor(){
     static CHSV blue = CHSV(160, currentColor.sat, 255);
     static int blendercounter = 0; 
     static uint8_t stepcounter = 0; 
+    static bool reverse = false;
     static unsigned long lastUpdate = 0;
 
     // Dauer Farbwechsel
@@ -101,56 +89,48 @@ void led_module::exhibitionColor(){
     if (millis() - lastUpdate > fadeInterval) {
         lastUpdate = millis();
 
+        CHSV startColor, endColor, blended;
+
+        // choose start/end pair depending on step and direction (forward/back)
+        switch (stepcounter % 4)
+        {
+            case 0:
+                if (!reverse) { startColor = green; endColor = yellow; }
+                else         { startColor = green; endColor = red; }
+                break;
+            case 1:
+                if (!reverse) { startColor = yellow; endColor = orange; }
+                else         { startColor = red; endColor = orange; }
+                break;
+            case 2:
+                if (!reverse) { startColor = orange; endColor = red; }
+                else         { startColor = orange; endColor = yellow; }
+                break;
+            case 3:
+                if (!reverse) { startColor = red; endColor = green; }
+                else         { startColor = yellow; endColor = green; }
+                break;
+            default:
+                break;
+        }
+
         if (blendercounter == 0) { 
-            switch (stepcounter%4)
-            {
-            case 0:
-                currentColor.hue = green.hue;
-                currentColor.sat = green.sat;
-                break;
-            case 1:
-                currentColor.hue = yellow.hue;
-                currentColor.sat = yellow.sat;
-                break;
-            case 2:
-                currentColor.hue = orange.hue;
-                currentColor.sat = orange.sat;
-                break;
-            case 3:
-                currentColor.hue = red.hue;
-                currentColor.sat = red.sat;
-            default:
-                break;
-            }
-        }else{
-            CHSV blended;
-            switch (stepcounter%4)
-            {
-            case 0:
-                blended = blend(green, yellow, ((256/30.0)*blendercounter));
-                // blended = green;
-                break;
-            case 1:
-                blended = blend(yellow, orange, ((256/30.0)*blendercounter));
-                // blended = yellow;
-                break;
-            case 2:
-                blended = blend(orange, red, ((256/30.0)*blendercounter));
-                // blended = orange;
-                break;
-            case 3:
-                blended = blend(red, green, ((256/30.0)*blendercounter));
-                break;
-            default:
-                break;
-            }
+            currentColor.hue = startColor.hue;
+            currentColor.sat = startColor.sat;
+        } else {
+            blended = blend(startColor, endColor, ((256/30.0)*blendercounter));
             currentColor.hue = blended.hue;
             currentColor.sat = blended.sat;
         }
+
         blendercounter++;
         if (blendercounter > 29){
-            stepcounter++;
             blendercounter = 0;
+            stepcounter++;
+            if (stepcounter >= 4){
+                stepcounter = 0;
+                reverse = !reverse; // toggle direction each full cycle
+            }
         }
     }
 }
@@ -168,6 +148,7 @@ void led_module::updateColor() {
         lastUpdate = millis();
 
         CHSV blended = blend(startColor, targetColor, blendAmount);
+
         currentColor.hue = blended.hue;
         currentColor.sat = blended.sat;
 

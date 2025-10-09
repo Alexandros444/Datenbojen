@@ -45,6 +45,9 @@ public:
     void print_quotes();
     void print_offset(String text, int row, int offset);
     void print_offset(String text, int offset);
+    void debug_info(void);
+    void printProcessorName(setup_t user);
+    int8_t getPinName(setup_t user, int8_t pin);
 };
 
 
