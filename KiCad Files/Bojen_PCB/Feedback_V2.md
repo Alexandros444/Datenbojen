@@ -9,6 +9,7 @@
 
 ## Sim Module
 - [x] Silkscreen missing
+- [ ] Mosfet DOES NOT WORK, Wenn ESP aus, wird gpio auf GND gezogen,  ~1.1V gemessen Spannungsteiler innenwiderstand berechnen? Auf Nicht inv. wechseln
 
 
 ## TMP Sensor
@@ -49,8 +50,16 @@
 
 # Sensoren
 - [x] Sensoren Distanz zu Board anschlüssen sind zu kurz für Steckverbindungen
+- ADC Pins beschriften Bei Sensoren A0-A3
 
 
 # Board
 - Alle Pins rausbringen (oben Vcc anschlüsse etc.)
 - [x] Alle GPIO Pin header für extension board
+- GPIO Default connected pins (everywhere solder work minimizing)
+
+# LED
+- Braucht kein Widerstand für Data weil, ESP 3.3V
+
+# Timer
+- [x] Buffer Capacitor

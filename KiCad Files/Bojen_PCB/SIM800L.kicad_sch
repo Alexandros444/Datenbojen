@@ -571,6 +571,250 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Simulation_SPICE:NPN"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q"
+				(at -2.54 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "NPN"
+				(at -2.54 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 63.5 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
+				(at 63.5 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "NPN"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Type" "GUMMELPOON"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=C 2=B 3=E"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "simulation"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "NPN_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy 0.635 0)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 1.905) (xy 0.635 -1.905) (xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 0.635) (xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 -0.635) (xy 2.54 -2.54) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.27 0)
+					(radius 2.8194)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778) (xy 1.27 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 -1.27) (xy 2.794 -1.27)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 -1.27) (xy 2.794 -1.27)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "NPN_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin open_collector line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin open_emitter line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Transistor_FET:IRF4905"
 			(pin_names
 				(hide yes)
@@ -1291,6 +1535,16 @@
 		)
 		(uuid "6959df83-7c3a-448c-a395-c436b98c9875")
 	)
+	(text "DOES NOT WORK, Wenn ESP aus, wird gpio auf GND gezogen, \n~1.1V gemessen Spannungsteiler innenwiderstand berechnen?\n\nAuf Nicht inv. wechseln"
+		(exclude_from_sim no)
+		(at 40.64 70.104 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "ec88fbb3-9c9f-45d6-a480-7c902306c7ae")
+	)
 	(junction
 		(at 85.09 71.12)
 		(diameter 0)
@@ -1383,6 +1637,16 @@
 	)
 	(wire
 		(pts
+			(xy 45.72 58.42) (xy 50.8 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3531be35-516f-4dbd-88a3-afdebf3b70aa")
+	)
+	(wire
+		(pts
 			(xy 74.93 66.04) (xy 85.09 66.04)
 		)
 		(stroke
@@ -1400,16 +1664,6 @@
 			(type default)
 		)
 		(uuid "570ce08e-7511-42f0-b20a-04b89b9473d9")
-	)
-	(wire
-		(pts
-			(xy 43.18 58.42) (xy 50.8 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "577e0cc9-ba6d-415b-8063-e09f94337452")
 	)
 	(wire
 		(pts
@@ -1493,6 +1747,16 @@
 	)
 	(wire
 		(pts
+			(xy 36.83 50.8) (xy 45.72 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0adc88a-47cf-4bd5-9834-b992bfd68d1d")
+	)
+	(wire
+		(pts
 			(xy 74.93 46.99) (xy 85.09 46.99)
 		)
 		(stroke
@@ -1500,6 +1764,16 @@
 			(type default)
 		)
 		(uuid "ae8daac8-6488-4765-96e1-7dfd0b814416")
+	)
+	(wire
+		(pts
+			(xy 45.72 50.8) (xy 45.72 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b14e0474-8496-4d66-b155-bac38d561662")
 	)
 	(wire
 		(pts
@@ -1540,17 +1814,6 @@
 			(type default)
 		)
 		(uuid "ddc6bdd6-9b6c-4bb5-b93a-d260e503407f")
-	)
-	(hierarchical_label "~EN"
-		(shape input)
-		(at 43.18 58.42 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "29e1aeed-241b-4aa5-9373-e793bea95e19")
 	)
 	(hierarchical_label "RST"
 		(shape input)
@@ -1606,6 +1869,17 @@
 			(justify right)
 		)
 		(uuid "b1890668-7a3e-46df-a50d-8e8ffd13c93b")
+	)
+	(hierarchical_label "~EN"
+		(shape input)
+		(at 21.59 55.88 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "dd462d32-826a-474e-8397-b1c75d313083")
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
@@ -1741,6 +2015,72 @@
 			(project "Bojen_PCB"
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1/3473ecb0-236e-4adf-abc3-db7e0a51e356"
 					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 36.83 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1dec4f06-fabb-4e88-8008-32ffc1a44f20")
+		(property "Reference" "#PWR013"
+			(at 36.83 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 36.83 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 36.83 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 36.83 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 36.83 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "06e2fd55-18d0-43fa-8412-443a8cc1463b")
+		)
+		(instances
+			(project ""
+				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1/3473ecb0-236e-4adf-abc3-db7e0a51e356"
+					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -2031,6 +2371,106 @@
 		)
 	)
 	(symbol
+		(lib_id "Simulation_SPICE:NPN")
+		(at 34.29 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6f9bedb2-e60b-4211-89c8-58ed7fe55aad")
+		(property "Reference" "Q2"
+			(at 39.37 54.6099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "NPN"
+			(at 39.37 57.1499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 97.79 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#cha_BJTs"
+			(at 97.79 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Bipolar transistor symbol for simulation only, substrate tied to the emitter"
+			(at 34.29 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Device" "NPN"
+			(at 34.29 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Type" "GUMMELPOON"
+			(at 34.29 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=C 2=B 3=E"
+			(at 34.29 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "71eaba1a-0768-4032-adbb-7013a8a2eef8")
+		)
+		(pin "1"
+			(uuid "049419f7-adc5-4cc9-ab7e-887a9db60488")
+		)
+		(pin "3"
+			(uuid "b855001a-47e4-4cd8-b5e5-cd189d010c54")
+		)
+		(instances
+			(project ""
+				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1/3473ecb0-236e-4adf-abc3-db7e0a51e356"
+					(reference "Q2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "alexandros444_lib:SIM800L-CORE")
 		(at 105.41 95.25 0)
 		(unit 1)
@@ -2188,6 +2628,74 @@
 			(project ""
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1/3473ecb0-236e-4adf-abc3-db7e0a51e356"
 					(reference "#PWR06")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 25.4 55.88 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bff6fc1f-90bc-4504-b493-c2cc4330b2e0")
+		(property "Reference" "R7"
+			(at 25.4 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10K"
+			(at 25.4 52.07 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 25.4 57.658 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 25.4 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4ba1cc2d-ca07-4a75-8d67-c47f1c76e34e")
+		)
+		(pin "1"
+			(uuid "de52c909-2e75-472c-8048-6ee099a11ad2")
+		)
+		(instances
+			(project ""
+				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1/3473ecb0-236e-4adf-abc3-db7e0a51e356"
+					(reference "R7")
 					(unit 1)
 				)
 			)

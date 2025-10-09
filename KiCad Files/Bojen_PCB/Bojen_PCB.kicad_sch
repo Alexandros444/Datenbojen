@@ -3653,6 +3653,16 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "Buffer Capacitor, sonst Flicker"
+		(exclude_from_sim no)
+		(at 96.774 20.828 0)
+		(effects
+			(font
+				(size 0.762 0.762)
+			)
+		)
+		(uuid "08ad1420-2c84-4469-824e-da2d1b0de0dd")
+	)
 	(text "TTL Adapter / \nChip needed\n(not worth it)"
 		(exclude_from_sim no)
 		(at 132.842 35.814 0)
@@ -3692,6 +3702,12 @@
 			)
 		)
 		(uuid "afdd81b1-b96c-4a6c-91fd-9774cb816137")
+	)
+	(junction
+		(at 68.58 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "10f88632-b6a9-478a-8024-981684d188ab")
 	)
 	(junction
 		(at 72.39 73.66)
@@ -4631,6 +4647,16 @@
 	)
 	(wire
 		(pts
+			(xy 62.23 48.26) (xy 68.58 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14c554a1-8965-44d6-b44a-81a8d1acfe7c")
+	)
+	(wire
+		(pts
 			(xy 81.28 24.13) (xy 95.25 24.13)
 		)
 		(stroke
@@ -4688,6 +4714,16 @@
 			(type default)
 		)
 		(uuid "30303e9a-79d2-4d8e-9d2c-f1fbec3a84f1")
+	)
+	(wire
+		(pts
+			(xy 62.23 44.45) (xy 62.23 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "310cee2b-d5cf-43bc-8de4-8827dff49f77")
 	)
 	(wire
 		(pts
@@ -4998,6 +5034,16 @@
 			(type default)
 		)
 		(uuid "97d26ba4-6ac3-4542-b968-e26cb88bdeb5")
+	)
+	(wire
+		(pts
+			(xy 62.23 36.83) (xy 62.23 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9abd5d5d-db53-496f-91db-791f09ea0f10")
 	)
 	(wire
 		(pts
@@ -8880,6 +8926,76 @@
 			(project "Bojen_PCB"
 				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
 					(reference "J20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 62.23 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8abb06df-90fb-4cb5-a7cc-df34d0b1f00d")
+		(property "Reference" "C14"
+			(at 66.04 39.3699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10u"
+			(at 66.04 41.9099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 63.1952 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 62.23 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 62.23 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9da0cc50-2527-4514-af95-bba71cc95a08")
+		)
+		(pin "2"
+			(uuid "5e3eb23f-b8ed-4c93-a8f5-ccfec0fcbef9")
+		)
+		(instances
+			(project ""
+				(path "/88bb7a71-704b-4bd6-bab4-d44bdefe0db1"
+					(reference "C14")
 					(unit 1)
 				)
 			)
