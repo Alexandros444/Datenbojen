@@ -1,6 +1,8 @@
 #ifndef TFT_MODULE_H
 #define TFT_MODULE_H
 
+// TFT SETUP
+#include "User_Setup.h"
 #include <TFT_eSPI.h>
 #include <SD.h>
 #include <SPI.h>
@@ -31,12 +33,21 @@ public:
     void print_connection_status(gsm_module* gsm); // Function to print connection status
     // void draw_image(const char* filename, sd_module* sd); // Function to draw an image on the TFT display
     int draw_bmp_img(File bmpFile, uint8_t x, uint16_t y);
-
+    
     SPIClass& getSPIinstance(void);
 
     int width() { return tft.width(); };
     int height() { return tft.height(); };
-
+    
+    void print_connection_status_example();
+    void print_sensors_example();
+    void print_url();
+    void print_quotes();
+    void print_offset(String text, int row, int offset);
+    void print_offset(String text, int offset);
+    void debug_info(void);
+    void printProcessorName(setup_t user);
+    int8_t getPinName(setup_t user, int8_t pin);
 };
 
 
@@ -50,7 +61,7 @@ public:
     sd_module() {};
     ~sd_module() {};
 
-    void begin(tft_module tft);
+    void begin(tft_module* tft);
     void listFiles();
     // int loadBitmap(const char* filename, uint8_t* buffer);
     File openFile(char* filename);

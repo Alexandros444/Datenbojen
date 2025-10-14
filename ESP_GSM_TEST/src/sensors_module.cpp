@@ -7,11 +7,17 @@ void sensors_module::begin(adc_module* adc) {
   Serial.println("Initializing sensors...");
 
   gravityTds.begin(TDS_ADC_PIN, adc, TDS_EEPROM_ADDRESS); // Initialize TDS sensor
-  ph.begin(); 
+  
+  #ifdef ACS712_ADC_PIN
+    ph.begin(); 
+  #endif
 
   // Sauerstoffsensor initialisieren
   if (DO.begin(DO_ADC_PIN, adc, DO_EEPROM_ADDRESS))
     Serial.println("EEPROM für den DO-Sensor geladen");
+
+  // DO.cal();
+
 
   // DO.cal_clear();
   
@@ -36,21 +42,22 @@ void sensors_module::print()
     gravityTds.update();                       // sample and calculate
     tdsValue = gravityTds.getTdsValue(); // then get the value (TDS-Wert in ppm)
 
+    #ifndef ACS712_ADC_PIN
     // ADC Depth 4096 lieber in #define ADC_RESOLUTION variable
     // pH-Sensor auslesen. Hier wird der analoge Wert eingelesen, in eine Spannung (in mV) umgerechnet
     float ph_voltage = adc->readVoltage(PH_ADC_PIN) * 1000; // Umrechnung in mV
 
     // Den gemessenen Spannungswert und die Temperatur an die pH-Berechnung übergeben
     phValue = ph.readPH(ph_voltage, temperature);
+    // pH-Kalibrierung: Diese Funktion verarbeitet serielle Kommandos zur Kalibrierung
+    ph.calibration(ph_voltage, temperature);
+    #endif
 
     // Trübheitssensor auslesen
     turbidity = readTurbidity(temperature);
 
     // Sauerstoffsensor (DO-Sensor) auslesen
     doValue = DO.read_do_percentage();
-
-    // pH-Kalibrierung: Diese Funktion verarbeitet serielle Kommandos zur Kalibrierung
-    ph.calibration(ph_voltage, temperature);
 
     // Ergebnisse ausgeben
     Serial.print("Temperature:");
@@ -154,4 +161,11 @@ float sensors_module::readTemperature() {
   float TemperatureSum = rawTemperature / 16.0;      // Umrechnung auf Grad Celsius
 
   return TemperatureSum;
+}
+
+
+float sensors_module::read_Current_mA(){
+  float voltage_mV = adc->readVoltage(ACS712_ADC_PIN) * 1000; // Spannung am ACS712-Sensor lesen
+  float current = (voltage_mV - 2500) / 185 * 1000; // Umrechnung in mA (für ACS712-5A)
+  return current;
 }

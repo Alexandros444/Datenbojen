@@ -1,103 +1,135 @@
-#include <Arduino.h>
+#include "gpio_module.h"
 
 #include "config.h"
 
-#include "webserver_util.h"
-#include "gps_module.h"
-#include "tft_sd_module.h"
+// #include "webserver_util.h"
+// #include "gps_module.h"
+// #include "tft_sd_module.h"
 #include "adc_module.h"
 #include "sensors_module.h"
-#include "led_module.h"
+// #include "led_module.h"
+// #include "display_module.h"
+// #include "lora_module.h"
+#include "wifi_module.h"
+#include "sleep_module.h"
+#include "gsm_module.h"
 
+gpio_module pcf;
+wifi_module wifi_mod;
+sleep_module sleep_mod;
+// lora_module lora;
 adc_module adc;
 sensors_module sensors;
-tft_module tft;
-sd_module sd;
+// tft_module tft;
+// sd_module sd;
 gsm_module gsm; // Create a GSM module instance
-led_module led;
-
-int disp_pages = 3;
-enum disp_page {
-    SENSORS,
-    CONNECTION_STATUS,
-    QR
-};
-disp_page current_page = SENSORS; // Default page to display
+// led_module led;
+// display_module display;
 
 
-void setup() {
+// TaskHandle_t Task1;
+// TaskHandle_t Task2;
 
-    Serial.begin(115200);
-    Serial.println("Serial Initialzied.");
+// void led_loop(void *pvParameters);
 
-    delay(1000); // Wait for Serial Monitor to open
-    
-    tft.begin(); // Initialize TFT display
-    sd.begin(tft);
+void setup(){
 
-    led.begin();
-    led.clear();
-    // webserverSetup();
+	Serial.begin(115200);
+	Serial.println("Serial Initialzied.");
 
-    // gps_setup();
-    gsm.begin();
-    
-    adc.begin();
-    
-    sensors.begin(&adc); // Initialize sensors with the ADC module
+	delay(1000); // Wait for Serial Monitor to open
+
+	pcf.begin();
+	// lora.begin();
+
+	sleep_mod.begin();
+
+	adc.begin();
+	sensors.begin(&adc);
+
+	gsm.begin();
+
+	delay(5000);
+	
+	wifi_mod.begin(&sensors, &gsm);
+
+
+	// pinMode(PCF0, OUTPUT);
+
+	// tft.begin(); // Initialize TFT display
+	// sd.begin(&tft);
+	// display.begin(&sd, &tft, &adc, &sensors);
+
+	// led.begin();
+	// // webserverSetup();
+
+	// // gps_setup();
+
+	// adc.begin();
+
+	// sensors.begin(&adc); // Initialize sensors with the ADC module
+
+	// Serial.println("Core in Use for Main Loop: "+ String(xPortGetCoreID()));
+
+	// xTaskCreatePinnedToCore(
+	//       led_loop, /* Function to implement the task */
+	//       "led_loop", /* Name of the task */
+	//       5000,  /* Stack size in words */
+	//       NULL,  /* Task input parameter */
+	//       0,  /* Priority of the task */
+	//       &Task1,  /* Task handle. */
+	//       0); /* Core where the task should run */
+
+	// gsm.begin();
+}
+
+static int retry_count = 0;
+
+void loop(){
+	while (gsm.is_debug_mode())
+		gsm.loop();
+
+	// delay(10000);
+	// lora.sendPacket("Test");
+	int transmission_status = wifi_mod.sendData();
+	Serial.printf("Wifi Packet status: %d, retry: %d\n", transmission_status, retry_count);
+
+	if (transmission_status != 0 && retry_count < 3) {
+		Serial.println("Error in data transmission, retrying in 10 seconds...");
+		delay(10000);
+		retry_count++;
+		return;
+	}
+	retry_count = 0;
+
+	Serial.println("Entering Sleep Mode");
+	
+	gsm.turn_off();
+
+	wifi_mod.turn_off();
+
+	sleep_mod.system_cut_power();
+
+	// digitalWrite(PCF0, HIGH);
+	// Serial.println("HIGH");
+	// delay(2000);
+	// digitalWrite(PCF0, LOW);
+	// Serial.println("LOW");
+	// delay(2000);	
+
+	// gsm.loop();
+
+	// display.loop();
 
 }
 
-// char* filenames[] = {"/qr_24.bmp","/qr.bmp","/qr_full.bmp","/test.bmp","/testM1.bmp", "/qr_blue.bmp", "/qr2.bmp"};
-
-
-void loop() {
-    // while (SerialAT.available()) {
-        //     Serial.write(SerialAT.read());
-        // }
-        // while (Serial.available()) {
-    //     SerialAT.write(Serial.read());
-    // }
-
-    // gps_loop();
-    
-    // tft_loop();
-    
-    // tft.dot_test();
-    // static int idx = 0;
-    // if (idx >= 7) idx = 0;
-    // File bmpFile = sd.openFile(filenames[idx++]);
-    // if (tft.draw_bmp_img(bmpFile, 0, 0) >= 0) {
-    // }
-    
-    // webserverLoop();
-    static unsigned long last_disp_time = 0;
-    if (millis() - last_disp_time > 10000) {
-        last_disp_time = millis();
-        adc.print_data();
-        sensors.print();
-        Serial.printf("Disp Page %d of %d\n", current_page, disp_pages);
-        if (current_page == SENSORS) {
-            tft.print_sensors(&adc, &sensors); // Print sensor values on the TFT display
-        }
-        else if (current_page == CONNECTION_STATUS) {
-            tft.print_connection_status(&gsm); // Print connection status on the TFT display
-        }
-        else if (current_page == QR) {
-            File bmpFile = sd.openFile("/qr.bmp");
-            tft.draw_bmp_img(bmpFile, 1, 1);
-        }
-        current_page = (disp_page)(((int)current_page + 1) % disp_pages);
-
-        //print esp FREE RAM
-        Serial.printf("Free RAM: %d\n", ESP.getFreeHeap());
-        //pritn esp FREE Flash
-        Serial.printf("Free Flash: %d\n", ESP.getFreeSketchSpace());
-        //print esp SKETCH SIZE
-        Serial.printf("Sketch Size: %d\n", ESP.getSketchSize());
-
-    }
-
-    led.loop();
-
-}
+// void led_loop(void *pvParameters)
+// {
+// 	Serial.println("Core in Use for LED Loop: " + String(xPortGetCoreID()));
+// 	for (;;)
+// 	{
+// 		led.loop();
+// 		delay(1);
+// 		led.rand_color_change();
+// 	}
+// }

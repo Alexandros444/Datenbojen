@@ -1,10 +1,10 @@
 #include "tft_sd_module.h"
 
 
-void sd_module::begin(tft_module tft) {
+void sd_module::begin(tft_module *tft) {
     Serial.println("Initializing SD card...");
 
-    if (!SD.begin(SD_CS, tft.getSPIinstance())) {
+    if (!SD.begin(SD_CS, tft->getSPIinstance())) {
         Serial.println("SD card initialization failed!");
         return;
     }

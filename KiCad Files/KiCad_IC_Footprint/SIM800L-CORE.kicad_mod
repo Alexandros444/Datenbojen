@@ -184,6 +184,58 @@
 		(layer "F.CrtYd")
 		(uuid "ddfc945d-5e5d-45a5-960f-d12dbea74e12")
 	)
+	(fp_text user "TX"
+		(at 1.5 10.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "0b7a7099-167e-4458-81b5-02e61f8215ea")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "NET"
+		(at 1.5 0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "1c46e8b3-f11c-457a-8301-c8af472aaac3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "GND"
+		(at 1.5 13 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "1cc184dc-a296-4ea6-9417-9f8731f2e926")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "RST"
+		(at 1.5 5.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "4571ddd1-1e4f-44df-82dd-3a0eb27824f5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
 	(fp_text user "SIM800L-GSM"
 		(at 5.588 -1.778 0)
 		(unlocked yes)
@@ -194,6 +246,110 @@
 				(size 1.5 1.5)
 				(thickness 0.3)
 				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "MIC+"
+		(at 16.5 8 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "73552db4-2fbe-4e0c-97d0-74561206a6f8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "SPK+"
+		(at 16.5 13 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "7b91322f-1a0f-4c15-8d65-d2bd9c915973")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "DTR"
+		(at 17 5.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "860d0640-033a-4517-bccb-882e4ab17e2f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "SPK-"
+		(at 16.5 15.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "8f78235d-44f1-400d-9bea-5bec7ec6ac9a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "MIC-"
+		(at 16.5 10.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "d8526c16-f536-4af7-bc3b-1d9af52a6f0b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "RX"
+		(at 1.5 8 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "da798e24-844d-474f-85fc-22ab41300db0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "RING"
+		(at 17 3 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "dd03bfdd-5cab-4cef-81b3-ad1182bc7451")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "VCC"
+		(at 1.5 3 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "f23437c5-a33c-4e44-9dca-53b56a73711f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
 			)
 			(justify left bottom)
 		)
@@ -238,7 +394,7 @@
 		(remove_unused_layers no)
 		(uuid "7803cd3e-76be-4727-b333-1b0d3dfa73ea")
 	)
-	(pad "6" thru_hole circle
+	(pad "6" thru_hole rect
 		(at 0 12.7)
 		(size 1.9 1.9)
 		(drill 1.02)

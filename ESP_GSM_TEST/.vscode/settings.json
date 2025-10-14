@@ -26,6 +26,14 @@
         "ranges": "cpp",
         "stacktrace": "cpp",
         "regex": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "fstream": "cpp",
+        "numeric": "cpp",
+        "sstream": "cpp",
+        "syncstream": "cpp",
+        "algorithm": "cpp",
+        "shared_mutex": "cpp",
+        "stop_token": "cpp",
+        "*.inc": "cpp"
     }
 }

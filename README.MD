@@ -33,3 +33,10 @@ Open Source - Messplattform für Datenerhebung in Remote - Areas
 ---
 
 
+# Readme
+
+
+
+
+Datenbojen Bachelor Git Token:
+olp_1oo37QpfbeHbzyl6HBGaz0pBIDkBmW41RVnO
