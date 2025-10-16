@@ -28,11 +28,20 @@ int wifi_module::sendData() {
         jsonDoc["ADC2"] = sensors->adc->readInt(2);
         jsonDoc["ADC3"] = sensors->adc->readInt(3);
         jsonDoc["Temp C"] = sensors->temperature;
-        jsonDoc["Battery"] = gsm->getStatusInfo().batt;
-        jsonDoc["Signal"] = gsm->getStatusInfo().signalQuality;
         jsonDoc["TDS ppm"] = sensors->tdsValue;
         jsonDoc["Current_mA"] = sensors->read_Current_mA();
 
+        
+        statusInfo gsmStatus = gsm->getStatusInfo();
+        jsonDoc["GPRS"] = gsmStatus.isGprsConnected;
+        jsonDoc["Network"] = gsmStatus.isNetworkConnected;
+        jsonDoc["Signal"] = gsmStatus.signalQuality;
+        jsonDoc["Battery"] = gsmStatus.batt;
+        jsonDoc["Reg Status"] = gsmStatus.regStatus;
+        jsonDoc["Location"] = gsmStatus.loc;
+        jsonDoc["Operator"] = gsmStatus.operatorName;
+        jsonDoc["Modem"] = gsmStatus.modemInfo;
+        jsonDoc["Time"] = gsmStatus.networkTime;
 
         String requestBody;
         serializeJson(jsonDoc, requestBody);

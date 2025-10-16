@@ -9,8 +9,8 @@
 
 class wifi_module {
 private:
-    const char* ssid = "Can Cervera";
-    const char* password = "637457896";
+    const char* ssid = "FRITZ!Box 6660 Cable KW";
+    const char* password = "15730960856266684059";
     String serverName = "http://jserv.ddns.net:8080/update-sensor";
     sensors_module *sensors;
     gsm_module *gsm;

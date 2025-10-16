@@ -10,7 +10,7 @@ sim_status gsm_module::begin(){
     // Set GSM module baud rate and UART pins
     SerialAT.begin(GSM_BAUD, SERIAL_8N1, MODEM_RX, MODEM_TX);
 
-    delay(5000);
+    delay(3000);
 
     if (!modem.testAT()){
         Serial.println("GSM Module: Not Responding!");

@@ -48,8 +48,6 @@ void setup(){
 	sensors.begin(&adc);
 
 	gsm.begin();
-
-	delay(5000);
 	
 	wifi_mod.begin(&sensors, &gsm);
 
