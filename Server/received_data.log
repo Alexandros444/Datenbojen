@@ -1,0 +1,314 @@
+2025-10-04 19:00:28,410 Starting httpd on server_address=('', 8000)
+
+2025-10-04 19:01:00,020 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 57
+
+
+
+Body:
+{"tds":0,"ph":0,"turbidity":0,"do":0,"temperature":-1000}
+
+2025-10-04 19:01:00,021 Received data: {"tds":0,"ph":0,"turbidity":0,"do":0,"temperature":-1000}
+2025-10-04 19:01:12,205 Stopping httpd...
+
+2025-10-04 19:02:27,551 Starting httpd on server_address=('', 8000)
+
+2025-10-04 19:02:41,391 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 57
+
+
+
+Body:
+{"tds":0,"ph":0,"turbidity":0,"do":0,"temperature":-1000}
+
+2025-10-04 19:02:41,394 Received data: {"tds":0,"ph":0,"turbidity":0,"do":0,"temperature":-1000}
+2025-10-04 19:02:46,987 Stopping httpd...
+
+2025-10-04 19:04:09,018 Starting httpd on server_address=('', 8000)
+
+2025-10-04 19:04:29,085 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 57
+
+
+
+Body:
+{"tds":0,"ph":0,"turbidity":0,"do":0,"temperature":-1000}
+
+2025-10-04 19:04:29,085 Received data: {"tds":0,"ph":0,"turbidity":0,"do":0,"temperature":-1000}
+2025-10-04 19:05:54,806 Stopping httpd...
+
+2025-10-04 19:05:56,019 Starting httpd on server_address=('', 8000)
+
+2025-10-04 19:06:15,146 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 57
+
+
+
+Body:
+{"tds":0,"ph":0,"turbidity":0,"do":0,"temperature":-1000}
+
+2025-10-04 19:06:15,146 Received data: {"tds":0,"ph":0,"turbidity":0,"do":0,"temperature":-1000}
+2025-10-04 19:08:01,183 Stopping httpd...
+
+2025-10-04 19:19:39,359 Starting httpd on server_address=('', 8000)
+
+2025-10-04 19:19:41,726 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 72
+
+
+
+Body:
+{"tds":0,"ph":15.45166,"turbidity":8588.125,"do":0,"temperature":24.125}
+
+2025-10-04 19:19:41,726 Received data: {"tds":0,"ph":15.45166,"turbidity":8588.125,"do":0,"temperature":24.125}
+2025-10-04 19:21:18,837 Starting httpd on server_address=('', 8000)
+
+2025-10-04 19:21:20,588 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 85
+
+
+
+Body:
+{"tds":209.7392,"ph":12.3499,"turbidity":7490.875,"do":0.125071,"temperature":24.125}
+
+2025-10-04 19:21:20,588 Received data: {"tds":209.7392,"ph":12.3499,"turbidity":7490.875,"do":0.125071,"temperature":24.125}
+2025-10-04 19:22:37,682 Stopping httpd...
+
+2025-10-04 19:22:39,113 Starting httpd on server_address=('', 8000)
+
+2025-10-04 19:35:01,644 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 87
+
+
+
+Body:
+{"tds":212.8609,"ph":12.33088,"turbidity":7479.063,"do":0.125881,"temperature":24.1875}
+
+2025-10-04 19:35:01,648 Received data: {"tds":212.8609,"ph":12.33088,"turbidity":7479.063,"do":0.125881,"temperature":24.1875}
+2025-10-04 19:35:24,057 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 82
+
+
+
+Body:
+{"tds":213.2647,"ph":12.32454,"turbidity":7480,"do":0.126179,"temperature":24.125}
+
+2025-10-04 19:35:24,060 Received data: {"tds":213.2647,"ph":12.32454,"turbidity":7480,"do":0.126179,"temperature":24.125}
+2025-10-04 19:37:35,127 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 84
+
+
+
+Body:
+{"tds":214.155,"ph":12.33194,"turbidity":7483.75,"do":0.126051,"temperature":23.875}
+
+2025-10-04 19:37:35,127 Received data: {"tds":214.155,"ph":12.33194,"turbidity":7483.75,"do":0.126051,"temperature":23.875}
+2025-10-04 19:39:44,941 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 86
+
+
+
+Body:
+{"tds":215.4659,"ph":12.3256,"turbidity":7490.313,"do":0.126009,"temperature":23.5625}
+
+2025-10-04 19:39:44,941 Received data: {"tds":215.4659,"ph":12.3256,"turbidity":7490.313,"do":0.126009,"temperature":23.5625}
+2025-10-04 19:41:53,715 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 85
+
+
+
+Body:
+{"tds":217.1322,"ph":12.32243,"turbidity":7493.125,"do":0.125881,"temperature":23.25}
+
+2025-10-04 19:41:53,715 Received data: {"tds":217.1322,"ph":12.32243,"turbidity":7493.125,"do":0.125881,"temperature":23.25}
+2025-10-04 19:44:03,999 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 86
+
+
+
+Body:
+{"tds":215.7934,"ph":12.33511,"turbidity":7487.125,"do":0.126179,"temperature":23.625}
+
+2025-10-04 19:44:03,999 Received data: {"tds":215.7934,"ph":12.33511,"turbidity":7487.125,"do":0.126179,"temperature":23.625}
+2025-10-04 19:46:14,555 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 87
+
+
+
+Body:
+{"tds":213.1265,"ph":12.32032,"turbidity":7478.313,"do":0.126051,"temperature":24.1875}
+
+2025-10-04 19:46:14,555 Received data: {"tds":213.1265,"ph":12.32032,"turbidity":7478.313,"do":0.126051,"temperature":24.1875}
+2025-10-04 19:48:24,749 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 81
+
+
+
+Body:
+{"tds":211.517,"ph":12.31926,"turbidity":7470.25,"do":0.12669,"temperature":24.5}
+
+2025-10-04 19:48:24,749 Received data: {"tds":211.517,"ph":12.31926,"turbidity":7470.25,"do":0.12669,"temperature":24.5}
+2025-10-04 19:50:34,859 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 86
+
+
+
+Body:
+{"tds":211.4449,"ph":12.31821,"turbidity":7469.875,"do":0.126179,"temperature":24.625}
+
+2025-10-04 19:50:34,859 Received data: {"tds":211.4449,"ph":12.31821,"turbidity":7469.875,"do":0.126179,"temperature":24.625}
+2025-10-04 19:52:43,790 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 84
+
+
+
+Body:
+{"tds":210.7168,"ph":12.32349,"turbidity":7470.25,"do":0.126179,"temperature":24.75}
+
+2025-10-04 19:52:43,790 Received data: {"tds":210.7168,"ph":12.32349,"turbidity":7470.25,"do":0.126179,"temperature":24.75}
+2025-10-04 19:54:53,612 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 84
+
+
+
+Body:
+{"tds":210.9137,"ph":12.3256,"turbidity":7466.875,"do":0.126392,"temperature":24.75}
+
+2025-10-04 19:54:53,613 Received data: {"tds":210.9137,"ph":12.3256,"turbidity":7466.875,"do":0.126392,"temperature":24.75}
+2025-10-04 19:57:04,212 POST request,
+Path: /update-sensor
+Headers:
+Host: 192.168.1.81:8000
+User-Agent: ESP32HTTPClient
+Connection: keep-alive
+Accept-Encoding: identity;q=1,chunked;q=0.1,*;q=0
+Content-Type: application/json
+Content-Length: 87
+
+
+
+Body:
+{"tds":211.1133,"ph":12.32032,"turbidity":7465.937,"do":0.126222,"temperature":24.6875}
+
+2025-10-04 19:57:04,212 Received data: {"tds":211.1133,"ph":12.32032,"turbidity":7465.937,"do":0.126222,"temperature":24.6875}
+2025-10-04 19:59:06,118 Stopping httpd...
+
