@@ -36,10 +36,10 @@ struct statusInfo
     String networkTime;
 };
 
-void gsm_setup();
-int perform_get_https(String url);
-int perform_post_https(String url, String data);
-statusInfo getStatusInfo();
+// void gsm_setup();
+// int perform_get_https(String url);
+// int perform_post_https(String url, String data);
+// statusInfo getStatusInfo();
 
 
 class gsm_module {

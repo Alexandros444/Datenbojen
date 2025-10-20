@@ -10,7 +10,10 @@
 #include <StreamDebugger.h>
 #endif
 
+#include <ArduinoJson.h>
+
 #include "gpio_module.h"
+#include "sensors_module.h"
 
 // Set serial for debug console (to the Serial Monitor, default speed 115200)
 // #define SerialMon Serial
@@ -103,6 +106,7 @@ public:
     void relay_serial();
     void loop();
     void turn_off();
+    int sendData(sensors_module* sensors);
 };
 
 #endif

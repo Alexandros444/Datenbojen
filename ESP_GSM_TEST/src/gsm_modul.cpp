@@ -42,7 +42,51 @@ sim_status gsm_module::begin(){
     return GSM_STATUS_OK;
 }
 
-void gsm_module::turn_off(){
+int gsm_module::sendData(sensors_module* sensors){
+    if (!init)
+        return -1;
+
+    Serial.println("Sending HTTP POST request...");
+
+    sensors->print();
+
+    StaticJsonDocument<200> jsonDoc;
+
+    jsonDoc["ADC0"] = sensors->adc->readInt(0);
+    jsonDoc["ADC1"] = sensors->adc->readInt(1);
+    jsonDoc["ADC2"] = sensors->adc->readInt(2);
+    jsonDoc["ADC3"] = sensors->adc->readInt(3);
+    jsonDoc["Temp C"] = sensors->temperature;
+    jsonDoc["TDS ppm"] = sensors->tdsValue;
+    jsonDoc["Current_mA"] = sensors->read_Current_mA();
+
+    
+    statusInfo gsmStatus = getStatusInfo();
+    jsonDoc["GPRS"] = gsmStatus.isGprsConnected;
+    jsonDoc["Network"] = gsmStatus.isNetworkConnected;
+    jsonDoc["Signal"] = gsmStatus.signalQuality;
+    jsonDoc["Battery"] = gsmStatus.batt;
+    jsonDoc["Reg Status"] = gsmStatus.regStatus;
+    jsonDoc["Location"] = gsmStatus.loc;
+    jsonDoc["Operator"] = gsmStatus.operatorName;
+    jsonDoc["Modem"] = gsmStatus.modemInfo;
+    jsonDoc["Time"] = gsmStatus.networkTime;
+
+    String requestBody;
+    serializeJson(jsonDoc, requestBody);
+
+    int status = post_req_http("http://jserv.ddns.net:8080/update-sensor", requestBody);
+
+    if (status != 200) {
+        Serial.printf("HTTP POST request failed with status code: %d\n", status);
+        return -4;
+    }
+    Serial.println("HTTP POST request sent successfully.");
+    return 0;
+}
+
+
+void gsm_module::turn_off() {
     Serial.println("Turning off GSM module...");
     modem.poweroff();
     delay(1000);
@@ -327,7 +371,7 @@ int gsm_module::get_req_http(String url){
         Serial.println("GPRS connected");
     }
 
-    Serial.println(F("Performing HTTPS GET request... "));
+    Serial.println(F("Performing HTTP GET request... "));
 
     if (set_gprs_bearer() == false)
         Serial.println("Bearing set fail");
@@ -374,13 +418,13 @@ int gsm_module::post_req_http(String url, String data){
         Serial.println("GPRS connected");
     }
 
-    Serial.print(F("Performing HTTPS GET request... "));
+    Serial.print(F("Performing HTTPS POST request... "));
 
     if (set_gprs_bearer() == false) Serial.println("Bearing set fail");
 
     status = http_post_raw(url, data);
     if (status != 200) {
-        Serial.println("https post fail");
+        Serial.println("https post fail with error code: " + String(status));
     }
 
     http_close();

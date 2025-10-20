@@ -49,7 +49,7 @@ void setup(){
 
 	gsm.begin();
 	
-	wifi_mod.begin(&sensors, &gsm);
+	// wifi_mod.begin(&sensors, &gsm);
 
 
 	// pinMode(PCF0, OUTPUT);
@@ -89,8 +89,8 @@ void loop(){
 
 	// delay(10000);
 	// lora.sendPacket("Test");
-	int transmission_status = wifi_mod.sendData();
-	Serial.printf("Wifi Packet status: %d, retry: %d\n", transmission_status, retry_count);
+	int transmission_status = gsm.sendData(&sensors);
+	Serial.printf("Packet status: %d, retry: %d\n", transmission_status, retry_count);
 
 	if (transmission_status != 0 && retry_count < 3) {
 		Serial.println("Error in data transmission, retrying in 10 seconds...");
@@ -104,7 +104,7 @@ void loop(){
 	
 	gsm.turn_off();
 
-	wifi_mod.turn_off();
+	// wifi_mod.turn_off();
 
 	sleep_mod.system_cut_power();
 
