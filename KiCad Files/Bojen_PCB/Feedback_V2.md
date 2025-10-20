@@ -10,6 +10,7 @@
 ## Sim Module
 - [x] Silkscreen missing
 - [ ] Mosfet DOES NOT WORK, Wenn ESP aus, wird gpio auf GND gezogen,  ~1.1V gemessen Spannungsteiler innenwiderstand berechnen? Auf Nicht inv. wechseln
+- RESET PIN wird gebraucht
 
 
 ## TMP Sensor
