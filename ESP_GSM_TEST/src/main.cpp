@@ -13,7 +13,9 @@
 #include "wifi_module.h"
 #include "sleep_module.h"
 #include "gsm_module.h"
+#include "state_module.h"
 
+state_module sys_state;
 gpio_module pcf;
 wifi_module wifi_mod;
 sleep_module sleep_mod;
@@ -36,6 +38,8 @@ void setup(){
 
 	Serial.begin(115200);
 	Serial.println("Serial Initialzied.");
+
+	sys_state.begin();
 
 	delay(1000); // Wait for Serial Monitor to open
 

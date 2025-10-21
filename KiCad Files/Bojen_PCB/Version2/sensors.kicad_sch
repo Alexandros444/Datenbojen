@@ -4,6 +4,12 @@
 	(generator_version "9.0")
 	(uuid "0c1f848a-01f1-47c4-b9da-f07d2df740f6")
 	(paper "A4")
+	(title_block
+		(title "Datenbojen")
+		(rev "2")
+		(company "Alexander Mohr")
+		(comment 1 "TU Berlin")
+	)
 	(lib_symbols
 		(symbol "Connector:Screw_Terminal_01x03"
 			(pin_names

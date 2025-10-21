@@ -8,9 +8,10 @@
 	)
 	(paper "A4")
 	(title_block
-		(title "Spreebojen PCB")
-		(rev "V2")
-		(company "Alexander Mohr TU-Berlin")
+		(title "Spreebojen")
+		(rev "2")
+		(company "Alexander Mohr")
+		(comment 1 "TU Berlin")
 	)
 	(layers
 		(0 "F.Cu" signal)
