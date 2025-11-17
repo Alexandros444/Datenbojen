@@ -1,0 +1,89 @@
+<mxfile host="Electron" modified="2025-10-22T17:30:10.751Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.4 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="IiTsUMR1_MrgpK9NZUFR" version="24.0.4" type="device">
+  <diagram name="Page-1" id="QYBJlyT5NWA23eTLwBnA">
+    <mxGraphModel dx="2494" dy="1047" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="nIX_sarBei-WuAO270SS-38" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry width="1160" height="580" as="geometry" />
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="nIX_sarBei-WuAO270SS-38" source="nIX_sarBei-WuAO270SS-1" target="nIX_sarBei-WuAO270SS-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="569.784735812133" y="494.9624060150376" />
+              <mxPoint x="569.784735812133" y="494.9624060150376" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-1" value="&lt;font style=&quot;font-size: 30px;&quot; color=&quot;#000000&quot;&gt;Mobilfunk&lt;/font&gt;" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#000000;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.radio_tower;horizontal=1;" vertex="1" parent="nIX_sarBei-WuAO270SS-38">
+          <mxGeometry x="433.5812133072408" y="361.95488721804514" width="124.85322896281801" height="218.0451127819549" as="geometry" />
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;dashed=1;" edge="1" parent="nIX_sarBei-WuAO270SS-38" source="nIX_sarBei-WuAO270SS-25" target="nIX_sarBei-WuAO270SS-1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="174.7945205479452" y="494.9624060150376" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-33" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;GSM&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="nIX_sarBei-WuAO270SS-22">
+          <mxGeometry x="-0.2916" y="-1" relative="1" as="geometry">
+            <mxPoint x="23" y="-25" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" edge="1" parent="nIX_sarBei-WuAO270SS-38" source="nIX_sarBei-WuAO270SS-6" target="nIX_sarBei-WuAO270SS-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="978.3953033268103" y="494.9624060150376" />
+              <mxPoint x="978.3953033268103" y="494.9624060150376" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-6" value="&lt;div style=&quot;font-size: 30px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 30px;&quot;&gt;Internet&lt;/span&gt;&lt;/div&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#1A1A1A;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=30;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.globe;" vertex="1" parent="nIX_sarBei-WuAO270SS-38">
+          <mxGeometry x="683.2876712328767" y="409.9248120300752" width="170.07518796992483" height="170.07518796992483" as="geometry" />
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="nIX_sarBei-WuAO270SS-38" source="nIX_sarBei-WuAO270SS-11" target="nIX_sarBei-WuAO270SS-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="774.0900195694718" y="200.6015037593985" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-11" value="Benutzer" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#000000;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=30;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.user;" vertex="1" parent="nIX_sarBei-WuAO270SS-38">
+          <mxGeometry x="1005.6360078277887" y="87.21804511278197" width="148.27067669172934" height="148.27067669172934" as="geometry" />
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-16" value="Server" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#000066;shape=mxgraph.azure.server_rack;fontSize=30;" vertex="1" parent="nIX_sarBei-WuAO270SS-38">
+          <mxGeometry x="1026.0665362035227" y="438.2706766917293" width="113.50293542074365" height="141.7293233082707" as="geometry" />
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-26" value="" style="group;fontColor=#000099;" vertex="1" connectable="0" parent="nIX_sarBei-WuAO270SS-38">
+          <mxGeometry x="24.9706457925636" y="353.23308270676694" width="177.0645792563601" height="226.7669172932331" as="geometry" />
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-2" value="&lt;font style=&quot;font-size: 30px;&quot; color=&quot;#000000&quot;&gt;Messstation 1&lt;/font&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#003366;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.iot_thing_temperature_humidity_sensor;" vertex="1" parent="nIX_sarBei-WuAO270SS-26">
+          <mxGeometry y="56.69172932330827" width="170.07518796992483" height="170.07518796992483" as="geometry" />
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-25" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.radio.aerial_-_antenna_1;" vertex="1" parent="nIX_sarBei-WuAO270SS-26">
+          <mxGeometry x="124.85322896281804" y="19.624060150375943" width="49.9412915851272" height="61.05263157894737" as="geometry" />
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-30" value="" style="group;fontColor=#000099;" vertex="1" connectable="0" parent="nIX_sarBei-WuAO270SS-38">
+          <mxGeometry x="24.9706457925636" y="47.96992481203007" width="197.49510763209398" height="226.7669172932331" as="geometry" />
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-31" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#003366;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.iot_thing_temperature_humidity_sensor;" vertex="1" parent="nIX_sarBei-WuAO270SS-30">
+          <mxGeometry y="56.69172932330827" width="170.07518796992483" height="170.07518796992483" as="geometry" />
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-32" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.radio.aerial_-_antenna_1;" vertex="1" parent="nIX_sarBei-WuAO270SS-30">
+          <mxGeometry x="124.85322896281805" y="17.44360902255639" width="49.94129158512722" height="61.05263157894737" as="geometry" />
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="nIX_sarBei-WuAO270SS-38" source="nIX_sarBei-WuAO270SS-31" target="nIX_sarBei-WuAO270SS-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-35" value="LoRa" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=30;" vertex="1" connectable="0" parent="nIX_sarBei-WuAO270SS-34">
+          <mxGeometry x="-0.3033" relative="1" as="geometry">
+            <mxPoint x="40" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nIX_sarBei-WuAO270SS-37" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;Messstation 2&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="nIX_sarBei-WuAO270SS-38">
+          <mxGeometry x="8.5" y="2.9700000000000006" width="210" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
