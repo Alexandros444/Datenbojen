@@ -1,0 +1,4 @@
+#!/bin/sh -e
+# exec > /tmp/rc-local.out 2>&1;set -x
+su riversync -c '/usr/bin/darkice -c /etc/darkice.cfg > /home/riversync/darkice/log0.log &'
+exit 0

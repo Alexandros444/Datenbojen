@@ -1,4 +1,0 @@
-cycle,t_start_s,t_send_s,t_end_s,dur_measure_s,dur_send_s,dur_sleep_s,mean_power_measure_mW,mean_power_send_mW,mean_power_sleep_mW,total_energy_meas_Ws,total_energy_send_Ws,total_energy_sleep_Ws,total_energy_cycle_Ws,cycle_duration_s
-1,3.8,48.8,60.6,45.0,11.8,314.4,477.3,511.0,4.3,21.5,6.0,1.3,28.9,371.2
-2,375.0,422.9,434.7,47.9,11.8,244.7,476.1,516.0,4.4,22.8,6.1,1.1,30.0,304.4
-3,679.4,723.1,734.0,43.7,10.9,0.0,472.8,491.4,0.0,20.7,5.4,0.0,26.0,54.6

@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Datenbojen")(type "KiCad")(uri "C:/Users/Alex/Desktop/git/Datenbojen/KiCad Files/KiCad_IC_Footprint")(options "")(descr ""))
+  (lib (name "Phils_Lib")(type "KiCad")(uri "C:/Users/Alex/Desktop/git/Datenbojen/KiCad Files/KiCad_IC_Footprint/PhilsLibraries-main/PhilsFootprintLibrary.pretty")(options "")(descr ""))
+)

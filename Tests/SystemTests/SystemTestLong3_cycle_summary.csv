@@ -1,1 +1,0 @@
-cycle,t_start_s,t_send_s,t_end_s,dur_measure_s,dur_send_s,dur_sleep_s,mean_power_measure_mW,mean_power_send_mW,mean_power_sleep_mW,total_energy_meas_Ws,total_energy_send_Ws,total_energy_sleep_Ws,total_energy_cycle_Ws,cycle_duration_s

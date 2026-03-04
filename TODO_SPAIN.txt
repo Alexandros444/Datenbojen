@@ -1,9 +1,0 @@
-
-- Sensordaten aufnehmen, proof of concept
-	- Wifi sendet Sensordaten an Server
-
-- Sensordaten an Server schicken
-	- Mobile Networks
-	- Lora - Wifi
-
-- Solardaten aufnehmen

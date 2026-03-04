@@ -1,0 +1,269 @@
+(footprint "TDS Sensor DFRobot"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at -19.05 -17.018 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "6d387f1c-95b1-480c-8d3f-67e63817d8cb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "TDS Sensor DFRobot"
+		(at 0 20.09 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "a4c92d27-5f68-4fda-813e-3a97a314efb3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 19.09 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "68732748-4e0d-481b-a34e-da136631be04")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 19.09 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "575e3425-feea-46b7-8765-56ab2dfc6533")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_rect
+		(start -21 -16)
+		(end 21 16)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "368bfe97-0d43-45ad-9d56-86f39e792c7d")
+	)
+	(fp_rect
+		(start -17.78 -2.54)
+		(end -15.24 2.54)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "1971649f-38d1-4c41-9376-af26ceda0565")
+	)
+	(fp_rect
+		(start 15.358511 -2.54)
+		(end 17.898511 2.54)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "e7b1614e-e9cb-41c4-8d47-102a4e93d835")
+	)
+	(fp_circle
+		(center -17.455845 -12.518819)
+		(end -13.955845 -12.518819)
+		(stroke
+			(width 0.2)
+			(type dot)
+		)
+		(fill no)
+		(layer "Cmts.User")
+		(uuid "61120467-942f-4b2c-b86a-39e56c79f7df")
+	)
+	(fp_circle
+		(center -17.441929 12.472955)
+		(end -13.941929 12.472955)
+		(stroke
+			(width 0.2)
+			(type dot)
+		)
+		(fill no)
+		(layer "Cmts.User")
+		(uuid "a596eb09-aee6-4c5d-ae03-20724c060ea2")
+	)
+	(fp_circle
+		(center 17.43529 12.483233)
+		(end 20.93529 12.483233)
+		(stroke
+			(width 0.2)
+			(type dot)
+		)
+		(fill no)
+		(layer "Cmts.User")
+		(uuid "2f7632d1-0302-48c4-95d5-8cd18ec05b3f")
+	)
+	(fp_circle
+		(center 17.462245 -12.495599)
+		(end 20.962245 -12.495599)
+		(stroke
+			(width 0.2)
+			(type dot)
+		)
+		(fill no)
+		(layer "Cmts.User")
+		(uuid "224367a6-9c08-4b28-82ca-0e7059f78083")
+	)
+	(fp_poly
+		(pts
+			(xy -26.67 3.81) (xy -21.336 3.81) (xy -21.336 16.256) (xy 21.336 16.256) (xy 21.336 5.842) (xy 21.336 5.842)
+			(xy 21.336 -5.842) (xy 21.336 -5.842) (xy 21.336 -16.256) (xy -21.336 -16.256) (xy -21.336 -3.81)
+			(xy -26.67 -3.81)
+		)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "0e3ef16d-077f-449d-9ba0-9ed9281153ed")
+	)
+	(fp_text user "D"
+		(at 18.796 2.54 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "0349226b-e7b3-4b05-90be-372b81bc024a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "TDS Sensor"
+		(at -5.334 0.254 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "1a1d97f8-b204-484f-a354-ce21ef1f730a")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "-"
+		(at 18.660511 -1.27 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "35603599-5974-4320-956f-3499008204ca")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "MCU"
+		(at 16.120511 -1.27 270)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "4a181e1e-8e9e-49d4-b2dc-7c84b1d94ca2")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.175)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "+"
+		(at 18.660511 0.508 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "a2b0a289-06bd-47e1-b098-0089b9046d3a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "Sensor"
+		(at -16.256 2.032 90)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "ef304e62-2a39-4c81-ba59-b57c1e100b3a")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.175)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 21.59 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "07c0a8d7-5a15-43d5-88ea-e87ef0746539")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "" np_thru_hole circle
+		(at -17.455845 -12.518819)
+		(size 3 3)
+		(drill 3)
+		(layers "*.Cu" "*.Mask")
+		(uuid "917a7475-86de-4e01-8ea8-2e1fa2b01f9f")
+	)
+	(pad "" np_thru_hole circle
+		(at -17.441929 12.472955)
+		(size 3 3)
+		(drill 3)
+		(layers "*.Cu" "*.Mask")
+		(uuid "b7794a56-8c0f-40da-be19-78f9caf1f055")
+	)
+	(pad "" np_thru_hole circle
+		(at 17.43529 12.483233)
+		(size 3 3)
+		(drill 3)
+		(layers "*.Cu" "*.Mask")
+		(uuid "bd8e4b5a-71ef-4a71-b48d-4e2429953872")
+	)
+	(pad "" np_thru_hole circle
+		(at 17.462245 -12.495599)
+		(size 3 3)
+		(drill 3)
+		(layers "F&B.Cu" "*.Mask")
+		(uuid "0df76f48-cf3b-491b-a191-777019b5499d")
+	)
+	(embedded_fonts no)
+)

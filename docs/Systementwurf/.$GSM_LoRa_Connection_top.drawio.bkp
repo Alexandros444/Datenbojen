@@ -1,0 +1,81 @@
+<mxfile host="Electron" modified="2025-10-22T17:44:27.325Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.4 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="e0K1tFr_7Vu2_xYcNCQp" version="24.0.4" type="device">
+  <diagram name="Page-1" id="0fBG2ZhxlV6Mn-2-uxzR">
+    <mxGraphModel dx="4862" dy="1505" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="vMdtt9yaaA6pP9VdnvnZ-7" target="vMdtt9yaaA6pP9VdnvnZ-10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2265.1053033268104" y="487.74240601503755" />
+              <mxPoint x="2265.1053033268104" y="487.74240601503755" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-7" value="&lt;div style=&quot;font-size: 30px;&quot;&gt;&lt;span style=&quot;background-color: initial; font-size: 30px;&quot;&gt;Internet&lt;/span&gt;&lt;/div&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#1A1A1A;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=30;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.globe;" vertex="1" parent="1">
+          <mxGeometry x="1969.9976712328767" y="402.7048120300752" width="170.07518796992483" height="170.07518796992483" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="vMdtt9yaaA6pP9VdnvnZ-9" target="vMdtt9yaaA6pP9VdnvnZ-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2060.8000195694717" y="193.3815037593985" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-9" value="Benutzer" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#000000;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=30;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.user;" vertex="1" parent="1">
+          <mxGeometry x="2292.3460078277885" y="79.99804511278197" width="148.27067669172934" height="148.27067669172934" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-10" value="Server" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#000066;shape=mxgraph.azure.server_rack;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="2312.7765362035225" y="431.0506766917293" width="113.50293542074365" height="141.7293233082707" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-11" value="" style="group;fontColor=#000099;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="-339.99935420743645" y="680.0030827067669" width="177.0645792563601" height="226.7669172932331" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-13" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.radio.aerial_-_antenna_1;" vertex="1" parent="vMdtt9yaaA6pP9VdnvnZ-11">
+          <mxGeometry x="124.85322896281804" y="19.624060150375943" width="49.9412915851272" height="61.05263157894737" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="vMdtt9yaaA6pP9VdnvnZ-15" target="vMdtt9yaaA6pP9VdnvnZ-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-18" value="LoRa" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=30;" vertex="1" connectable="0" parent="vMdtt9yaaA6pP9VdnvnZ-17">
+          <mxGeometry x="-0.3033" relative="1" as="geometry">
+            <mxPoint x="40" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-14" value="" style="group;fontColor=#000099;" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="24.9706457925636" y="87.96992481203007" width="197.49510763209398" height="226.7669172932331" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-15" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#003366;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.iot_thing_temperature_humidity_sensor;" vertex="1" parent="vMdtt9yaaA6pP9VdnvnZ-14">
+          <mxGeometry y="56.69172932330827" width="170.07518796992483" height="170.07518796992483" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-16" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;shape=mxgraph.electrical.radio.aerial_-_antenna_1;" vertex="1" parent="vMdtt9yaaA6pP9VdnvnZ-14">
+          <mxGeometry x="124.85322896281805" y="17.44360902255639" width="49.94129158512722" height="61.05263157894737" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-19" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;Messstation 2&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="8.5" y="42.97" width="210" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-22" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="282.43" y="530" width="840" height="840" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-20" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;strokeWidth=5;dashed=1;strokeColor=#d79b00;" vertex="1" parent="vMdtt9yaaA6pP9VdnvnZ-22">
+          <mxGeometry width="840" height="840" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-3" value="&lt;font style=&quot;font-size: 30px;&quot; color=&quot;#000000&quot;&gt;Mobilfunk&lt;/font&gt;" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#000000;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.radio_tower;horizontal=1;" vertex="1" parent="vMdtt9yaaA6pP9VdnvnZ-22">
+          <mxGeometry x="357.5712133072407" y="270.00488721804516" width="124.85322896281801" height="218.0451127819549" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-12" value="&lt;font style=&quot;font-size: 30px;&quot; color=&quot;#000000&quot;&gt;Messstation 1&lt;/font&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#003366;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.iot_thing_temperature_humidity_sensor;" vertex="1" parent="vMdtt9yaaA6pP9VdnvnZ-22">
+          <mxGeometry x="87.57064579256348" y="190.0048120300752" width="170.07518796992483" height="170.07518796992483" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-23" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="-399.99999999999994" y="850" width="840" height="840" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-24" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=none;strokeWidth=5;dashed=1;strokeColor=#d79b00;" vertex="1" parent="vMdtt9yaaA6pP9VdnvnZ-23">
+          <mxGeometry width="840" height="840" as="geometry" />
+        </mxCell>
+        <mxCell id="vMdtt9yaaA6pP9VdnvnZ-25" value="&lt;font style=&quot;font-size: 30px;&quot; color=&quot;#000000&quot;&gt;Mobilfunk&lt;/font&gt;" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#000000;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.radio_tower;horizontal=1;" vertex="1" parent="vMdtt9yaaA6pP9VdnvnZ-23">
+          <mxGeometry x="357.5712133072407" y="270.00488721804516" width="124.85322896281801" height="218.0451127819549" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
